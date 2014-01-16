@@ -1,0 +1,62 @@
+
+
+Luolastoseikkailuun perustuva lautapeli, jossa paino on noppien heitt‰misess‰
+
+
+Konsepti ei ole lopullinen ja osia voi muuttua ajan kanssa.
+
+
+--	Pelin ydin:
+
+
+-Kutakin pelaajaa edustaa seikkailija, joka seikkailee luolastoissa ker‰ten aarteita.
+-Luolastoja arvotaan muutama pelin alussa, ja niill‰ on erilaisia piirteit‰.
+-Luolastoissa arvotaan nopilla vihollisten (luurankoja, ˆrkkej‰, jne.) m‰‰r‰, taistelun onnistuminen kyseisi‰ vihollisia vastaan ja aarteiden lˆyt‰minen kukin omilla nopillaan.
+-Nopilla heitet‰‰n yhdistelmi‰ ja pelaajalle suodaan kussakin kohdassa muutama valittua uudelleenheittoa.
+-Noppien m‰‰r‰t riippuvat luolaston ominaisuuksista ja seikkailijan korteista, jotka edustavat kykyj‰ ja esineit‰.
+-Korteilla voi myˆs k‰‰nt‰‰ noppia tai h‰irit‰ muiden pelaajien heittely‰.
+-Aarteilla ker‰t‰‰n voittopisteit‰, rahaa ja kortteja.
+-Kortteja voi myˆs ostaa kyl‰st‰ rahalla, mutta se kuluttaa vuoron.
+-Yhden pelaajan saavutettua X m‰‰r‰ voittopisteit‰ p‰‰tet‰‰n peli kierroksen loppuun.
+-Eniten pisteit‰ ker‰nnyt pelaaja voittaa.
+
+
+--	
+
+K‰ytt‰j‰t:   Pelaaja
+
+Pelaajan toiminnot:
+
+	Vuoron alussa:
+	
+	1) - Valitaan vuoron toiminta
+		- tutkitaan luolastoa tai menn‰‰n kyl‰‰n ostoksille
+	
+	Luolastossa:
+	
+	2) - Heitet‰‰n X m‰‰r‰ vihollisnoppia, uudelleenheitet‰‰n valitut nopat X kertaa
+	3) - Heitet‰‰n taistelunopat, joilla ker‰t‰‰n noppapareilla onnistumisia vihollisten m‰‰r‰n verran, uudelleenheitet‰‰n valitut nopat X kertaa
+	4a)- Jos taistelu onnistuu, heitet‰‰n aarrenopat, joilla ker‰t‰‰n yhdistelmi‰, uudelleenheitet‰‰n jne jne
+	4b)- Taistelun ep‰onnistuttua vuoro siirtyy seuraavalle pelaajalle, seuraavalla vuorolla saa boonuksia taisteluun
+	
+	Kaupassa:
+	
+	2) - Valitaan korteista yksi, johon on varaa, ja ostetaan se rahalla. Vuoro siirtyy seuraavalle pelaajalle.
+		(kaupan kortit ovat aina n‰kyvill‰, joten kauppaan ei p‰‰stet‰ ilman varoja)
+	
+	
+	
+Peli sis‰lt‰‰: 
+	
+	-pino luolastokortteja, joista arvotaan pelin keskeiseksi ytimeksi muutama (kuten Arkham Horrorissa valitaan Ancient One)
+	-pino kyky/esinekortteja, joilla on erikoisominaisuuksia
+	-vihollisnopat
+	-taistelunopat
+	-aarrenopat		(nopilla on omat sivunsa, ja niit‰ esitet‰‰n omilla graafisilla esityksill‰)
+
+
+Peli on siis mahdollista toteuttaa myˆs aitona lautapelin‰.
+
+
+
+
