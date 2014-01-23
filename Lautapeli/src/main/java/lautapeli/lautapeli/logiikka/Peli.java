@@ -2,7 +2,8 @@
 package lautapeli.lautapeli.logiikka;
 
 import java.util.ArrayList;
-import lautapeli.lautapeli.Pelaaja;
+import lautapeli.lautapeli.domain.Luolasto;
+import lautapeli.lautapeli.domain.Pelaaja;
 
 
 public class Peli {
@@ -10,14 +11,15 @@ public class Peli {
     private boolean jatkuu;
     private ArrayList<Pelaaja> pelaajat;
     private int ylaraja;
-
+    private ArrayList<Luolasto> luolastot;
     
     public Peli(){
         kierros = 0;
         jatkuu = true;
         pelaajat = new ArrayList<>();
-        pelaajat.add(new Pelaaja());
+        
         ylaraja = 20;
+        luolastot = new ArrayList<>();
     }
 
     public boolean getJatkuu() {
@@ -30,6 +32,10 @@ public class Peli {
 
     public int getKierros() {
         return kierros;
+    }
+    
+    public void lisaaPelaaja(Pelaaja p){
+        pelaajat.add(p);
     }
 
     public ArrayList<Pelaaja> getPelaajat() {
@@ -45,8 +51,16 @@ public class Peli {
     }
     
     public void pelaa() {
+        lisaaLuolastot();
         kaynnistaKierros();
     }
+    
+    void lisaaLuolastot(){
+        //placeholder
+        luolastot.add(new Luolasto());
+        luolastot.add(new Luolasto());
+        luolastot.add(new Luolasto());
+    } 
     
     void kaynnistaKierros(){
         kierros++;
@@ -71,12 +85,13 @@ public class Peli {
         if(pelaaja.valitseVuoroToimepide().equals("kauppa")){
             pelaaja.osta();
         } else {
-            pelaaja.pelaa();
+            pelaaja.valitseLuolasto(luolastot);
         }
         
         if (pelaaja.getPisteet() >= ylaraja){
             jatkuu = false;
         }
+        pelaaja.lisaaPiste(); //test
     }
     
     
