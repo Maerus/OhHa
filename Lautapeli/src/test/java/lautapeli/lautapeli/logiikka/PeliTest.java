@@ -1,6 +1,6 @@
 
 
-package lautapeli.lautapeli;
+package lautapeli.lautapeli.logiikka;
 
 import lautapeli.lautapeli.domain.Pelaaja;
 import lautapeli.lautapeli.logiikka.Peli;

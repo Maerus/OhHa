@@ -1,6 +1,6 @@
 
 
-package lautapeli.lautapeli;
+package lautapeli.lautapeli.domain;
 
 import java.util.Random;
 import lautapeli.lautapeli.domain.Pelaaja;

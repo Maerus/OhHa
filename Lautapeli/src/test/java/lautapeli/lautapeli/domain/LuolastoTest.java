@@ -1,6 +1,6 @@
 
 
-package lautapeli.lautapeli;
+package lautapeli.lautapeli.domain;
 
 import lautapeli.lautapeli.domain.Luolasto;
 import org.junit.After;

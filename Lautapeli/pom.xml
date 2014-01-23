@@ -42,6 +42,16 @@
             <groupId>org.pitest</groupId>
             <artifactId>pitest-maven</artifactId>
             <version>0.30</version>
+        <configuration>
+            <targetClasses>
+                <param>lautapeli.lautapeli.logiikka*</param>
+                <param>lautapeli.lautapeli.domain*</param>
+            </targetClasses>
+            <targetTests>
+                <param>lautapeli.lautapeli.logiikka*</param>
+                <param>lautapeli.lautapeli.domain*</param>
+            </targetTests>
+        </configuration>
         </plugin>
     </plugins>
 </build>
