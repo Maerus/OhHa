@@ -54,4 +54,19 @@ public class PelaajaTest {
         }
         assertEquals(a, p.getPisteet());
     }
+    
+    @Test
+    public void nollaKorttiaTuoNollaMuutostaVihollisnoppiin(){
+        assertEquals(0, p.getViholliskorttimuutokset());
+    }
+    
+    @Test
+    public void nollaKorttiaTuoNollaMuutostaTaistelunoppiin(){
+        assertEquals(0, p.getTaistelukorttimuutokset());
+    }
+    
+    @Test
+    public void nollaKorttiaTuoNollaMuutostaAarrenoppiin(){
+        assertEquals(0, p.getAarrekorttimuutokset());
+    }
 }

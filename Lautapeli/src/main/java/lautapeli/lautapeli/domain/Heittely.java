@@ -15,14 +15,15 @@ class Heittely {
     private ArrayList<Integer> nopat;
 
     public Heittely(Luolasto luola , Pelaaja p) {
-        vihollisnopat = luola.getVihollisnopat();
-        taistelunopat = luola.getTaistelunopat();
-        aarrenopat = luola.getAarrenopat();
         pelaaja = p;
+        
+        vihollisnopat = luola.getVihollisnopat() + pelaaja.getViholliskorttimuutokset();
+        taistelunopat = luola.getTaistelunopat() + pelaaja.getTaistelukorttimuutokset();
+        aarrenopat = luola.getAarrenopat() + pelaaja.getAarrekorttimuutokset();
+        
         vaihe = 1;
         random = new Random();
         nopat = new ArrayList<>();
-        //korttien läpikäynti
     }
 
     public ArrayList<Integer> getNopat() {

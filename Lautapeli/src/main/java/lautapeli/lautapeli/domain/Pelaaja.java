@@ -1,8 +1,8 @@
 
 package lautapeli.lautapeli.domain;
 
+import lautapeli.lautapeli.domain.kortti.Kortti;
 import java.util.ArrayList;
-import java.util.Random;
 
 
 public class Pelaaja {
@@ -36,8 +36,37 @@ public class Pelaaja {
     }
 
     public void valitseLuolasto(ArrayList<Luolasto> luolastot) {
-        //nope
-        
+        //placeholder
+    }
+
+    int getViholliskorttimuutokset() {
+        int a = 0;
+        for (Kortti kortti : kortit) {
+            if(kortti.getTyyppi().equals("viholliskortti")){
+                a += kortti.suorita();
+            }
+        }
+        return a;
+    }
+
+    int getTaistelukorttimuutokset() {
+        int a = 0;
+        for (Kortti kortti : kortit) {
+            if(kortti.getTyyppi().equals("taistelukortti")){
+                a += kortti.suorita();
+            }
+        }
+        return a;
+    }
+
+    int getAarrekorttimuutokset() {
+        int a = 0;
+        for (Kortti kortti : kortit) {
+            if(kortti.getTyyppi().equals("aarrekortti")){
+                a += kortti.suorita();
+            }
+        }
+        return a;
     }
 
 

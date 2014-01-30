@@ -75,13 +75,6 @@ public class Peli {
     }
     
     private void suoritaVuoro(Pelaaja pelaaja) {
-        /*
-        Ensin kysytään pelaajalta mennäänkö luolastoon vai kauppaan.
-        Kaupassa suoritetaan ostotoimenpide ja lopetetaan vuoro.
-        Luolastossa heitetään nopat.
-        jne jne
-        */
-        
         if(pelaaja.valitseVuoroToimepide().equals("kauppa")){
             pelaaja.osta();
         } else {
