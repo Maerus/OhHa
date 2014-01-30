@@ -2,8 +2,8 @@
 
 package lautapeli.lautapeli.logiikka;
 
+import lautapeli.lautapeli.domain.Npc;
 import lautapeli.lautapeli.domain.Pelaaja;
-import lautapeli.lautapeli.logiikka.Peli;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -54,8 +54,8 @@ public class PeliTest {
     public void YhdenLoopinKestavanPelinKierroslukuOnYksi(){
         peli.setYlaraja(1);
         
-        peli.lisaaPelaaja(new Pelaaja(true));
-        peli.lisaaPelaaja(new Pelaaja(true));
+        peli.lisaaPelaaja(new Npc());
+        peli.lisaaPelaaja(new Npc());
         
         peli.getPelaajat().get(0).setPisteet(peli.getYlaraja());
         
@@ -65,8 +65,8 @@ public class PeliTest {
     
     @Test
     public void PelinLoputtuaVahintaanYhdellaPelaajallaOnYlarajanVerranPisteita(){
-        peli.lisaaPelaaja(new Pelaaja(true));
-        peli.lisaaPelaaja(new Pelaaja(true));
+        peli.lisaaPelaaja(new Npc());
+        peli.lisaaPelaaja(new Npc());
         
         peli.getPelaajat().get(0).setPisteet(peli.getYlaraja());
         

@@ -8,6 +8,12 @@
 - 20.1.2014
 	13:00 - 14:30		ohjelmoinnin aloitusta
 
+
 - 23.1.2014
 	1:00 - 1:30		pelilogiikan sisimmän ytimen valmistelua ja raakojen kaavioiden piirtelyä,
 				sekä pientä sieventelyä koodissa
+	~14:00 - ~16:00
+
+
+- 29.1.2014
+	14:55 - 15:40		uutta koodia, muutoksia

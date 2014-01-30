@@ -28,7 +28,7 @@ public class LuolastoTest {
     
     @Before
     public void setUp() {
-        l = new Luolasto(7, 5, 8);
+        l = new Luolasto(7, 5, 8, "asd");
     }
     
     @After
@@ -40,17 +40,28 @@ public class LuolastoTest {
     // public void hello() {}
     
     @Test
-    public void LuolastollaOikeaMaaraVNoppia(){
+    public void luolastollaOikeaMaaraVNoppia(){
         assertEquals(7, l.getVihollisnopat());
     }
     
     @Test
-    public void LuolastollaOikeaMaaraTNoppia(){
+    public void luolastollaOikeaMaaraTNoppia(){
         assertEquals(5, l.getTaistelunopat());
     }
     
     @Test
-    public void LuolastollaOikeaMaaraANoppia(){
+    public void luolastollaOikeaMaaraANoppia(){
         assertEquals(8, l.getAarrenopat());
+    }
+    
+    @Test
+    public void luolastonNimiAsettuuOikein(){
+        assertEquals("asd", l.getNimi());
+    }
+    
+    @Test
+    public void geneerisenLuolastonNimiOikein(){
+        Luolasto g = new Luolasto();
+        assertEquals("generic luolasto", g.getNimi());
     }
 }

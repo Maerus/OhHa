@@ -2,7 +2,6 @@
 
 package lautapeli.lautapeli.domain;
 
-import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -11,9 +10,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class PelaajaTest {
+public class NpcTest {
     
-    public PelaajaTest() {
+    public NpcTest() {
     }
     
     @BeforeClass
@@ -24,12 +23,11 @@ public class PelaajaTest {
     public static void tearDownClass() {
     }
     
-    Pelaaja p;
-    Random r;
+    Npc n;
+    
     @Before
     public void setUp() {
-        p = new Pelaaja();
-        r = new Random();
+        n  = new Npc();
     }
     
     @After
@@ -41,17 +39,14 @@ public class PelaajaTest {
     // public void hello() {}
     
     @Test
-    public void luodunPelaajanPisteetOnNolla(){
-        assertEquals(0, p.getPisteet());
-    }
-    
-    @Test
-    public void pelaajanPisteetLisataanOikein(){
-        int a = 0;
-        for (int i = 0; i < 1+r.nextInt(10); i++) {
-            p.lisaaPiste();
-            a++;
+    public void npcValitseeOstamisenTaiPelaamisen(){
+        boolean a = false;
+        String b = n.valitseVuoroToimepide();
+        if(b.equals("pelaa")){
+            a = true;
+        } else if (b.equals("osta")){
+            a = true;
         }
-        assertEquals(a, p.getPisteet());
+        assertEquals(true, a);
     }
 }

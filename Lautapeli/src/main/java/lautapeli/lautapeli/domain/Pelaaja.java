@@ -7,17 +7,11 @@ import java.util.Random;
 
 public class Pelaaja {
     private int pisteet;
-    private boolean npc;
-    private Random random;
+    private ArrayList<Kortti> kortit;
     
     public Pelaaja(){
-        this(false);
-    }
-    
-    public Pelaaja(Boolean npc){
         pisteet = 0;
-        this.npc = npc;
-        random = new Random();
+        kortit = new ArrayList<>();
     }
 
     public int getPisteet() {
@@ -27,23 +21,12 @@ public class Pelaaja {
     public void setPisteet(int p) {
         pisteet = p;
     }
-
-    public void setNpc(boolean npc) {
-        this.npc = npc;
-    }
-    
-    public boolean getNpc() {
-        return npc;
-    }
     
     public void lisaaPiste(){
         pisteet++;
     }
 
     public String valitseVuoroToimepide() {
-        if (npc){
-            return "pelaa";
-        }
         //placeholder
         return "pelaa";
     }
@@ -52,12 +35,9 @@ public class Pelaaja {
         //placeholder
     }
 
-    public Luolasto valitseLuolasto(ArrayList<Luolasto> luolastot) {
-        if (npc){
-            return luolastot.get(random.nextInt(luolastot.size()));
-        }
+    public void valitseLuolasto(ArrayList<Luolasto> luolastot) {
+        //nope
         
-        return null;
     }
 
 
