@@ -12,16 +12,30 @@ public class Npc extends Pelaaja{
         random = new Random();
     }
     
+    /**
+     * Metodi arpoo mitä tietokonepelaaja tekee vuorollaan.
+     * 
+     * @return vuorotoimenpide
+     */
     @Override
     public String valitseVuoroToimepide(){
         return "pelaa";
+        //placeholder
     }
     
+    /**
+     *
+     */
     @Override
     public void osta() {
         //placeholder
     }
     
+    /**
+     * Metodi arpoo tietokonepelaajalle luolaston jonka se valitsee
+     * 
+     * @param luolastot
+     */
     @Override
     public void valitseLuolasto(ArrayList<Luolasto> luolastot) {
         Heittely a = new Heittely(luolastot.get(random.nextInt(3)) , this);

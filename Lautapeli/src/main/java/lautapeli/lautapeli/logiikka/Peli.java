@@ -34,6 +34,10 @@ public class Peli {
         return kierros;
     }
     
+    /**
+     * Metodi lisää peliin pelaajan.
+     * @param p 
+     */
     public void lisaaPelaaja(Pelaaja p){
         pelaajat.add(p);
     }
@@ -50,6 +54,9 @@ public class Peli {
         return ylaraja;
     }
     
+    /**
+     * Metodi käynnistää pelilogiikan loopin.
+     */
     public void pelaa() {
         lisaaLuolastot();
         kaynnistaKierros();

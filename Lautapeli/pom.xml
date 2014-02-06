@@ -46,10 +46,14 @@
             <targetClasses>
                 <param>lautapeli.lautapeli.logiikka*</param>
                 <param>lautapeli.lautapeli.domain*</param>
+                <param>lautapeli.lautapeli.gui*</param>
+                <param>lautapeli.lautapeli.util*</param>
             </targetClasses>
             <targetTests>
                 <param>lautapeli.lautapeli.logiikka*</param>
                 <param>lautapeli.lautapeli.domain*</param>
+                <param>lautapeli.lautapeli.gui*</param>
+                <param>lautapeli.lautapeli.util*</param>
             </targetTests>
         </configuration>
         </plugin>

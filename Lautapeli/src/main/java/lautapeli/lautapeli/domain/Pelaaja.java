@@ -22,19 +22,33 @@ public class Pelaaja {
         pisteet = p;
     }
     
+    /**
+     * Metodi lisää pelaajalle pisteen.
+     */
     public void lisaaPiste(){
         pisteet++;
     }
 
+    /**
+     *
+     * @return
+     */
     public String valitseVuoroToimepide() {
         //placeholder
         return "pelaa";
     }
 
+    /**
+     * Metodi pyytää pelaajaa valitsemaan kaupasta kortin.
+     */
     public void osta() {
         //placeholder
     }
 
+    /**
+     * Metodi pyytää pelaajaa valitsemaan luolaston.
+     * @param luolastot
+     */
     public void valitseLuolasto(ArrayList<Luolasto> luolastot) {
         //placeholder
     }

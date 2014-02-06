@@ -12,6 +12,11 @@ public abstract class Kortti{
     }
     
     public abstract String getNimi();
+
+    /**
+     * Metodi palauttaa kortin tekemän muutoksen noppiin
+     * @return muutos
+     */
     public abstract int suorita();
     public abstract String getTyyppi();
 
