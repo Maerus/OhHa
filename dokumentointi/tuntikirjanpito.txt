@@ -31,3 +31,8 @@
 - 5.2.2014
 	illalla sekä 6.2.2014 yöllä 
 				javadocia ja sekvenssikaavioita ja lisäyksiä koodiin
+
+
+- 11.2.2014
+	~2:00 - ~3:00		UI koodin siistimistä
+	~3:30 - ~5:15		lisää UI koodia

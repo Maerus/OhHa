@@ -23,6 +23,7 @@ public class Kayttoliittyma implements Runnable {
 
     public Kayttoliittyma() {
         nimigen = new NimiGen();
+        //luo yhteys peliin?
     }
     
 
@@ -59,16 +60,23 @@ public class Kayttoliittyma implements Runnable {
         peliPanel.setBorder(new LineBorder(Color.GRAY, 1));
         
         
-        c.weightx = 0.2;
+        c.weightx = 0.4;
         c.gridx = 1;
         pane.add(pelaajatPanel,c);
         pelaajatPanel.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
         
-        luoPelaajaKomponentit(pelaajatPanel, gbl, c);
+        luoPeliKomponentit(peliPanel);
+        luoPelaajaKomponentit(pelaajatPanel);
     }
 
-    private void luoPelaajaKomponentit(JPanel panel, GridBagLayout gbl, GridBagConstraints c) {
+    private void luoPelaajaKomponentit(JPanel panel) {
+        GridBagLayout gbl = new GridBagLayout();
+        GridBagConstraints c = new GridBagConstraints();
         panel.setLayout(gbl);
+        
+        c.fill = GridBagConstraints.BOTH;
+        c.gridwidth = 1;
+        c.gridheight = 1;
         c.weightx = 0.5;
         c.weighty = 0.5;
         c.gridx = 0;
@@ -78,11 +86,6 @@ public class Kayttoliittyma implements Runnable {
         JPanel npc1Panel = new JPanel();
         JPanel npc2Panel = new JPanel();
         JPanel npc3Panel = new JPanel();
-        
-        pelaajaPanel.setBorder(new LineBorder(Color.red, 2));
-        npc1Panel.setBorder(new LineBorder(Color.DARK_GRAY, 1));
-        npc2Panel.setBorder(new LineBorder(Color.DARK_GRAY, 1));
-        npc3Panel.setBorder(new LineBorder(Color.DARK_GRAY, 1));
         
         panel.add(pelaajaPanel,c);
         
@@ -96,235 +99,64 @@ public class Kayttoliittyma implements Runnable {
         c.gridy = 3;
         panel.add(npc3Panel,c);
         
-        pelaajaKomponentit(pelaajaPanel, gbl, c);
-        npc1Komponentit(npc1Panel, gbl, c);
-        npc2Komponentit(npc2Panel, gbl, c);
-        npc3Komponentit(npc3Panel, gbl, c);
+        PelaajaPanel ppanel = new PelaajaPanel(nimigen.haeNimi(), pelaajaPanel);
+        ppanel.luoKomponentit();
+        
+        NpcPanel n1panel = new NpcPanel(nimigen.haeNimi(), npc1Panel);
+        n1panel.luoKomponentit();
+        
+        NpcPanel n2panel = new NpcPanel(nimigen.haeNimi(), npc2Panel);
+        n2panel.luoKomponentit();
+        
+        NpcPanel n3panel = new NpcPanel(nimigen.haeNimi(), npc3Panel);
+        n3panel.luoKomponentit();
+        
         // kysy peliluokan kautta pelaajien tiedot komponentteihin
     }
 
-    private void pelaajaKomponentit(JPanel panel, GridBagLayout gbl, GridBagConstraints c) {
+
+    private void luoPeliKomponentit(JPanel panel) {
+        GridBagLayout gbl = new GridBagLayout();
+        GridBagConstraints c = new GridBagConstraints();
         panel.setLayout(gbl);
+        c.fill = GridBagConstraints.BOTH;
         c.ipadx = 0;
         c.ipady = 0;
-        
-        JTextField nimikentta = new JTextField(nimigen.haeNimi());
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.anchor = GridBagConstraints.NORTHWEST;
-        c.gridwidth = 2;
+        c.gridwidth = 1;
+        c.gridheight = 1;
         c.weightx = 0.5;
-        c.weighty = 0.1;
+        c.weighty = 0.3;
         c.gridx = 0;
         c.gridy = 0;
-        panel.add(nimikentta, c);
+        JPanel luola1 = new JPanel();
+        JPanel luola2 = new JPanel();
+        JPanel luola3 = new JPanel();
+        JPanel kauppa = new JPanel();
+        kauppa.setBorder(new LineBorder(Color.yellow, 2));
         
-        JLabel pisteet = new JLabel("Pisteet:");
-        c.ipady = 20;
-        c.gridwidth = 1;
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 0;
+        panel.add(luola1, c);
+        
         c.gridy = 1;
-        panel.add(pisteet, c);
+        panel.add(luola2, c);
         
-        JTextField pistekentta = new JTextField("     0");
-        pistekentta.setBorder(new LineBorder(Color.green, 2));
-        pistekentta.setEditable(false);
-        pistekentta.setBackground(Color.white);
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 1;
-        c.gridy = 1;
-        panel.add(pistekentta, c);
-        
-        JLabel rahat = new JLabel("Rahaa:");
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 0;
         c.gridy = 2;
-        panel.add(rahat, c);
+        panel.add(luola3, c);
         
-        JTextField rahakentta = new JTextField("     0");
-        rahakentta.setBorder(new LineBorder(Color.yellow, 2));
-        rahakentta.setEditable(false);
-        rahakentta.setBackground(Color.white);
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 1;
-        c.gridy = 2;
-        panel.add(rahakentta, c);
-        
-        JButton korttinappi = new JButton("  Kortit  ");
-        c.ipadx = 10;
-        c.ipady = 10;
-        c.fill = GridBagConstraints.NONE;
-        c.anchor = GridBagConstraints.CENTER;
-        c.gridwidth = 2;
-        c.weightx = 0.5;
-        c.weighty = 0.5;
-        c.gridx = 0;
         c.gridy = 3;
-        panel.add(korttinappi, c);
-    }
-
-    private void npc1Komponentit(JPanel panel, GridBagLayout gbl, GridBagConstraints c) {
-        //pls no copy pasterino
-        panel.setLayout(gbl);
+        c.weighty = 0.7;
+        panel.add(kauppa, c);
         
-        c.ipadx = 0;
-        c.ipady = 0;
-        JTextField nimikentta = new JTextField(nimigen.haeNimi());
-        nimikentta.setEditable(false);
-        nimikentta.setBackground(Color.white);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.anchor = GridBagConstraints.NORTHWEST;
-        c.gridwidth = 2;
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 0;
-        c.gridy = 0;
-        panel.add(nimikentta, c);
+        LuolastoPanel luolasto1 = new LuolastoPanel(luola1);
+        luolasto1.luoKomponentit();
         
-        JTextField pistekentta = new JTextField("     0");
-        pistekentta.setBorder(new LineBorder(Color.green, 2));
-        pistekentta.setEditable(false);
-        pistekentta.setBackground(Color.white);
-        c.fill = GridBagConstraints.NONE;
-        c.anchor = GridBagConstraints.CENTER;
-        c.ipadx = 25;
-        c.ipady = 15;
-        c.gridwidth = 1;
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 0;
-        c.gridy = 1;
-        panel.add(pistekentta, c);
+        LuolastoPanel luolasto2 = new LuolastoPanel(luola2);
+        luolasto2.luoKomponentit();
         
-        JTextField rahakentta = new JTextField("     0");
-        rahakentta.setBorder(new LineBorder(Color.yellow, 2));
-        rahakentta.setEditable(false);
-        rahakentta.setBackground(Color.white);
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 1;
-        c.gridy = 1;
-        panel.add(rahakentta, c);
+        LuolastoPanel luolasto3 = new LuolastoPanel(luola3);
+        luolasto3.luoKomponentit();
         
-        JButton korttinappi = new JButton("Kortit");
-        c.ipadx = 10;
-        c.ipady = 0;
-        c.gridwidth = 2;
-        c.weightx = 0.5;
-        c.weighty = 0.5;
-        c.gridx = 0;
-        c.gridy = 3;
-        panel.add(korttinappi, c);
-    }
-
-    private void npc2Komponentit(JPanel panel, GridBagLayout gbl, GridBagConstraints c) {
-        panel.setLayout(gbl);
-        
-        c.ipadx = 0;
-        c.ipady = 0;
-        JTextField nimikentta = new JTextField(nimigen.haeNimi());
-        nimikentta.setEditable(false);
-        nimikentta.setBackground(Color.white);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.anchor = GridBagConstraints.NORTHWEST;
-        c.gridwidth = 2;
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 0;
-        c.gridy = 0;
-        panel.add(nimikentta, c);
-        
-        JTextField pistekentta = new JTextField("     0");
-        pistekentta.setBorder(new LineBorder(Color.green, 2));
-        pistekentta.setEditable(false);
-        pistekentta.setBackground(Color.white);
-        c.fill = GridBagConstraints.NONE;
-        c.anchor = GridBagConstraints.CENTER;
-        c.ipadx = 25;
-        c.ipady = 15;
-        c.gridwidth = 1;
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 0;
-        c.gridy = 1;
-        panel.add(pistekentta, c);
-        
-        JTextField rahakentta = new JTextField("     0");
-        rahakentta.setBorder(new LineBorder(Color.yellow, 2));
-        rahakentta.setEditable(false);
-        rahakentta.setBackground(Color.white);
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 1;
-        c.gridy = 1;
-        panel.add(rahakentta, c);
-        
-        JButton korttinappi = new JButton("Kortit");
-        c.ipadx = 10;
-        c.ipady = 0;
-        c.gridwidth = 2;
-        c.weightx = 0.5;
-        c.weighty = 0.5;
-        c.gridx = 0;
-        c.gridy = 3;
-        panel.add(korttinappi, c);
-    }
-
-    private void npc3Komponentit(JPanel panel, GridBagLayout gbl, GridBagConstraints c) {
-        panel.setLayout(gbl);
-        
-        c.ipadx = 0;
-        c.ipady = 0;
-        JTextField nimikentta = new JTextField(nimigen.haeNimi());
-        nimikentta.setEditable(false);
-        nimikentta.setBackground(Color.white);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.anchor = GridBagConstraints.NORTHWEST;
-        c.gridwidth = 2;
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 0;
-        c.gridy = 0;
-        panel.add(nimikentta, c);
-        
-        JTextField pistekentta = new JTextField("     0");
-        pistekentta.setBorder(new LineBorder(Color.green, 2));
-        pistekentta.setEditable(false);
-        pistekentta.setBackground(Color.white);
-        c.fill = GridBagConstraints.NONE;
-        c.anchor = GridBagConstraints.CENTER;
-        c.ipadx = 25;
-        c.ipady = 15;
-        c.gridwidth = 1;
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 0;
-        c.gridy = 1;
-        panel.add(pistekentta, c);
-        
-        JTextField rahakentta = new JTextField("     0");
-        rahakentta.setBorder(new LineBorder(Color.yellow, 2));
-        rahakentta.setEditable(false);
-        rahakentta.setBackground(Color.white);
-        c.weightx = 0.5;
-        c.weighty = 0.1;
-        c.gridx = 1;
-        c.gridy = 1;
-        panel.add(rahakentta, c);
-        
-        JButton korttinappi = new JButton("Kortit");
-        c.ipadx = 10;
-        c.ipady = 0;
-        c.gridwidth = 2;
-        c.weightx = 0.5;
-        c.weighty = 0.5;
-        c.gridx = 0;
-        c.gridy = 3;
-        panel.add(korttinappi, c);
+//        KauppaPanel kauppaPanel = new KauppaPanel(kauppa, gbl, c);
+//        kauppaPanel.luoKomponentit();
     }
 
 
