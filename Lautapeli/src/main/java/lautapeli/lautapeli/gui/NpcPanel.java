@@ -8,16 +8,19 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import lautapeli.lautapeli.domain.Pelaaja;
 
 
 public class NpcPanel {
     private String nimi;
     private JPanel panel;
+    private Pelaaja pelaaja;
 
     NpcPanel(String nimi, JPanel panel) {
         this.nimi = nimi;
         this.panel = panel;
         this.panel.setBorder(new LineBorder(Color.DARK_GRAY, 2));
+//        this.pelaaja = 
     }
     
     void luoKomponentit() {
@@ -39,7 +42,8 @@ public class NpcPanel {
         c.gridy = 0;
         panel.add(nimikentta, c);
         
-        JTextField pistekentta = new JTextField("     0");
+        JTextField pistekentta = new JTextField("-1");
+        pistekentta.setHorizontalAlignment(JTextField.CENTER);
         pistekentta.setBorder(new LineBorder(Color.green, 2));
         pistekentta.setEditable(false);
         pistekentta.setBackground(Color.white);
@@ -54,7 +58,8 @@ public class NpcPanel {
         c.gridy = 1;
         panel.add(pistekentta, c);
         
-        JTextField rahakentta = new JTextField("     0");
+        JTextField rahakentta = new JTextField("-1");
+        rahakentta.setHorizontalAlignment(JTextField.CENTER);
         rahakentta.setBorder(new LineBorder(Color.yellow, 2));
         rahakentta.setEditable(false);
         rahakentta.setBackground(Color.white);

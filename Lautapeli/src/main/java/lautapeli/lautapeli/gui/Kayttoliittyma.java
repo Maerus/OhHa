@@ -6,11 +6,8 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 import lautapeli.lautapeli.util.NimiGen;
@@ -57,10 +54,11 @@ public class Kayttoliittyma implements Runnable {
         c.gridx = 0;
         c.gridy = 0;
         pane.add(peliPanel,c);
-        peliPanel.setBorder(new LineBorder(Color.GRAY, 1));
+//        peliPanel.setBorder(new LineBorder(Color.GRAY, 2));
         
         
         c.weightx = 0.4;
+        c.ipadx = 50;
         c.gridx = 1;
         pane.add(pelaajatPanel,c);
         pelaajatPanel.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
@@ -132,7 +130,6 @@ public class Kayttoliittyma implements Runnable {
         JPanel luola2 = new JPanel();
         JPanel luola3 = new JPanel();
         JPanel kauppa = new JPanel();
-        kauppa.setBorder(new LineBorder(Color.yellow, 2));
         
         panel.add(luola1, c);
         
@@ -155,8 +152,8 @@ public class Kayttoliittyma implements Runnable {
         LuolastoPanel luolasto3 = new LuolastoPanel(luola3);
         luolasto3.luoKomponentit();
         
-//        KauppaPanel kauppaPanel = new KauppaPanel(kauppa, gbl, c);
-//        kauppaPanel.luoKomponentit();
+        KauppaPanel kauppaPanel = new KauppaPanel(kauppa);
+        kauppaPanel.luoKomponentit();
     }
 
 
