@@ -2,22 +2,21 @@
 package lautapeli.lautapeli.domain.kortti;
 
 
-public abstract class Kortti{
-    private String nimi;
-    private String tyyppi;
-
-    public Kortti(String nimi, String tyyppi) {
-        this.nimi = nimi;
-        this.tyyppi = tyyppi;
-    }
-    
-    public abstract String getNimi();
+public interface Kortti{
+//    private final String nimi;
+//    private final String tyyppi;
+//    private final int hinta;
+//    private final String kuvaus;
 
     /**
      * Metodi palauttaa kortin tekemän muutoksen noppiin
      * @return muutos
      */
-    public abstract int suorita();
-    public abstract String getTyyppi();
+    public int suorita();
+    
+    public String getNimi();
+    public String getKuvaus();
+    public String getTyyppi();
+    public int getHinta();
 
 }

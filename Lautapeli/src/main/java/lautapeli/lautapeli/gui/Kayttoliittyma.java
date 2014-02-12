@@ -6,10 +6,13 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
+import lautapeli.lautapeli.logiikka.Peli;
 import lautapeli.lautapeli.util.NimiGen;
 
 
@@ -17,10 +20,10 @@ public class Kayttoliittyma implements Runnable {
     
     private JFrame raami;
     private NimiGen nimigen;
+    private Peli peli;
 
     public Kayttoliittyma() {
         nimigen = new NimiGen();
-        //luo yhteys peliin?
     }
     
 
@@ -32,12 +35,24 @@ public class Kayttoliittyma implements Runnable {
         
         raami.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
+        peli = new Peli();
+        peli.alusta();
         luoKomponentit(raami.getContentPane());
         
         raami.pack();
         raami.setVisible(true);
+        try {
+            peli.pelaa();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Kayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
+    /**
+     * Metodi luo ikkunan peruskomponentit.
+     * 
+     * @param pane 
+     */
     private void luoKomponentit(Container pane) {
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
@@ -54,8 +69,6 @@ public class Kayttoliittyma implements Runnable {
         c.gridx = 0;
         c.gridy = 0;
         pane.add(peliPanel,c);
-//        peliPanel.setBorder(new LineBorder(Color.GRAY, 2));
-        
         
         c.weightx = 0.4;
         c.ipadx = 50;
@@ -66,7 +79,12 @@ public class Kayttoliittyma implements Runnable {
         luoPeliKomponentit(peliPanel);
         luoPelaajaKomponentit(pelaajatPanel);
     }
-
+    
+    /**
+     * Metodi luo oikealle sijoittuvat pelaajakomponentit.
+     * 
+     * @param panel 
+     */
     private void luoPelaajaKomponentit(JPanel panel) {
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
@@ -97,7 +115,7 @@ public class Kayttoliittyma implements Runnable {
         c.gridy = 3;
         panel.add(npc3Panel,c);
         
-        PelaajaPanel ppanel = new PelaajaPanel(nimigen.haeNimi(), pelaajaPanel);
+        PelaajaPanel ppanel = new PelaajaPanel(nimigen.haeNimi(), pelaajaPanel, peli.getPelaajat().get(0));
         ppanel.luoKomponentit();
         
         NpcPanel n1panel = new NpcPanel(nimigen.haeNimi(), npc1Panel);
@@ -112,7 +130,11 @@ public class Kayttoliittyma implements Runnable {
         // kysy peliluokan kautta pelaajien tiedot komponentteihin
     }
 
-
+    /**
+     * Metodi luo vasemmalle sijoittuvat luolasto- ja kauppakomponentit.
+     * 
+     * @param panel 
+     */
     private void luoPeliKomponentit(JPanel panel) {
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
@@ -155,7 +177,10 @@ public class Kayttoliittyma implements Runnable {
         KauppaPanel kauppaPanel = new KauppaPanel(kauppa);
         kauppaPanel.luoKomponentit();
     }
-
+    
+//    public void luoLopetusruutu(){
+//        
+//    }
 
 
 }

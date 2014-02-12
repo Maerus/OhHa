@@ -31,6 +31,7 @@ public class NpcPanel {
         c.ipadx = 0;
         c.ipady = 0;
         JTextField nimikentta = new JTextField(nimi);
+        nimikentta.setHorizontalAlignment(JTextField.CENTER);
         nimikentta.setEditable(false);
         nimikentta.setBackground(Color.white);
         c.fill = GridBagConstraints.HORIZONTAL;

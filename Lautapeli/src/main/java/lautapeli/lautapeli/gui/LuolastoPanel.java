@@ -36,7 +36,7 @@ public class LuolastoPanel {
         JLabel vNopatTeksti = new JLabel("Viholliset");
         JLabel tNopatTeksti = new JLabel("Voittopotentiaali");
         JLabel aNopatTeksti = new JLabel("Aarteet");
-        JButton Nappi = new JButton("Valitse");
+        JButton Nappi = new JButton("Heittelyyn");
         
         
         

@@ -17,11 +17,11 @@ public class PelaajaPanel {
     private JPanel panel;
     private Pelaaja pelaaja;
 
-    PelaajaPanel(String nimi, JPanel panel) {
+    PelaajaPanel(String nimi, JPanel panel, Pelaaja pelaaja) {
         this.nimi = nimi;
         this.panel = panel;
         this.panel.setBorder(new LineBorder(Color.RED, 2));
-//        this.pelaaja = 
+        this.pelaaja = pelaaja;
     }
     
     void luoKomponentit() {
@@ -32,6 +32,7 @@ public class PelaajaPanel {
         c.ipady = 0;
         
         JTextField nimikentta = new JTextField(nimi);
+        nimikentta.setHorizontalAlignment(JTextField.CENTER);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.NORTHWEST;
         c.gridwidth = 2;

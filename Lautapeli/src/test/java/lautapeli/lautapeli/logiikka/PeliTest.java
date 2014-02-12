@@ -51,7 +51,7 @@ public class PeliTest {
     }
     
     @Test
-    public void YhdenLoopinKestavanPelinKierroslukuOnYksi(){
+    public void YhdenLoopinKestavanPelinKierroslukuOnYksi() throws InterruptedException{
         peli.setYlaraja(1);
         
         peli.lisaaPelaaja(new Npc());
@@ -64,13 +64,13 @@ public class PeliTest {
     }
     
     @Test
-    public void PelinLoputtuaVahintaanYhdellaPelaajallaOnYlarajanVerranPisteita(){
+    public void PelinLoputtuaVahintaanYhdellaPelaajallaOnYlarajanVerranPisteita() throws InterruptedException{
         peli.lisaaPelaaja(new Npc());
         peli.lisaaPelaaja(new Npc());
         
         peli.getPelaajat().get(0).setPisteet(peli.getYlaraja());
         
-        peli.pelaa();
+        peli.alusta();
         boolean test = false;
         for (Pelaaja p : peli.getPelaajat()) {
             if(p.getPisteet() >= peli.getYlaraja()){

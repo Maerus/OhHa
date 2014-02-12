@@ -2,45 +2,54 @@
 
 - 16.1.2014
 
-	~12:00 - 12:53 		Aiheen luomista ja kuvauksen kirjoittamista
+	~12:00 - 12:53 		-Aiheen luomista ja kuvauksen kirjoittamista
 
 
 - 20.1.2014
-	13:00 - 14:30		ohjelmoinnin aloitusta
+	13:00 - 14:30		-ohjelmoinnin aloitusta
 
 
 - 23.1.2014
-	1:00 - 1:30		pelilogiikan sisimm‰n ytimen valmistelua ja raakojen kaavioiden piirtely‰,
-				sek‰ pient‰ sieventely‰ koodissa
-	~14:00 - ~16:00
+	1:00 - 1:30		-pelilogiikan sisimm‰n ytimen valmistelua ja raakojen kaavioiden piirtely‰,
+	~14:00 - ~16:00		 sek‰ pient‰ sieventely‰ koodissa
 
 
 - 29.1.2014
-	14:55 - 15:40		uutta koodia, muutoksia
+	14:55 - 15:40		-uutta koodia, muutoksia
 
 
 - 30.1.2014
-	~12:30 - 13:40		koodia, luokkakaavion muutos
+	~12:30 - 13:40		-koodia, luokkakaavion muutos
 
 
 - 4.2.2014
 	~0:00 - ~4:00	
-	sek‰ pitkin p‰iv‰‰	layoutin suunnittelua ja sen alustavaa kasaamista
+	sek‰ pitkin p‰iv‰‰	-layoutin suunnittelua ja sen alustavaa kasaamista
 
 
 - 5.2.2014
 	illalla sek‰ 6.2.2014 yˆll‰ 
-				javadocia ja sekvenssikaavioita ja lis‰yksi‰ koodiin
+				-javadocia ja sekvenssikaavioita ja lis‰yksi‰ koodiin
 
 
 - 11.2.2014
-	~2:00 - ~3:00		UI koodin siistimist‰
-	~3:30 - ~5:15		lis‰‰ UI koodia
-	~12:00 - ~13:00		lis‰‰ UI koodia
+	~2:00 - ~3:00		-UI koodin siistimist‰
+
+	~3:30 - ~5:15		-lis‰‰ UI koodia
+
+	~12:00 - ~13:00		-lis‰‰ UI koodia
 
 
 - 12.2.2014
-	~2:00 - 4:30		perus UI:n finalisointia
+	~2:00 - 4:30		-perus UI:n finalisointia
 
-				edess‰p‰in heittely- ja korttiraamin luominen, sek‰ logiikan jatkamista ja
-				tietojen ja toiminnallisuuksien lis‰‰minen k‰yttˆliittym‰‰n.
+	n. 8 - 10	 	-elementtien sitominen komponentteihin alkaa, l‰hinn‰ stackoverflow.com
+				 lankojen ja docs.oracle.com dokumenttien lukemista aiheesta.
+				-myˆs pelaajaluokan metodien remontointia
+
+	n. 10 - 11		-kaikenlaista s‰hl‰yst‰
+
+
+	edess‰p‰in heittely- ja korttiraamin luomista,
+	sek‰ logiikan (erityisesti heittelytapahtuman) jatkamista ja
+	tietojen ja toiminnallisuuksien lis‰‰mist‰ k‰yttˆliittym‰‰n.

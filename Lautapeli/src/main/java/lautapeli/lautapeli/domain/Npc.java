@@ -3,6 +3,7 @@ package lautapeli.lautapeli.domain;
 
 import java.util.ArrayList;
 import java.util.Random;
+import lautapeli.lautapeli.domain.kortti.Kortti;
 
 
 public class Npc extends Pelaaja{
@@ -18,17 +19,16 @@ public class Npc extends Pelaaja{
      * @return vuorotoimenpide
      */
     @Override
-    public String valitseVuoroToimepide(){
-        return "pelaa";
-        //placeholder
+    public void valitseVuoroToimepide(){
+        //placeholder                                                               aaaaaaaaaa
     }
     
     /**
      *
      */
     @Override
-    public void osta() {
-        //placeholder
+    public void osta(Kortti kortti) {
+        //placeholder                                                               aaaaaaaaaa
     }
     
     /**
