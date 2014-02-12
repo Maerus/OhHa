@@ -37,3 +37,10 @@
 	~2:00 - ~3:00		UI koodin siistimistä
 	~3:30 - ~5:15		lisää UI koodia
 	~12:00 - ~13:00		lisää UI koodia
+
+
+- 12.2.2014
+	~2:00 - 4:30		perus UI:n finalisointia
+
+				edessäpäin heittely- ja korttiraamin luominen, sekä logiikan jatkamista ja
+				tietojen ja toiminnallisuuksien lisääminen käyttöliittymään.
