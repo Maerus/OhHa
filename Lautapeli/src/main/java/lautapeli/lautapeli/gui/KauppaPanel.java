@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
+import lautapeli.lautapeli.domain.kortti.TestiKortti;
 
 
 public class KauppaPanel {

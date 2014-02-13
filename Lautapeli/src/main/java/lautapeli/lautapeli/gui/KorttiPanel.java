@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import lautapeli.lautapeli.domain.kortti.Kortti;
+import lautapeli.lautapeli.domain.kortti.TestiKortti;
 
 
 public class KorttiPanel {
@@ -19,8 +20,12 @@ public class KorttiPanel {
     private Kortti kortti;
 
     public KorttiPanel(JPanel panel) {
+        this(panel, new TestiKortti());
+    }
+    
+    public KorttiPanel(JPanel panel, Kortti kortti){
         this.panel = panel;
-//        this.kortti =
+        this.kortti = kortti;
         
         this.panel.setBorder(new LineBorder(Color.orange, 2));
     }
@@ -40,33 +45,38 @@ public class KorttiPanel {
         c.gridy = 0;
         c.fill = GridBagConstraints.BOTH;
         
-        JLabel nimi = new JLabel("kortin nimi");
+        JLabel nimi = new JLabel(kortti.getNimi());
         nimi.setHorizontalAlignment(JLabel.CENTER);
         
-        JTextField hinta = new JTextField("-1");
+        JTextField hinta = new JTextField("" + kortti.getHinta());
+        hinta.setColumns(1);
+        // Scrollpane auttaa pitämään komponentin koon about vakiona
+        JScrollPane scroll2 = new JScrollPane(hinta);
         hinta.setEditable(false);
         hinta.setBackground(Color.white);
         hinta.setBorder(new LineBorder(Color.yellow));
         hinta.setHorizontalAlignment(JTextField.CENTER);
         
-        JTextArea kuvaus = new JTextArea();
+        JTextArea kuvaus = new JTextArea(1,1);
+        // Scrollpane ja (1,1) rajaus auttaa pitämään komponentin koon vakiona     (dunno y [1,1] tho)
+        kuvaus.setText(kortti.getKuvaus());
         JScrollPane scrollPane = new JScrollPane(kuvaus);
         kuvaus.setLineWrap(true);
         kuvaus.setEditable(false);
         JButton nappi = new JButton("Osta");
         
-        panel.add(nimi, c);
+        panel.add(nimi, c); //NIMI
         
         c.weightx = 0.2;
         c.gridx = 1;
-        panel.add(hinta, c);
+        panel.add(scroll2, c); //HINTA
         
         c.weighty = 0.5;
         c.weightx = 0.5;
         c.gridwidth = 2;
         c.gridx = 0;
         c.gridy = 1;
-        panel.add(scrollPane, c);
+        panel.add(scrollPane, c); //KUVAUS
         
         c.weighty = 0.1;
         c.fill = GridBagConstraints.NONE;

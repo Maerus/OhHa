@@ -82,6 +82,10 @@ public class Peli {
         lisaaLuolastot();
     }
     
+    /**
+     * Public metodi pelin käynnistämiseen.
+     * @throws InterruptedException 
+     */
     public void pelaa() throws InterruptedException{
         kaynnistaKierros();
     }
@@ -101,6 +105,9 @@ public class Peli {
         luolastot.add(new Luolasto());
     }
     
+    /**
+     * Metodi lisää korttipakasta kortin kauppaan tyhjälle paikalle.
+     */
     void lisaaKorttiKauppaan(){
         
         /*

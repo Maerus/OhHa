@@ -52,6 +52,7 @@
 
 - 13.2.2014
 	n. 3 - 4 		-testien kirjoittelua
+	14:00 - 14:15		-lis‰‰ javadoc ja luokkakaavion p‰ivitys
 
 
 	edess‰p‰in heittely- ja korttiraamin luomista,

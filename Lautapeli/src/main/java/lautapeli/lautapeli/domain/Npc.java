@@ -16,7 +16,6 @@ public class Npc extends Pelaaja{
     /**
      * Metodi arpoo mitä tietokonepelaaja tekee vuorollaan.
      * 
-     * @return vuorotoimenpide
      */
     @Override
     public void valitseVuoroToimepide(){
@@ -24,7 +23,7 @@ public class Npc extends Pelaaja{
     }
     
     /**
-     *
+     * Metodi ostaa tietokonepelaajalle jonkun kortin, johon on varaa
      */
     @Override
     public void osta(Kortti kortti) {
