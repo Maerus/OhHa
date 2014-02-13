@@ -80,55 +80,7 @@ public class Kayttoliittyma implements Runnable {
         luoPelaajaKomponentit(pelaajatPanel);
     }
     
-    /**
-     * Metodi luo oikealle sijoittuvat pelaajakomponentit.
-     * 
-     * @param panel 
-     */
-    private void luoPelaajaKomponentit(JPanel panel) {
-        GridBagLayout gbl = new GridBagLayout();
-        GridBagConstraints c = new GridBagConstraints();
-        panel.setLayout(gbl);
-        
-        c.fill = GridBagConstraints.BOTH;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.weightx = 0.5;
-        c.weighty = 0.5;
-        c.gridx = 0;
-        c.gridy = 0;
-        
-        JPanel pelaajaPanel = new JPanel();
-        JPanel npc1Panel = new JPanel();
-        JPanel npc2Panel = new JPanel();
-        JPanel npc3Panel = new JPanel();
-        
-        panel.add(pelaajaPanel,c);
-        
-        c.weighty = 0.5;
-        c.gridy = 1;
-        panel.add(npc1Panel,c);
-        
-        c.gridy = 2;
-        panel.add(npc2Panel,c);
-        
-        c.gridy = 3;
-        panel.add(npc3Panel,c);
-        
-        PelaajaPanel ppanel = new PelaajaPanel(nimigen.haeNimi(), pelaajaPanel, peli.getPelaajat().get(0));
-        ppanel.luoKomponentit();
-        
-        NpcPanel n1panel = new NpcPanel(nimigen.haeNimi(), npc1Panel);
-        n1panel.luoKomponentit();
-        
-        NpcPanel n2panel = new NpcPanel(nimigen.haeNimi(), npc2Panel);
-        n2panel.luoKomponentit();
-        
-        NpcPanel n3panel = new NpcPanel(nimigen.haeNimi(), npc3Panel);
-        n3panel.luoKomponentit();
-        
-        // kysy peliluokan kautta pelaajien tiedot komponentteihin
-    }
+
 
     /**
      * Metodi luo vasemmalle sijoittuvat luolasto- ja kauppakomponentit.
@@ -182,5 +134,53 @@ public class Kayttoliittyma implements Runnable {
 //        
 //    }
 
-
+    
+    /**
+     * Metodi luo oikealle sijoittuvat pelaajakomponentit.
+     * 
+     * @param panel 
+     */
+    private void luoPelaajaKomponentit(JPanel panel) {
+        GridBagLayout gbl = new GridBagLayout();
+        GridBagConstraints c = new GridBagConstraints();
+        panel.setLayout(gbl);
+        
+        c.fill = GridBagConstraints.BOTH;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        c.weightx = 0.5;
+        c.weighty = 0.5;
+        c.gridx = 0;
+        c.gridy = 0;
+        
+        JPanel pelaajaPanel = new JPanel();
+        JPanel npc1Panel = new JPanel();
+        JPanel npc2Panel = new JPanel();
+        JPanel npc3Panel = new JPanel();
+        
+        panel.add(pelaajaPanel,c);
+        
+        c.weighty = 0.5;
+        c.gridy = 1;
+        panel.add(npc1Panel,c);
+        
+        c.gridy = 2;
+        panel.add(npc2Panel,c);
+        
+        c.gridy = 3;
+        panel.add(npc3Panel,c);
+        
+        PelaajaPanel ppanel = new PelaajaPanel(nimigen.haeNimi(), pelaajaPanel, peli.getPelaajat().get(0));
+        ppanel.luoKomponentit();
+        
+        NpcPanel n1panel = new NpcPanel(nimigen.haeNimi(), npc1Panel);
+        n1panel.luoKomponentit();
+        
+        NpcPanel n2panel = new NpcPanel(nimigen.haeNimi(), npc2Panel);
+        n2panel.luoKomponentit();
+        
+        NpcPanel n3panel = new NpcPanel(nimigen.haeNimi(), npc3Panel);
+        n3panel.luoKomponentit();
+        
+    }
 }

@@ -36,6 +36,10 @@ public class Pelaaja {
         pisteet++;
     }
 
+    public ArrayList<Kortti> getKortit() {
+        return kortit;
+    }
+
     /**
      * Metodi jää odottamaan pelaajan toimintaa.
      * Toimintakomennon saatua metodi suorittaa halutun toiminnon.
@@ -55,6 +59,7 @@ public class Pelaaja {
             ready = true;
             lock.notifyAll();
         }
+        //idk wat im doing
         synchronized(lock){
             while(!ready){
                 lock.wait();
@@ -62,9 +67,6 @@ public class Pelaaja {
         }
         
         ready = false;
-        
-        
-        
         //yet a placeholder                                                          aaaaaaaaaa
         
     }
@@ -83,7 +85,28 @@ public class Pelaaja {
         }
         //tänne actionEvent poistamaan kaupasta kyseinen kortti                     aaaaaaaaaa
     }
+    
+    /**
+     * metodi korttien testausta varten pelaajan kanssa
+     * 
+     * @param kortti 
+     */
+    public void lisaaKortti(Kortti kortti){
+        kortit.add(kortti);
+    }
+    
+    /**
+     * metodi ostamisen testausta varten
+     * @param i 
+     */
+    public void setRaha(int i){
+        raha = i;
+    }
 
+    public int getRaha() {
+        return raha;
+    }
+    
     /**
      * Metodi pyytää pelaajaa valitsemaan luolaston.
      * @param luolastot
@@ -95,8 +118,8 @@ public class Pelaaja {
     int getViholliskorttimuutokset() {
         int a = 0;
         for (Kortti kortti : kortit) {
-            if(kortti.getTyyppi().equals("viholliskortti")){
-                a += kortti.suorita();
+            if(kortti.getTyyppi().contains("v")){
+                a += kortti.suorita("v");
             }
         }
         return a;
@@ -105,8 +128,8 @@ public class Pelaaja {
     int getTaistelukorttimuutokset() {
         int a = 0;
         for (Kortti kortti : kortit) {
-            if(kortti.getTyyppi().equals("taistelukortti")){
-                a += kortti.suorita();
+            if(kortti.getTyyppi().contains("t")){
+                a += kortti.suorita("t");
             }
         }
         return a;
@@ -115,8 +138,8 @@ public class Pelaaja {
     int getAarrekorttimuutokset() {
         int a = 0;
         for (Kortti kortti : kortit) {
-            if(kortti.getTyyppi().equals("aarrekortti")){
-                a += kortti.suorita();
+            if(kortti.getTyyppi().contains("a")){
+                a += kortti.suorita("a");
             }
         }
         return a;

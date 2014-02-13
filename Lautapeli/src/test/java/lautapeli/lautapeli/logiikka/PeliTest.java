@@ -41,17 +41,29 @@ public class PeliTest {
     // public void hello() {}
     
     @Test
-    public void LuotuPeliJatkuu(){
+    public void luotuPeliJatkuu(){
         assertEquals(true, peli.getJatkuu());
     }
     
     @Test
-    public void KaynnistamattomanPelinKierrosOnNolla(){
+    public void kaynnistamattomanPelinKierrosOnNolla(){
         assertEquals(0, peli.getKierros());
     }
     
     @Test
-    public void YhdenLoopinKestavanPelinKierroslukuOnYksi() throws InterruptedException{
+    public void pelinAlustusLuo4Pelaajaa(){
+        peli.alusta();
+        assertEquals(4, peli.getPelaajat().size());
+    }
+    
+    @Test
+    public void pelinAlustusLisaa3Luolastoa(){
+        peli.alusta();
+        assertEquals(3, peli.getLuolastot().size());
+    }
+    
+    @Test
+    public void yhdenLoopinKestavanPelinKierroslukuOnYksi() throws InterruptedException{
         peli.setYlaraja(1);
         
         peli.lisaaPelaaja(new Npc());
@@ -64,13 +76,14 @@ public class PeliTest {
     }
     
     @Test
-    public void PelinLoputtuaVahintaanYhdellaPelaajallaOnYlarajanVerranPisteita() throws InterruptedException{
+    public void pelinLoputtuaVahintaanYhdellaPelaajallaOnYlarajanVerranPisteita() throws InterruptedException{
         peli.lisaaPelaaja(new Npc());
         peli.lisaaPelaaja(new Npc());
         
         peli.getPelaajat().get(0).setPisteet(peli.getYlaraja());
         
-        peli.alusta();
+        peli.lisaaLuolastot();
+        peli.pelaa();
         boolean test = false;
         for (Pelaaja p : peli.getPelaajat()) {
             if(p.getPisteet() >= peli.getYlaraja()){

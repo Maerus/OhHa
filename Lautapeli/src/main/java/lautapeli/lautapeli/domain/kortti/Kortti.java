@@ -9,10 +9,12 @@ public interface Kortti{
 //    private final String kuvaus;
 
     /**
-     * Metodi palauttaa kortin tekemän muutoksen noppiin
+     * Metodi palauttaa kortin tekemän muutoksen noppiin tyypin perusteella.
+     * 
+     * @param tyyppi
      * @return muutos
      */
-    public int suorita();
+    public int suorita(String tyyppi);
     
     public String getNimi();
     public String getKuvaus();

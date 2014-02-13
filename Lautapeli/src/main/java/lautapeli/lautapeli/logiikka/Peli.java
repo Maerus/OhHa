@@ -41,7 +41,7 @@ public class Peli {
     }
     
     /**
-     * Metodi lisää peliin pelaajan.
+     * Metodi lisää peliin pelaajan. (hyöty?)
      * @param p 
      */
     public void lisaaPelaaja(Pelaaja p){
@@ -56,6 +56,10 @@ public class Peli {
         lisaaPelaaja(new Npc());
         lisaaPelaaja(new Npc());
         lisaaPelaaja(new Npc());
+    }
+
+    public ArrayList<Luolasto> getLuolastot() {
+        return luolastot;
     }
     
     public ArrayList<Pelaaja> getPelaajat() {

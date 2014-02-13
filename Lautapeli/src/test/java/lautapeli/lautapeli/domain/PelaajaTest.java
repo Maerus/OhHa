@@ -3,6 +3,8 @@
 package lautapeli.lautapeli.domain;
 
 import java.util.Random;
+import lautapeli.lautapeli.domain.kortti.Kortti;
+import lautapeli.lautapeli.domain.kortti.TestiKortti;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -68,5 +70,48 @@ public class PelaajaTest {
     @Test
     public void nollaKorttiaTuoNollaMuutostaAarrenoppiin(){
         assertEquals(0, p.getAarrekorttimuutokset());
+    }
+    
+    @Test
+    public void testikorttiMuuttaaVNoppiaYhdella(){
+        p.lisaaKortti(new TestiKortti());
+        assertEquals(1, p.getViholliskorttimuutokset());
+    }
+    
+    @Test
+    public void testikorttiMuuttaaTNoppiaKahdella(){
+        p.lisaaKortti(new TestiKortti());
+        assertEquals(2, p.getTaistelukorttimuutokset());
+    }
+    
+    @Test
+    public void testikorttiMuuttaaANoppiaKolmella(){
+        p.lisaaKortti(new TestiKortti());
+        assertEquals(3, p.getAarrekorttimuutokset());
+    }
+    
+    @Test
+    public void kortinOstaminenOnnistuuKunRahaaOnTarpeeksi(){
+        p.getKortit().clear();
+        p.setRaha(150);
+        Kortti a = new TestiKortti();
+        p.osta(a);
+        assertEquals(true, p.getKortit().contains(a));
+    }
+    
+    @Test
+    public void kortinOstaminenEiOnnistuKunRahaaEiOleTarpeeksi(){
+        p.getKortit().clear();
+        p.setRaha(100);
+        Kortti a = new TestiKortti();
+        p.osta(a);
+        assertEquals(false, p.getKortit().contains(a));
+    }
+    
+    @Test
+    public void kortinOstaminenVahentaaRahatOikein(){
+        p.setRaha(150);
+        p.osta(new TestiKortti());
+        assertEquals(27, p.getRaha());
     }
 }

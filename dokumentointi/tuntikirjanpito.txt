@@ -50,6 +50,10 @@
 	n. 10 - 11		-kaikenlaista sähläystä
 
 
+- 13.2.2014
+	n. 3 - 4 		-testien kirjoittelua
+
+
 	edessäpäin heittely- ja korttiraamin luomista,
 	sekä logiikan (erityisesti heittelytapahtuman) jatkamista ja
 	tietojen ja toiminnallisuuksien lisäämistä käyttöliittymään.
