@@ -29,7 +29,7 @@ public class PeliTest {
     
     @Before
     public void setUp() {
-        peli = new Peli();
+        peli = new Peli(null);
     }
     
     @After
@@ -68,6 +68,8 @@ public class PeliTest {
         
         peli.lisaaPelaaja(new Npc());
         peli.lisaaPelaaja(new Npc());
+        peli.lisaaPelaaja(new Npc());
+        peli.lisaaPelaaja(new Npc());
         
         peli.getPelaajat().get(0).setPisteet(peli.getYlaraja());
         
@@ -77,6 +79,8 @@ public class PeliTest {
     
     @Test
     public void pelinLoputtuaVahintaanYhdellaPelaajallaOnYlarajanVerranPisteita() throws InterruptedException{
+        peli.lisaaPelaaja(new Npc());
+        peli.lisaaPelaaja(new Npc());
         peli.lisaaPelaaja(new Npc());
         peli.lisaaPelaaja(new Npc());
         

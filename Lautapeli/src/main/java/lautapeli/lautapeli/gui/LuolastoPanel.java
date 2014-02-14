@@ -17,9 +17,9 @@ public class LuolastoPanel {
     private JPanel panel;
     private Luolasto luolasto;
 
-    public LuolastoPanel(JPanel panel) {
+    public LuolastoPanel(JPanel panel, Luolasto luola) {
         this.panel = panel;
-//        this.luolasto =
+        this.luolasto = luola;
         
         this.panel.setBorder(new LineBorder(new Color(40,100,40), 2));
     }
@@ -29,7 +29,7 @@ public class LuolastoPanel {
         GridBagConstraints c = new GridBagConstraints();
         panel.setLayout(gbl);
         
-        JTextField nimikentta = new JTextField("luolaston nimi asddsasdasddssad");
+        JTextField nimikentta = new JTextField(luolasto.getNimi());
         nimikentta.setHorizontalAlignment(JTextField.CENTER);
         nimikentta.setEditable(false);
         nimikentta.setBackground(Color.white);
@@ -40,19 +40,19 @@ public class LuolastoPanel {
         
         
         
-        JTextField vNopat = new JTextField("-1");
+        JTextField vNopat = new JTextField("" + luolasto.getVihollisnopat());
         vNopat.setHorizontalAlignment(JTextField.CENTER);
         vNopat.setBorder(new LineBorder(Color.DARK_GRAY, 2));
         vNopat.setEditable(false);
         vNopat.setBackground(Color.white);
         
-        JTextField tNopat = new JTextField("-1");
+        JTextField tNopat = new JTextField("" + luolasto.getTaistelunopat());
         tNopat.setHorizontalAlignment(JTextField.CENTER);
         tNopat.setBorder(new LineBorder(Color.RED, 2));
         tNopat.setEditable(false);
         tNopat.setBackground(Color.white);
         
-        JTextField aNopat = new JTextField("-1");
+        JTextField aNopat = new JTextField("" + luolasto.getAarrenopat());
         aNopat.setHorizontalAlignment(JTextField.CENTER);
         aNopat.setBorder(new LineBorder(Color.CYAN, 2));
         aNopat.setEditable(false);

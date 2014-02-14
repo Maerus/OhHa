@@ -24,6 +24,9 @@ public class PelaajaPanel {
         this.pelaaja = pelaaja;
     }
     
+     private JTextField pistekentta;
+     private JTextField rahakentta;
+    
     void luoKomponentit() {
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
@@ -52,7 +55,8 @@ public class PelaajaPanel {
         c.gridy = 1;
         panel.add(pisteet, c);
         
-        JTextField pistekentta = new JTextField("-1");
+        pistekentta = new JTextField("" + pelaaja.getPisteet());
+        pistekentta.setColumns(1);
         pistekentta.setHorizontalAlignment(JTextField.CENTER);
         pistekentta.setBorder(new LineBorder(Color.green, 2));
         pistekentta.setEditable(false);
@@ -71,7 +75,8 @@ public class PelaajaPanel {
         c.gridy = 2;
         panel.add(rahat, c);
         
-        JTextField rahakentta = new JTextField("-1");
+        rahakentta = new JTextField("" + pelaaja.getRaha());
+        rahakentta.setColumns(1);
         rahakentta.setHorizontalAlignment(JTextField.CENTER);
         rahakentta.setBorder(new LineBorder(Color.yellow, 2));
         rahakentta.setEditable(false);
@@ -93,6 +98,11 @@ public class PelaajaPanel {
         c.gridx = 0;
         c.gridy = 3;
         panel.add(korttinappi, c);
+    }
+    
+    public void paivitaKomponentit(){
+        pistekentta.setText("" + pelaaja.getPisteet());
+        rahakentta.setText("" + pelaaja.getRaha());
     }
 
 }

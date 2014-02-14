@@ -43,31 +43,22 @@ public class Pelaaja {
     /**
      * Metodi jää odottamaan pelaajan toimintaa.
      * Toimintakomennon saatua metodi suorittaa halutun toiminnon.
+     * Toiminto on joko heittely valitussa luolastossa tai kortin osto kaupasta.
      * 
-     * @return
-     * @throws java.lang.InterruptedException
      */
-    public void valitseVuoroToimepide() throws InterruptedException {
+    public void valitseVuoroToimepide(){
         
         /*
-        tapahtumakuuntelija triggeroi readyn kun valitaan toimenpide.
+        tapahtumakuuntelija triggeroi readyn lukolle tjsp kun valitaan toimenpide.
         valintana on joko luolasto tai kortti (kaupassa).
         luolaston kohdalla luodaan heittely, kortin kohdalla ostetaan kortti.
         */
         
-        synchronized(lock){
-            ready = true;
-            lock.notifyAll();
-        }
-        //idk wat im doing
-        synchronized(lock){
-            while(!ready){
-                lock.wait();
-            }
-        }
+        //tänne tarttis joku lukitus joka aukeaa, kun painetaan sopivaa nappulaa
         
-        ready = false;
-        //yet a placeholder                                                          aaaaaaaaaa
+        //idk asdasdadad
+        
+        //placeholder                                                               aaaaaaaaaa
         
     }
 
@@ -84,6 +75,7 @@ public class Pelaaja {
             kortit.add(kortti);
         }
         //tänne actionEvent poistamaan kaupasta kyseinen kortti                     aaaaaaaaaa
+        //tai sitten ihan vaan tehdään metodi, joka päivittää sen kortin :|
     }
     
     /**
@@ -100,7 +92,19 @@ public class Pelaaja {
      * @param i 
      */
     public void setRaha(int i){
-        raha = i;
+        if(i < 0){
+            raha = 0;
+        } else {
+            raha = i;
+        }
+    }
+    
+    public void lisaaRahaa(int i){
+        if (raha + i < 0){
+            raha = 0;
+        } else {
+            raha += i;
+        }
     }
 
     public int getRaha() {

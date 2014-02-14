@@ -16,12 +16,15 @@ public class NpcPanel {
     private JPanel panel;
     private Pelaaja pelaaja;
 
-    NpcPanel(String nimi, JPanel panel) {
+    NpcPanel(String nimi, JPanel panel, Pelaaja pelaaja) {
         this.nimi = nimi;
         this.panel = panel;
         this.panel.setBorder(new LineBorder(Color.DARK_GRAY, 2));
-//        this.pelaaja = 
+        this.pelaaja = pelaaja;
     }
+    
+    private JTextField pistekentta;
+    private JTextField rahakentta;
     
     void luoKomponentit() {
         GridBagLayout gbl = new GridBagLayout();
@@ -43,7 +46,7 @@ public class NpcPanel {
         c.gridy = 0;
         panel.add(nimikentta, c);
         
-        JTextField pistekentta = new JTextField("-1");
+        pistekentta = new JTextField("" + pelaaja.getPisteet());
         pistekentta.setHorizontalAlignment(JTextField.CENTER);
         pistekentta.setBorder(new LineBorder(Color.green, 2));
         pistekentta.setEditable(false);
@@ -59,7 +62,7 @@ public class NpcPanel {
         c.gridy = 1;
         panel.add(pistekentta, c);
         
-        JTextField rahakentta = new JTextField("-1");
+        rahakentta = new JTextField("" + pelaaja.getRaha());
         rahakentta.setHorizontalAlignment(JTextField.CENTER);
         rahakentta.setBorder(new LineBorder(Color.yellow, 2));
         rahakentta.setEditable(false);
@@ -79,5 +82,10 @@ public class NpcPanel {
         c.gridx = 0;
         c.gridy = 3;
         panel.add(korttinappi, c);
+    }
+    
+    public void paivitaKomponentit(){
+        pistekentta.setText("" + pelaaja.getPisteet());
+        rahakentta.setText("" + pelaaja.getRaha());
     }
 }

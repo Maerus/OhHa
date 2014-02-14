@@ -9,8 +9,10 @@ import java.awt.GridBagLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import lautapeli.lautapeli.logiikka.Peli;
 import lautapeli.lautapeli.util.NimiGen;
@@ -35,7 +37,7 @@ public class Kayttoliittyma implements Runnable {
         
         raami.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
-        peli = new Peli();
+        peli = new Peli(this);
         peli.alusta();
         luoKomponentit(raami.getContentPane());
         
@@ -117,13 +119,13 @@ public class Kayttoliittyma implements Runnable {
         c.weighty = 0.7;
         panel.add(kauppa, c);
         
-        LuolastoPanel luolasto1 = new LuolastoPanel(luola1);
+        LuolastoPanel luolasto1 = new LuolastoPanel(luola1, peli.getLuolastot().get(0));
         luolasto1.luoKomponentit();
         
-        LuolastoPanel luolasto2 = new LuolastoPanel(luola2);
+        LuolastoPanel luolasto2 = new LuolastoPanel(luola2, peli.getLuolastot().get(1));
         luolasto2.luoKomponentit();
         
-        LuolastoPanel luolasto3 = new LuolastoPanel(luola3);
+        LuolastoPanel luolasto3 = new LuolastoPanel(luola3, peli.getLuolastot().get(2));
         luolasto3.luoKomponentit();
         
         KauppaPanel kauppaPanel = new KauppaPanel(kauppa);
@@ -135,6 +137,13 @@ public class Kayttoliittyma implements Runnable {
 //    }
 
     
+    
+    public JLabel kierros;
+    private PelaajaPanel ppanel;
+    private NpcPanel n1panel;
+    private NpcPanel n2panel;
+    private NpcPanel n3panel;
+    
     /**
      * Metodi luo oikealle sijoittuvat pelaajakomponentit.
      * 
@@ -145,42 +154,68 @@ public class Kayttoliittyma implements Runnable {
         GridBagConstraints c = new GridBagConstraints();
         panel.setLayout(gbl);
         
-        c.fill = GridBagConstraints.BOTH;
+        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridwidth = 1;
         c.gridheight = 1;
         c.weightx = 0.5;
-        c.weighty = 0.5;
+        c.weighty = 0.1;
         c.gridx = 0;
         c.gridy = 0;
+        
+        kierros = new JLabel("Kierros:  " + peli.getKierros());
+        kierros.setHorizontalAlignment(JLabel.CENTER);
+        kierros.setBorder(new BevelBorder(0));
+        
+        panel.add(kierros,c);
         
         JPanel pelaajaPanel = new JPanel();
         JPanel npc1Panel = new JPanel();
         JPanel npc2Panel = new JPanel();
         JPanel npc3Panel = new JPanel();
         
-        panel.add(pelaajaPanel,c);
-        
+        c.fill = GridBagConstraints.BOTH;
         c.weighty = 0.5;
         c.gridy = 1;
-        panel.add(npc1Panel,c);
+        panel.add(pelaajaPanel,c);
         
         c.gridy = 2;
-        panel.add(npc2Panel,c);
+        panel.add(npc1Panel,c);
         
         c.gridy = 3;
+        panel.add(npc2Panel,c);
+        
+        c.gridy = 4;
         panel.add(npc3Panel,c);
         
-        PelaajaPanel ppanel = new PelaajaPanel(nimigen.haeNimi(), pelaajaPanel, peli.getPelaajat().get(0));
+        ppanel = new PelaajaPanel(nimigen.haeNimi(), pelaajaPanel, peli.getPelaajat().get(0));
         ppanel.luoKomponentit();
         
-        NpcPanel n1panel = new NpcPanel(nimigen.haeNimi(), npc1Panel);
+        n1panel = new NpcPanel(nimigen.haeNimi(), npc1Panel, peli.getPelaajat().get(1));
         n1panel.luoKomponentit();
         
-        NpcPanel n2panel = new NpcPanel(nimigen.haeNimi(), npc2Panel);
+        n2panel = new NpcPanel(nimigen.haeNimi(), npc2Panel, peli.getPelaajat().get(2));
         n2panel.luoKomponentit();
         
-        NpcPanel n3panel = new NpcPanel(nimigen.haeNimi(), npc3Panel);
+        n3panel = new NpcPanel(nimigen.haeNimi(), npc3Panel, peli.getPelaajat().get(3));
         n3panel.luoKomponentit();
-        
     }
+    
+    
+    
+    public PelaajaPanel getPpanel() {
+        return ppanel;
+    }
+
+    public NpcPanel getN1panel() {
+        return n1panel;
+    }
+
+    public NpcPanel getN2panel() {
+        return n2panel;
+    }
+
+    public NpcPanel getN3panel() {
+        return n3panel;
+    }
+    
 }

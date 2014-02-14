@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -30,6 +29,10 @@ public class KorttiPanel {
         this.panel.setBorder(new LineBorder(Color.orange, 2));
     }
     
+    JTextField nimi;
+    JTextField hinta;
+    JTextArea kuvaus;
+    
     void luoKomponentit(){
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
@@ -45,19 +48,23 @@ public class KorttiPanel {
         c.gridy = 0;
         c.fill = GridBagConstraints.BOTH;
         
-        JLabel nimi = new JLabel(kortti.getNimi());
-        nimi.setHorizontalAlignment(JLabel.CENTER);
+        nimi = new JTextField(kortti.getNimi());
+        nimi.setHorizontalAlignment(JTextField.CENTER);
+        nimi.setColumns(1);
+        nimi.setEditable(false);
+        // Scrollpane auttaa pitämään komponentin koon vakiona
+        JScrollPane scroll3 = new JScrollPane(nimi);
         
-        JTextField hinta = new JTextField("" + kortti.getHinta());
+        hinta = new JTextField("" + kortti.getHinta());
         hinta.setColumns(1);
-        // Scrollpane auttaa pitämään komponentin koon about vakiona
+        // Scrollpane auttaa pitämään komponentin koon vakiona
         JScrollPane scroll2 = new JScrollPane(hinta);
         hinta.setEditable(false);
         hinta.setBackground(Color.white);
         hinta.setBorder(new LineBorder(Color.yellow));
         hinta.setHorizontalAlignment(JTextField.CENTER);
         
-        JTextArea kuvaus = new JTextArea(1,1);
+        kuvaus = new JTextArea(1,1);
         // Scrollpane ja (1,1) rajaus auttaa pitämään komponentin koon vakiona     (dunno y [1,1] tho)
         kuvaus.setText(kortti.getKuvaus());
         JScrollPane scrollPane = new JScrollPane(kuvaus);
@@ -65,7 +72,7 @@ public class KorttiPanel {
         kuvaus.setEditable(false);
         JButton nappi = new JButton("Osta");
         
-        panel.add(nimi, c); //NIMI
+        panel.add(scroll3, c); //NIMI
         
         c.weightx = 0.2;
         c.gridx = 1;
@@ -84,5 +91,11 @@ public class KorttiPanel {
         panel.add(nappi, c);
         
     }
-
+    
+    public void paivitaKortti(Kortti kortti){
+        this.kortti = kortti;
+        nimi.setText(kortti.getNimi());
+        hinta.setText("" + kortti.getHinta());
+        kuvaus.setText(kortti.getKuvaus());
+    }
 }

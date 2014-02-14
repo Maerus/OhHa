@@ -8,7 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
-import lautapeli.lautapeli.domain.kortti.TestiKortti;
 
 
 public class KauppaPanel {
@@ -19,6 +18,10 @@ public class KauppaPanel {
         
         this.panel.setBorder(new LineBorder(Color.GRAY, 2));
     }
+    
+    KorttiPanel k1panel;
+    KorttiPanel k2panel;
+    KorttiPanel k3panel;
     
     void luoKomponentit(){
         GridBagLayout gbl = new GridBagLayout();
@@ -57,11 +60,28 @@ public class KauppaPanel {
         c.gridx = 2;
         panel.add(kortti3, c);
         
-        KorttiPanel k1panel = new KorttiPanel(kortti1);
+        k1panel = new KorttiPanel(kortti1);
         k1panel.luoKomponentit();
-        KorttiPanel k2panel = new KorttiPanel(kortti2);
+        
+        k2panel = new KorttiPanel(kortti2);
         k2panel.luoKomponentit();
-        KorttiPanel k3panel = new KorttiPanel(kortti3);
+        
+        k3panel = new KorttiPanel(kortti3);
         k3panel.luoKomponentit();
     }
+    
+    
+
+    public KorttiPanel getK1panel() {
+        return k1panel;
+    }
+
+    public KorttiPanel getK2panel() {
+        return k2panel;
+    }
+
+    public KorttiPanel getK3panel() {
+        return k3panel;
+    }
+    
 }

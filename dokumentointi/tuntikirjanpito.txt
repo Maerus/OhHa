@@ -55,6 +55,10 @@
 	14:00 - 14:15		-lisää javadoc ja luokkakaavion päivitys
 
 
+- 14.2.2014
+	n. 6 - 8		-komponenttien sitomista ui elementteihin, sekä ui päivitysmetodien luomista
+
+
 	edessäpäin heittely- ja korttiraamin luomista,
 	sekä logiikan (erityisesti heittelytapahtuman) jatkamista ja
-	tietojen ja toiminnallisuuksien lisäämistä käyttöliittymään.
+	toiminnallisuuksien lisäämistä käyttöliittymään.

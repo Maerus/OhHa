@@ -6,6 +6,7 @@ import lautapeli.lautapeli.domain.Luolasto;
 import lautapeli.lautapeli.domain.Npc;
 import lautapeli.lautapeli.domain.Pelaaja;
 import lautapeli.lautapeli.domain.kortti.Kortti;
+import lautapeli.lautapeli.gui.Kayttoliittyma;
 
 
 public class Peli {
@@ -15,8 +16,9 @@ public class Peli {
     private int ylaraja;
     private ArrayList<Luolasto> luolastot;
     private ArrayList<Kortti> kauppa;
+    private Kayttoliittyma ui;
     
-    public Peli(){
+    public Peli(Kayttoliittyma ui){
         kierros = 0;
         jatkuu = true;
         pelaajat = new ArrayList<>();
@@ -25,7 +27,7 @@ public class Peli {
         luolastot = new ArrayList<>();
         
         kauppa = new ArrayList<>();
-        
+        this.ui = ui;
     }
 
     public boolean getJatkuu() {
@@ -41,7 +43,7 @@ public class Peli {
     }
     
     /**
-     * Metodi lisää peliin pelaajan. (hyöty?)
+     * Metodi lisää peliin pelaajan.
      * @param p 
      */
     public void lisaaPelaaja(Pelaaja p){
@@ -51,7 +53,7 @@ public class Peli {
     /**
      * metodi lisää pelaajat peliin.
      */
-    private void lisääPelaajat() {
+    private void lisaaPelaajat() {
         lisaaPelaaja(new Pelaaja());
         lisaaPelaaja(new Npc());
         lisaaPelaaja(new Npc());
@@ -74,21 +76,24 @@ public class Peli {
         return ylaraja;
     }
     
+    
     /**
      * Metodi käynnistää pelilogiikan loopin.
      */
     public void alusta(){
-        lisääPelaajat();
+        lisaaPelaajat();
         lisaaLuolastot();
+        lisaaKortitKauppaan();
     }
+    
     
     /**
      * Public metodi pelin käynnistämiseen.
-     * @throws InterruptedException 
      */
-    public void pelaa() throws InterruptedException{
+    public void pelaa(){
         kaynnistaKierros();
     }
+    
     
     /**
      * Metodi valitsee kolme luolastoa luolastopakasta ja asettaa ne peliin.
@@ -105,10 +110,11 @@ public class Peli {
         luolastot.add(new Luolasto());
     }
     
+    
     /**
      * Metodi lisää korttipakasta kortin kauppaan tyhjälle paikalle.
      */
-    void lisaaKorttiKauppaan(){
+    void lisaaKortitKauppaan(){
         
         /*
         korttipakasta nostetaan kolme korttia kauppaan
@@ -117,37 +123,79 @@ public class Peli {
         //placeholder                                                               aaaaaaaaaa
     }
     
+    
     /**
      * Metodi käynnistää pelikierroksen.
      * Metodi looppaa itseänsä, kunnes joku pelaaja ylittää vuorollansa pisterajan.
      * 
-     * @throws InterruptedException 
      */
-    void kaynnistaKierros() throws InterruptedException{
+    void kaynnistaKierros(){
         kierros++;
         
-        for (Pelaaja pelaaja : pelaajat) {
-            suoritaVuoro(pelaaja);
+        try{
+            ui.kierros.setText("Kierros:  " + kierros);
+        } catch (Exception e) {
+            //testien ui päivityksen ohitukseen, koska testeissä ui = null
+        }
+        
+        for (int i = 0; i < 4; i++) {
+            suoritaVuoro(pelaajat.get(i), i);
         }
         
         if (jatkuu){
             kaynnistaKierros();
         }
+        
+        if (!jatkuu){
+            //lopetus ui jonka teen joskus
+        }
     }
+    
     
     /**
      * Metodi suorittaa pelaajan vuoron.
+     * Vuoron lopulla pelaajalle annetaan piste ja kolme rahaa.
      * 
      * @param pelaaja
-     * @throws InterruptedException 
      */
-    private void suoritaVuoro(Pelaaja pelaaja) throws InterruptedException {
+    private void suoritaVuoro(Pelaaja pelaaja, int pelaajanumero){
         pelaaja.valitseVuoroToimepide();
+        paivitaPelaajaKomponentit(pelaajanumero);
         
         if (pelaaja.getPisteet() >= ylaraja){
             jatkuu = false;
         }
-        pelaaja.lisaaPiste(); //test?
+        pelaaja.lisaaPiste();
+        pelaaja.lisaaRahaa(3);
+    }
+    
+    
+    /**
+     * Metodi päivityttää vuoron suorittaneen pelaajan tiedot käyttöliittymään.
+     * 
+     * @param pelaajanumero 
+     */
+    private void paivitaPelaajaKomponentit(int pelaajanumero) {
+        if (pelaajanumero == 0){
+            try{
+                ui.getPpanel().paivitaKomponentit();
+            }catch(Exception e){}
+        }
+        if (pelaajanumero == 1){
+            try{
+                ui.getN1panel().paivitaKomponentit();
+            }catch(Exception e){}
+        }
+        if (pelaajanumero == 2){
+            try{
+                ui.getN2panel().paivitaKomponentit();
+            }catch(Exception e){}
+        }
+        if (pelaajanumero == 3){
+            try{
+                ui.getN3panel().paivitaKomponentit();
+            }catch(Exception e){}
+        }
     }
 
 
