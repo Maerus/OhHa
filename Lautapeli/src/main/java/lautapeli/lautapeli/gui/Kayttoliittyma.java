@@ -6,8 +6,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -43,11 +41,7 @@ public class Kayttoliittyma implements Runnable {
         
         raami.pack();
         raami.setVisible(true);
-        try {
-            peli.pelaa();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Kayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        peli.pelaa();
     }
 
     /**
@@ -119,16 +113,16 @@ public class Kayttoliittyma implements Runnable {
         c.weighty = 0.7;
         panel.add(kauppa, c);
         
-        LuolastoPanel luolasto1 = new LuolastoPanel(luola1, peli.getLuolastot().get(0));
+        LuolastoPanel luolasto1 = new LuolastoPanel(this, luola1, peli.getLuolastot().get(0));
         luolasto1.luoKomponentit();
         
-        LuolastoPanel luolasto2 = new LuolastoPanel(luola2, peli.getLuolastot().get(1));
+        LuolastoPanel luolasto2 = new LuolastoPanel(this, luola2, peli.getLuolastot().get(1));
         luolasto2.luoKomponentit();
         
-        LuolastoPanel luolasto3 = new LuolastoPanel(luola3, peli.getLuolastot().get(2));
+        LuolastoPanel luolasto3 = new LuolastoPanel(this, luola3, peli.getLuolastot().get(2));
         luolasto3.luoKomponentit();
         
-        KauppaPanel kauppaPanel = new KauppaPanel(kauppa);
+        KauppaPanel kauppaPanel = new KauppaPanel(kauppa, this);
         kauppaPanel.luoKomponentit();
     }
     
@@ -216,6 +210,10 @@ public class Kayttoliittyma implements Runnable {
 
     public NpcPanel getN3panel() {
         return n3panel;
+    }
+
+    public Peli getPeli() {
+        return peli;
     }
     
 }

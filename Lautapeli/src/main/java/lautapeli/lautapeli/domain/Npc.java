@@ -24,9 +24,11 @@ public class Npc extends Pelaaja{
     
     /**
      * Metodi ostaa tietokonepelaajalle jonkun kortin, johon on varaa
+     * 
      */
     @Override
-    public void osta(Kortti kortti) {
+        public boolean osta(Kortti kortti) {
+            return true;
         //placeholder                                                               aaaaaaaaaa
     }
     
@@ -35,7 +37,7 @@ public class Npc extends Pelaaja{
      * 
      * @param luolastot
      */
-    @Override
+    
     public void valitseLuolasto(ArrayList<Luolasto> luolastot) {
         Heittely a = new Heittely(luolastot.get(random.nextInt(3)) , this);
         a.heittele();

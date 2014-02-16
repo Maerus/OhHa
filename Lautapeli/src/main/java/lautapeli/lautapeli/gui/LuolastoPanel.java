@@ -10,14 +10,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import lautapeli.lautapeli.util.LuolaNappikuuntelija;
 import lautapeli.lautapeli.domain.Luolasto;
 
 
 public class LuolastoPanel {
     private JPanel panel;
     private Luolasto luolasto;
+    private Kayttoliittyma ui;
 
-    public LuolastoPanel(JPanel panel, Luolasto luola) {
+    public LuolastoPanel(Kayttoliittyma ui, JPanel panel, Luolasto luola) {
+        this.ui = ui;
         this.panel = panel;
         this.luolasto = luola;
         
@@ -36,7 +39,9 @@ public class LuolastoPanel {
         JLabel vNopatTeksti = new JLabel("Viholliset");
         JLabel tNopatTeksti = new JLabel("Voittopotentiaali");
         JLabel aNopatTeksti = new JLabel("Aarteet");
-        JButton Nappi = new JButton("Heittelyyn");
+        JButton nappi = new JButton("Heittelyyn");
+        LuolaNappikuuntelija kuuntelija = new LuolaNappikuuntelija(ui.getPeli().getPelaajat().get(0), luolasto);
+        nappi.addActionListener(kuuntelija);
         
         
         
@@ -107,7 +112,7 @@ public class LuolastoPanel {
         c.fill = GridBagConstraints.BOTH;
         c.anchor = GridBagConstraints.CENTER;
         c.ipadx = 30;
-        panel.add(Nappi, c);
+        panel.add(nappi, c);
     }
     
 }

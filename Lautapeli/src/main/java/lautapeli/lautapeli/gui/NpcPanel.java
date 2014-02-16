@@ -47,6 +47,7 @@ public class NpcPanel {
         panel.add(nimikentta, c);
         
         pistekentta = new JTextField("" + pelaaja.getPisteet());
+        pistekentta.setColumns(1);
         pistekentta.setHorizontalAlignment(JTextField.CENTER);
         pistekentta.setBorder(new LineBorder(Color.green, 2));
         pistekentta.setEditable(false);
@@ -63,6 +64,7 @@ public class NpcPanel {
         panel.add(pistekentta, c);
         
         rahakentta = new JTextField("" + pelaaja.getRaha());
+        rahakentta.setColumns(1);
         rahakentta.setHorizontalAlignment(JTextField.CENTER);
         rahakentta.setBorder(new LineBorder(Color.yellow, 2));
         rahakentta.setEditable(false);

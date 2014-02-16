@@ -2,6 +2,8 @@
 package lautapeli.lautapeli.logiikka;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import lautapeli.lautapeli.domain.Luolasto;
 import lautapeli.lautapeli.domain.Npc;
 import lautapeli.lautapeli.domain.Pelaaja;
@@ -162,11 +164,17 @@ public class Peli {
         pelaaja.valitseVuoroToimepide();
         paivitaPelaajaKomponentit(pelaajanumero);
         
+        
+        pelaaja.lisaaPiste();
+        pelaaja.lisaaRahaa(3);
+        
         if (pelaaja.getPisteet() >= ylaraja){
             jatkuu = false;
         }
-        pelaaja.lisaaPiste();
-        pelaaja.lisaaRahaa(3);
+        paivitaPelaajaKomponentit(pelaajanumero);
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException ex) {}
     }
     
     

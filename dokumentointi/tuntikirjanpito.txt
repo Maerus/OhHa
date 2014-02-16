@@ -59,6 +59,9 @@
 	n. 6 - 8		-komponenttien sitomista ui elementteihin, sekä ui päivitysmetodien luomista
 
 
-	edessäpäin heittely- ja korttiraamin luomista,
-	sekä logiikan (erityisesti heittelytapahtuman) jatkamista ja
-	toiminnallisuuksien lisäämistä käyttöliittymään.
+- 16.2.2014
+	n. 8-11:40		-kortin ostonappien ja luolaston heittelynappien toiminnallisuuksien
+				 sitominen odottavaan metodiin pelaajaluokassa onnistuneesti
+
+
+	edessäpäin heittely- ja korttiraamin luominen ja heittelytapahtuman aikaansaanti, sekä korttien ja luolastojen tekemistä

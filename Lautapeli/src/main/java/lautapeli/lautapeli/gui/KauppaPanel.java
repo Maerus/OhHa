@@ -12,9 +12,11 @@ import javax.swing.border.LineBorder;
 
 public class KauppaPanel {
     private JPanel panel;
+    private Kayttoliittyma ui;
 
-    public KauppaPanel(JPanel panel) {
+    public KauppaPanel(JPanel panel, Kayttoliittyma ui) {
         this.panel = panel;
+        this.ui = ui;
         
         this.panel.setBorder(new LineBorder(Color.GRAY, 2));
     }
@@ -60,13 +62,13 @@ public class KauppaPanel {
         c.gridx = 2;
         panel.add(kortti3, c);
         
-        k1panel = new KorttiPanel(kortti1);
+        k1panel = new KorttiPanel(kortti1, this);
         k1panel.luoKomponentit();
         
-        k2panel = new KorttiPanel(kortti2);
+        k2panel = new KorttiPanel(kortti2, this);
         k2panel.luoKomponentit();
         
-        k3panel = new KorttiPanel(kortti3);
+        k3panel = new KorttiPanel(kortti3, this);
         k3panel.luoKomponentit();
     }
     
@@ -83,5 +85,10 @@ public class KauppaPanel {
     public KorttiPanel getK3panel() {
         return k3panel;
     }
+
+    public Kayttoliittyma getUi() {
+        return ui;
+    }
+    
     
 }

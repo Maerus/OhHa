@@ -12,19 +12,22 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import lautapeli.lautapeli.domain.kortti.Kortti;
 import lautapeli.lautapeli.domain.kortti.TestiKortti;
+import lautapeli.lautapeli.util.KorttiNappikuuntelija;
 
 
 public class KorttiPanel {
     private JPanel panel;
     private Kortti kortti;
+    private KauppaPanel kauppapanel;
 
-    public KorttiPanel(JPanel panel) {
-        this(panel, new TestiKortti());
+    public KorttiPanel(JPanel panel, KauppaPanel kauppa) {
+        this(panel, new TestiKortti(), kauppa);
     }
     
-    public KorttiPanel(JPanel panel, Kortti kortti){
+    public KorttiPanel(JPanel panel, Kortti kortti, KauppaPanel kauppa){
         this.panel = panel;
         this.kortti = kortti;
+        this.kauppapanel = kauppa;
         
         this.panel.setBorder(new LineBorder(Color.orange, 2));
     }
@@ -71,6 +74,8 @@ public class KorttiPanel {
         kuvaus.setLineWrap(true);
         kuvaus.setEditable(false);
         JButton nappi = new JButton("Osta");
+        KorttiNappikuuntelija kuuntelija = new KorttiNappikuuntelija(kauppapanel.getUi().getPeli().getPelaajat().get(0), kortti);
+        nappi.addActionListener(kuuntelija);
         
         panel.add(scroll3, c); //NIMI
         

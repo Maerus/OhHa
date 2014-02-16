@@ -37,6 +37,7 @@ class Heittely {
      */
     void heittele() {
         heitaNopat(vihollisnopat);
+        System.out.println("heittely metodi saavutettu");
         //placeholder stuff
     }
     

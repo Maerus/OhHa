@@ -3,21 +3,18 @@ package lautapeli.lautapeli.domain;
 
 import lautapeli.lautapeli.domain.kortti.Kortti;
 import java.util.ArrayList;
-import java.util.concurrent.locks.ReentrantLock;
 
 
 public class Pelaaja {
     private int pisteet;
     private int raha;
     private ArrayList<Kortti> kortit;
-    private final ReentrantLock lock;
     private boolean ready;
     
     public Pelaaja(){
         pisteet = 0;
         raha = 0;
         kortit = new ArrayList<>();
-        lock = new ReentrantLock();
         ready = false;
     }
 
@@ -35,32 +32,72 @@ public class Pelaaja {
     public void lisaaPiste(){
         pisteet++;
     }
+    
 
     public ArrayList<Kortti> getKortit() {
         return kortit;
     }
-
+    
+    private Valinta valinta;
+    public void setValinta(Valinta valinta) {
+        this.valinta = valinta;
+    }
+    
+    private Kortti valittuKortti;
+    public void setValittuKortti(Kortti valittuKortti) {
+        this.valittuKortti = valittuKortti;
+    }
+    
+    private Luolasto valittuLuolasto;
+    public void setValittuLuolasto(Luolasto valittuLuolasto) {
+        this.valittuLuolasto = valittuLuolasto;
+    }
+    
+    private final Object lock = new Object();
+    public Object getLock() {
+        return lock;
+    }
+    
     /**
      * Metodi jää odottamaan pelaajan toimintaa.
      * Toimintakomennon saatua metodi suorittaa halutun toiminnon.
      * Toiminto on joko heittely valitussa luolastossa tai kortin osto kaupasta.
      * 
      */
-    public void valitseVuoroToimepide(){
+    public void valitseVuoroToimepide() {
+        valinta = Valinta.EI_VALINTAA;
+        valittuKortti = null;
+        valittuLuolasto = null;
         
-        /*
-        tapahtumakuuntelija triggeroi readyn lukolle tjsp kun valitaan toimenpide.
-        valintana on joko luolasto tai kortti (kaupassa).
-        luolaston kohdalla luodaan heittely, kortin kohdalla ostetaan kortti.
-        */
-        
-        //tänne tarttis joku lukitus joka aukeaa, kun painetaan sopivaa nappulaa
-        
-        //idk asdasdadad
-        
-        //placeholder                                                               aaaaaaaaaa
-        
+        synchronized(lock){
+            while(!ready){
+                try{
+                    lock.wait();
+                } catch (InterruptedException e) {}
+            }
+        }
+        //actionlistener syöttää uuden valinnan ja valitun kohteen samalla, kun avaa lukon
+        ready = false;
+        if (valinta == Valinta.LUOLASTO){
+            Heittely heittely = new Heittely(valittuLuolasto, this);
+        } else if (valinta == Valinta.KORTTI) {
+            if(!osta(valittuKortti)){
+                valitseVuoroToimepide();
+            }
+        }
     }
+    
+    /**
+     * Metodi avaa valitseVuoroToimepide() metodin lukon ja päästää sen jatkamaan eteenpäin.
+     */
+    public void notifioiLukko(){
+        synchronized(lock){
+            ready = true;
+            lock.notifyAll();
+        }
+    }
+    
+
 
     /**
      * Metodi ostaa pelaajalle kortin kaupasta, jos siihen on varaa.
@@ -68,14 +105,17 @@ public class Pelaaja {
      * (Nappia en tosin anna painaa jos rahaa ei ole :V)
      * 
      * @param kortti
+     * @return onnistuiko ostaminen
      */
-    public void osta(Kortti kortti) {
-        if (raha > kortti.getHinta()){
-            raha -= kortti.getHinta();
+    public boolean osta(Kortti kortti) {
+        if (raha >= kortti.getHinta()){
+            raha = raha - kortti.getHinta();
             kortit.add(kortti);
+            return true;
         }
         //tänne actionEvent poistamaan kaupasta kyseinen kortti                     aaaaaaaaaa
         //tai sitten ihan vaan tehdään metodi, joka päivittää sen kortin :|
+        return false;
     }
     
     /**
@@ -109,14 +149,6 @@ public class Pelaaja {
 
     public int getRaha() {
         return raha;
-    }
-    
-    /**
-     * Metodi pyytää pelaajaa valitsemaan luolaston.
-     * @param luolastot
-     */
-    public void valitseLuolasto(ArrayList<Luolasto> luolastot) {
-        //placeholder                                                               aaaaaaaaaa
     }
 
     int getViholliskorttimuutokset() {
