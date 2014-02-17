@@ -3,6 +3,7 @@ package lautapeli.lautapeli.domain;
 
 import lautapeli.lautapeli.domain.kortti.Kortti;
 import java.util.ArrayList;
+import lautapeli.lautapeli.logiikka.Peli;
 
 
 public class Pelaaja {
@@ -10,12 +11,14 @@ public class Pelaaja {
     private int raha;
     private ArrayList<Kortti> kortit;
     private boolean ready;
+    private Peli peli;
     
-    public Pelaaja(){
+    public Pelaaja(Peli peli){
         pisteet = 0;
         raha = 0;
         kortit = new ArrayList<>();
         ready = false;
+        this.peli = peli;
     }
 
     public int getPisteet() {
@@ -79,7 +82,8 @@ public class Pelaaja {
         //actionlistener syöttää uuden valinnan ja valitun kohteen samalla, kun avaa lukon
         ready = false;
         if (valinta == Valinta.LUOLASTO){
-            Heittely heittely = new Heittely(valittuLuolasto, this);
+            Heittely heittely = new Heittely(valittuLuolasto, this, peli);
+            heittely.heittele();
         } else if (valinta == Valinta.KORTTI) {
             if(!osta(valittuKortti)){
                 valitseVuoroToimepide();

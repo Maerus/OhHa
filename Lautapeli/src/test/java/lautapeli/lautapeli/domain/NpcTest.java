@@ -27,7 +27,7 @@ public class NpcTest {
     
     @Before
     public void setUp() {
-        n  = new Npc();
+        n  = new Npc(null);
     }
     
     @After

@@ -19,9 +19,14 @@ public class KorttiNappikuuntelija implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
+        disabloiPerusIkkuna();
         pelaaja.setValinta(Valinta.KORTTI);
         pelaaja.setValittuKortti(kortti);
         pelaaja.notifioiLukko();
+    }
+
+    private void disabloiPerusIkkuna() {
+        //placeholder
     }
 
 }

@@ -2,8 +2,6 @@
 package lautapeli.lautapeli.logiikka;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import lautapeli.lautapeli.domain.Luolasto;
 import lautapeli.lautapeli.domain.Npc;
 import lautapeli.lautapeli.domain.Pelaaja;
@@ -56,10 +54,10 @@ public class Peli {
      * metodi lisää pelaajat peliin.
      */
     private void lisaaPelaajat() {
-        lisaaPelaaja(new Pelaaja());
-        lisaaPelaaja(new Npc());
-        lisaaPelaaja(new Npc());
-        lisaaPelaaja(new Npc());
+        lisaaPelaaja(new Pelaaja(this));
+        lisaaPelaaja(new Npc(this));
+        lisaaPelaaja(new Npc(this));
+        lisaaPelaaja(new Npc(this));
     }
 
     public ArrayList<Luolasto> getLuolastot() {
@@ -206,6 +204,11 @@ public class Peli {
         }
     }
 
+    public Kayttoliittyma getUi() {
+        return ui;
+    }
+    
+    
 
     
     

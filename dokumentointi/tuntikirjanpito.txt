@@ -64,4 +64,5 @@
 				 sitominen odottavaan metodiin pelaajaluokassa onnistuneesti
 
 
-	edessäpäin heittely- ja korttiraamin luominen ja heittelytapahtuman aikaansaanti, sekä korttien ja luolastojen tekemistä
+- 17.2.2014
+	n. 6 - 8		-heittelyraamin tekeminen ja sijoittaminen käyttöliittymän päälle

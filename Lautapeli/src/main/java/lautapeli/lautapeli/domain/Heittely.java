@@ -3,6 +3,7 @@ package lautapeli.lautapeli.domain;
 
 import java.util.ArrayList;
 import java.util.Random;
+import lautapeli.lautapeli.logiikka.Peli;
 
 
 class Heittely {
@@ -13,8 +14,9 @@ class Heittely {
     private int vaihe;
     private Random random;
     private ArrayList<Integer> nopat;
+    private Peli peli;
 
-    public Heittely(Luolasto luola , Pelaaja p) {
+    public Heittely(Luolasto luola , Pelaaja p, Peli peli) {
         pelaaja = p;
         
         vihollisnopat = luola.getVihollisnopat() + pelaaja.getViholliskorttimuutokset();
@@ -24,6 +26,7 @@ class Heittely {
         vaihe = 1;
         random = new Random();
         nopat = new ArrayList<>();
+        this.peli = peli;
     }
 
     public ArrayList<Integer> getNopat() {
@@ -36,6 +39,16 @@ class Heittely {
      * Heittely on kolmiosainen ja siihen kuuluu kullekin noppatyypille omat rollit.
      */
     void heittele() {
+        //ui.luoHeittelyFrame()
+        peli.getUi().luoHeittelyraami();
+        //hframe.haeHeittelytiedot()
+        //
+        if(pelaaja.getClass().equals(Npc.class)){
+            heitaNopat(vihollisnopat);
+            System.out.println("heittely metodi saavutettu");
+            return;
+        }
+        
         heitaNopat(vihollisnopat);
         System.out.println("heittely metodi saavutettu");
         //placeholder stuff
@@ -58,6 +71,5 @@ class Heittely {
     private void reroll() {
         //placeholder
         
-        //vaihekohtaiset toiminnot tänne?
     }
 }

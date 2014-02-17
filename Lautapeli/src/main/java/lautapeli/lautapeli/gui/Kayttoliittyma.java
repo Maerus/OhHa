@@ -6,7 +6,9 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
@@ -21,6 +23,7 @@ public class Kayttoliittyma implements Runnable {
     private JFrame raami;
     private NimiGen nimigen;
     private Peli peli;
+    private JDesktopPane dpane;
 
     public Kayttoliittyma() {
         nimigen = new NimiGen();
@@ -34,6 +37,9 @@ public class Kayttoliittyma implements Runnable {
         raami.setPreferredSize(new Dimension(800, 600));
         
         raami.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+        dpane = new JDesktopPane();
+        raami.setContentPane(dpane);
         
         peli = new Peli(this);
         peli.alusta();
@@ -64,12 +70,12 @@ public class Kayttoliittyma implements Runnable {
         c.weightx = 1;
         c.gridx = 0;
         c.gridy = 0;
-        pane.add(peliPanel,c);
+        pane.add(peliPanel,c,1);
         
         c.weightx = 0.4;
         c.ipadx = 50;
         c.gridx = 1;
-        pane.add(pelaajatPanel,c);
+        pane.add(pelaajatPanel,c,1);
         pelaajatPanel.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
         
         luoPeliKomponentit(peliPanel);
@@ -214,6 +220,23 @@ public class Kayttoliittyma implements Runnable {
 
     public Peli getPeli() {
         return peli;
+    }
+    
+    
+    JInternalFrame heittelyraami;
+    /**
+     * Luo heittelytilanteelle oman raamin
+     */
+    public void luoHeittelyraami() {
+        raami.setLayout(null);
+        heittelyraami = new JInternalFrame("Heittely");
+        heittelyraami.setVisible(true);
+        heittelyraami.setBounds(100, 50, 450, 250);
+        heittelyraami.setClosable(true); //                                         poista
+        raami.add(heittelyraami,0);
+        
+        HeittelyFrame heittoraami = new HeittelyFrame(heittelyraami);
+        heittoraami.luoKomponentit();
     }
     
 }

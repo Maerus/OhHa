@@ -4,12 +4,15 @@ package lautapeli.lautapeli.domain;
 import java.util.ArrayList;
 import java.util.Random;
 import lautapeli.lautapeli.domain.kortti.Kortti;
+import lautapeli.lautapeli.logiikka.Peli;
 
 
 public class Npc extends Pelaaja{
     private Random random;
+    private Peli peli;
 
-    public Npc() {
+    public Npc(Peli peli) {
+        super(peli);
         random = new Random();
     }
     
@@ -19,11 +22,13 @@ public class Npc extends Pelaaja{
      */
     @Override
     public void valitseVuoroToimepide(){
+        //EI TEE VIELÄ MITÄÄN VUOROLLAAN
         //placeholder                                                               aaaaaaaaaa
     }
     
     /**
-     * Metodi ostaa tietokonepelaajalle jonkun kortin, johon on varaa
+     * Metodi ostaa tietokonepelaajalle kortin
+     * @return true koska testattu ennestään.
      * 
      */
     @Override
@@ -39,7 +44,7 @@ public class Npc extends Pelaaja{
      */
     
     public void valitseLuolasto(ArrayList<Luolasto> luolastot) {
-        Heittely a = new Heittely(luolastot.get(random.nextInt(3)) , this);
+        Heittely a = new Heittely(luolastot.get(random.nextInt(3)), this, peli);
         a.heittele();
     }
 }

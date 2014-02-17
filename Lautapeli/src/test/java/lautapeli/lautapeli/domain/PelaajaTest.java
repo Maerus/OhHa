@@ -30,7 +30,7 @@ public class PelaajaTest {
     Random r;
     @Before
     public void setUp() {
-        p = new Pelaaja();
+        p = new Pelaaja(null);
         r = new Random();
     }
     
