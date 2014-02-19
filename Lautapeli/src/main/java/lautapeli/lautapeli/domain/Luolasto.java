@@ -19,7 +19,7 @@ public class Luolasto {
         this.vihollisnopat = 3;
         this.taistelunopat = 4;
         this.aarrenopat = 5;
-        this.nimi = "generic luolasto";
+        this.nimi = "testiluolasto";
     }
 
     public int getAarrenopat() {

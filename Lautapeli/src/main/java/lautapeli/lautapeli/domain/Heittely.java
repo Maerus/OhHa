@@ -3,18 +3,21 @@ package lautapeli.lautapeli.domain;
 
 import java.util.ArrayList;
 import java.util.Random;
+import lautapeli.lautapeli.gui.HeittelyFrame;
 import lautapeli.lautapeli.logiikka.Peli;
 
 
-class Heittely {
+public class Heittely {
     private int vihollisnopat;
     private int taistelunopat;
     private int aarrenopat;
     private Pelaaja pelaaja;
     private int vaihe;
+    private int rerollit;
     private Random random;
     private ArrayList<Integer> nopat;
     private Peli peli;
+    private HeittelyFrame heittelyraami;
 
     public Heittely(Luolasto luola , Pelaaja p, Peli peli) {
         pelaaja = p;
@@ -23,6 +26,7 @@ class Heittely {
         taistelunopat = luola.getTaistelunopat() + pelaaja.getTaistelukorttimuutokset();
         aarrenopat = luola.getAarrenopat() + pelaaja.getAarrekorttimuutokset();
         
+        rerollit = 2;
         vaihe = 1;
         random = new Random();
         nopat = new ArrayList<>();
@@ -39,16 +43,13 @@ class Heittely {
      * Heittely on kolmiosainen ja siihen kuuluu kullekin noppatyypille omat rollit.
      */
     void heittele() {
-        //ui.luoHeittelyFrame()
-        peli.getUi().luoHeittelyraami();
-        //hframe.haeHeittelytiedot()
-        //
         if(pelaaja.getClass().equals(Npc.class)){
             heitaNopat(vihollisnopat);
             System.out.println("heittely metodi saavutettu");
             return;
         }
         
+        peli.getUi().luoHeittelyraami(heittelyraami, this);
         heitaNopat(vihollisnopat);
         System.out.println("heittely metodi saavutettu");
         //placeholder stuff
@@ -69,7 +70,28 @@ class Heittely {
      * Metodi suorittaa uudelleenheittelyn. 
      */
     private void reroll() {
-        //placeholder
+        if (rerollit == 0){
+            return;
+        }
+        rerollit--;
         
+        
+        //placeholder
     }
+
+    public String getVaihe() {
+        if (vaihe == 1){
+            return "Vihollisnopat";
+        } else if (vaihe == 2){
+            return "Taistelunopat";
+        } else if (vaihe == 3){
+            return "Aarrenopat";
+        }
+        return "";
+    }
+
+    public int getRerollit() {
+        return rerollit;
+    }
+    
 }

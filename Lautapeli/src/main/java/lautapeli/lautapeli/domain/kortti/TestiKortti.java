@@ -11,7 +11,7 @@ public class TestiKortti implements Kortti{
     public TestiKortti() {
         nimi = "testikortti";
         tyyppi = "vta";
-        kuvaus = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+        kuvaus = "Pelaajan omistamat kortit vaikuttavat noppien määriin heittelyssä\nluolaston lisäksi";
         hinta = 123;
     }
     

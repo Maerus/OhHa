@@ -16,6 +16,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import lautapeli.lautapeli.logiikka.Peli;
 import lautapeli.lautapeli.util.NimiGen;
+import lautapeli.lautapeli.domain.Heittely;
 
 
 public class Kayttoliittyma implements Runnable {
@@ -227,15 +228,15 @@ public class Kayttoliittyma implements Runnable {
     /**
      * Luo heittelytilanteelle oman raamin
      */
-    public void luoHeittelyraami() {
+    public void luoHeittelyraami(HeittelyFrame heittoraami, Heittely heittely) {
         raami.setLayout(null);
         heittelyraami = new JInternalFrame("Heittely");
         heittelyraami.setVisible(true);
-        heittelyraami.setBounds(100, 50, 450, 250);
+        heittelyraami.setBounds(100, 50, 600, 400);
         heittelyraami.setClosable(true); //                                         poista
         raami.add(heittelyraami,0);
         
-        HeittelyFrame heittoraami = new HeittelyFrame(heittelyraami);
+        heittoraami = new HeittelyFrame(heittelyraami, heittely);
         heittoraami.luoKomponentit();
     }
     
