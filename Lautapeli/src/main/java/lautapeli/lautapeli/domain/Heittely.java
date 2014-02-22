@@ -136,9 +136,6 @@ public class Heittely {
         }
         rerollit--;
         
-//        heittelyraami.getNoppanapit();
-//        heittelyraami.getTaulukko();
-        
         for (int i = 0; i < heittelyraami.getTaulukko().length; i++) {
             if ( heittelyraami.getTaulukko()[i] == true ){
                 int uusinoppa = random.nextInt(6)+1;

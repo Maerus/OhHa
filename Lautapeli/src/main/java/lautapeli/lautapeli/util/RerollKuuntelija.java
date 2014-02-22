@@ -23,6 +23,7 @@ public class RerollKuuntelija implements ActionListener{
         for (Boolean nappi : nappitaulukko) {
             if (nappi == true){
                 a = true;
+                break;
             }
         }
         

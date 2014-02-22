@@ -28,7 +28,6 @@ public class HeittelyFrame {
     public HeittelyFrame(JInternalFrame raami, Heittely heittely) {
         this.heittely = heittely;
         this.raami = raami;
-        noppanapit = new ArrayList<>();
     }
     
     private JPanel noppapanel;
@@ -74,6 +73,7 @@ public class HeittelyFrame {
      * Indeksiä käytetään nopan käsittelyyn napin togglessa, rerolleissa.
      */
     private void luoNoppaKomponentit() {
+        noppanapit = new ArrayList<>();
         noppapanel = new JPanel();
         noppapanel.setBorder(new BevelBorder(0));
         
