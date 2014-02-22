@@ -36,23 +36,59 @@ public class Heittely {
     public ArrayList<Integer> getNopat() {
         return nopat;
     }
-
+    
+    
+    private final Object lock = new Object();
     /**
      * Metodi aloittaa heittelytoiminnan, johon kuuluu uuden heittelyraamin luominen
      * ja noppien visualisointi, sekä noppien valinta ja rerollaus.
      * Heittely on kolmiosainen ja siihen kuuluu kullekin noppatyypille omat rollit.
      */
-    void heittele() {
+    void suoritaHeittely() {
+        heittele(vihollisnopat);
+        heittelyraami = peli.getUi().luoHeittelyraami(this);
+        odota();
+        
+        heittele(taistelunopat);
+        heittelyraami.paivitaVaihe();
+        odota();
+        
+        heittele(aarrenopat);
+        heittelyraami.paivitaVaihe();
+        odota();
+    }
+    
+    private boolean ready;
+    private void odota(){
+        ready = false;
+        synchronized(lock){
+            while(!ready){
+                try{
+                    lock.wait();
+                } catch (InterruptedException e) {}
+            }
+        }
+    }
+    
+    public void notifioiLukko(){
+        synchronized(lock){
+            ready = true;
+            lock.notify();
+        }
+    }
+    
+    /**
+     * Metodi suorittaa yhden heittelytilanteen ja 
+     * @param nopat 
+     */
+    void heittele(int nopat) {
         if(pelaaja.getClass().equals(Npc.class)){
-            heitaNopat(vihollisnopat);
+            heitaNopat(nopat);
             System.out.println("heittely metodi saavutettu");
             return;
         }
         
-        peli.getUi().luoHeittelyraami(heittelyraami, this);
-        heitaNopat(vihollisnopat);
-        System.out.println("heittely metodi saavutettu");
-        //placeholder stuff
+        heitaNopat(nopat);
     }
     
     /**
@@ -63,20 +99,28 @@ public class Heittely {
         for (int i = 0; i < lkm; i++) {
             nopat.add(random.nextInt(6)+1);
         }
-        reroll();
     }
 
     /**
      * Metodi suorittaa uudelleenheittelyn. 
      */
-    private void reroll() {
+    public void reroll() {
         if (rerollit == 0){
             return;
         }
         rerollit--;
         
+//        heittelyraami.getNoppanapit();
+//        heittelyraami.getTaulukko();
         
-        //placeholder
+        for (int i = 0; i < heittelyraami.getTaulukko().length; i++) {
+            if ( heittelyraami.getTaulukko()[i] == true ){
+                int uusinoppa = random.nextInt(6)+1;
+                nopat.set(i, uusinoppa);
+                heittelyraami.getNoppanapit().get(i).setText("" + uusinoppa);
+            }
+        }
+        peli.getUi().getHeittelyraami().paivitaNappiKomponentit();
     }
 
     public String getVaihe() {
@@ -93,5 +137,11 @@ public class Heittely {
     public int getRerollit() {
         return rerollit;
     }
+
+    public void setRerollit(int i) {
+        rerollit = i;
+    }
+
+
     
 }

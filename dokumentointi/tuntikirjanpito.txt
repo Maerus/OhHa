@@ -66,3 +66,7 @@
 
 - 17.2.2014
 	n. 6 - 8		-heittelyraamin tekeminen ja sijoittaminen käyttöliittymän päälle
+
+
+- 22.2.2014
+	n. 12 - 14		-noppien rerollaus valmis

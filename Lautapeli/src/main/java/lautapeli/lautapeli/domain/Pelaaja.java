@@ -57,10 +57,6 @@ public class Pelaaja {
     }
     
     private final Object lock = new Object();
-    public Object getLock() {
-        return lock;
-    }
-    
     /**
      * Metodi jää odottamaan pelaajan toimintaa.
      * Toimintakomennon saatua metodi suorittaa halutun toiminnon.
@@ -83,7 +79,7 @@ public class Pelaaja {
         ready = false;
         if (valinta == Valinta.LUOLASTO){
             Heittely heittely = new Heittely(valittuLuolasto, this, peli);
-            heittely.heittele();
+            heittely.suoritaHeittely();
         } else if (valinta == Valinta.KORTTI) {
             if(!osta(valittuKortti)){
                 valitseVuoroToimepide();
@@ -97,7 +93,7 @@ public class Pelaaja {
     public void notifioiLukko(){
         synchronized(lock){
             ready = true;
-            lock.notifyAll();
+            lock.notify();
         }
     }
     

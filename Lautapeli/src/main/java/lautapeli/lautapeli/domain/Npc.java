@@ -45,6 +45,6 @@ public class Npc extends Pelaaja{
     
     public void valitseLuolasto(ArrayList<Luolasto> luolastot) {
         Heittely a = new Heittely(luolastot.get(random.nextInt(3)), this, peli);
-        a.heittele();
+        a.suoritaHeittely();
     }
 }

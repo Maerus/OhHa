@@ -9,16 +9,20 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import lautapeli.lautapeli.domain.Heittely;
+import lautapeli.lautapeli.util.NoppaToggleKuuntelija;
+import lautapeli.lautapeli.util.RerollKuuntelija;
 
 
 public class HeittelyFrame {
     private JInternalFrame raami;
     private Heittely heittely;
     private ArrayList<NoppaButton> noppanapit;
+    private Boolean[] nappitaulukko;
     
     public HeittelyFrame(JInternalFrame raami, Heittely heittely) {
         this.heittely = heittely;
@@ -55,11 +59,13 @@ public class HeittelyFrame {
         
         pane.add(nappipanel, c);
         
-        
+        //bugfix purukumia
+        //komponentit ei näykynyt jos ei raamia liikuttanut
+        raami.setLocation(raami.getLocation());
     }
     
     private NoppaButton kasiteltavaNappi;
-    private Boolean[] nappitaulukko;
+    
     
     /**
      * Metodi luo noppanapit raamiin.
@@ -73,18 +79,30 @@ public class HeittelyFrame {
         GridLayout gl = new GridLayout(3, 5);
         noppapanel.setLayout(gl);
         
-        for (int i = 0; i < 15; i++) {
-            kasiteltavaNappi = new NoppaButton(i, i);
+        nappitaulukko = new Boolean[heittely.getNopat().size()];
+        for (int i = 0; i < heittely.getNopat().size(); i++) {
+            nappitaulukko[i] = false;
+        }
+        
+        for (int i = 0; i < heittely.getNopat().size(); i++) {
+            kasiteltavaNappi = new NoppaButton(i, heittely.getNopat().get(i));
             noppanapit.add(kasiteltavaNappi);
             noppapanel.add(kasiteltavaNappi);
+            kasiteltavaNappi.addActionListener(new NoppaToggleKuuntelija(kasiteltavaNappi, nappitaulukko));
         }
-        nappitaulukko = new Boolean[noppanapit.size()];
-        for (int i = 0; i < nappitaulukko.length; i++) {
-            nappitaulukko[i] = false;
+        //täyttää gridlayoutin loput osat tyhjällä jottei noppanapit veny
+        for (int i = 0; i < 15 - heittely.getNopat().size(); i++) {
+            noppapanel.add(new JLabel(""));
         }
     }
     
+    public Boolean[] getTaulukko(){
+        return nappitaulukko;
+    }
 
+    public ArrayList<NoppaButton> getNoppanapit() {
+        return noppanapit;
+    }
     
     private JTextField vaihe;
     private JTextField rerollit;
@@ -134,11 +152,23 @@ public class HeittelyFrame {
         
         valmisnappi = new JButton("Valmis");
         nappipanel.add(valmisnappi,c);
+        
+        rerollnappi.addActionListener(new RerollKuuntelija(heittely));
     }
     
     public void paivitaNappiKomponentit(){
         rerollit.setText("Rerollit: " + heittely.getRerollit());
         vaihe.setText(heittely.getVaihe());
+    }
+    
+    public void paivitaNoppaKomponentit(){
+        luoNoppaKomponentit();
+    }
+
+    public void paivitaVaihe() {
+        heittely.setRerollit(2);
+        paivitaNoppaKomponentit();
+        paivitaNappiKomponentit();
     }
 
 }

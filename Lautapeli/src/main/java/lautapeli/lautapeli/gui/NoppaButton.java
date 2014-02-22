@@ -1,6 +1,7 @@
 
 package lautapeli.lautapeli.gui;
 
+import java.awt.Dimension;
 import javax.swing.JToggleButton;
 import javax.swing.border.BevelBorder;
 

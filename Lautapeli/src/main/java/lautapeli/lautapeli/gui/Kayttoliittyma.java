@@ -225,10 +225,13 @@ public class Kayttoliittyma implements Runnable {
     
     
     JInternalFrame heittelyraami;
+    HeittelyFrame heittoraami;
     /**
      * Luo heittelytilanteelle oman raamin
+     * @param heittely
+     * @return heittoraami
      */
-    public void luoHeittelyraami(HeittelyFrame heittoraami, Heittely heittely) {
+    public HeittelyFrame luoHeittelyraami(Heittely heittely) {
         raami.setLayout(null);
         heittelyraami = new JInternalFrame("Heittely");
         heittelyraami.setVisible(true);
@@ -238,6 +241,11 @@ public class Kayttoliittyma implements Runnable {
         
         heittoraami = new HeittelyFrame(heittelyraami, heittely);
         heittoraami.luoKomponentit();
+        return heittoraami;
+    }
+
+    public HeittelyFrame getHeittelyraami() {
+        return heittoraami;
     }
     
 }
