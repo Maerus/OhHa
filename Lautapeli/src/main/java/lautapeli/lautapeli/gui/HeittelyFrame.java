@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import lautapeli.lautapeli.domain.Heittely;
+import lautapeli.lautapeli.util.HeittelynValmiusKuuntelija;
 import lautapeli.lautapeli.util.NoppaToggleKuuntelija;
 import lautapeli.lautapeli.util.RerollKuuntelija;
 
@@ -76,8 +77,16 @@ public class HeittelyFrame {
         noppapanel = new JPanel();
         noppapanel.setBorder(new BevelBorder(0));
         
-        GridLayout gl = new GridLayout(3, 5);
-        noppapanel.setLayout(gl);
+        int a;
+        if(heittely.getNopat().size() < 16){
+            GridLayout gl = new GridLayout(3, 5);
+            noppapanel.setLayout(gl);
+            a = 15;
+        } else {
+            GridLayout gl = new GridLayout(4, 7);
+            noppapanel.setLayout(gl);
+            a = 28;
+        }
         
         nappitaulukko = new Boolean[heittely.getNopat().size()];
         for (int i = 0; i < heittely.getNopat().size(); i++) {
@@ -91,7 +100,8 @@ public class HeittelyFrame {
             kasiteltavaNappi.addActionListener(new NoppaToggleKuuntelija(kasiteltavaNappi, nappitaulukko));
         }
         //täyttää gridlayoutin loput osat tyhjällä jottei noppanapit veny
-        for (int i = 0; i < 15 - heittely.getNopat().size(); i++) {
+        
+        for (int i = 0; i < a - heittely.getNopat().size(); i++) {
             noppapanel.add(new JLabel(""));
         }
     }
@@ -153,22 +163,18 @@ public class HeittelyFrame {
         valmisnappi = new JButton("Valmis");
         nappipanel.add(valmisnappi,c);
         
-        rerollnappi.addActionListener(new RerollKuuntelija(heittely));
+        rerollnappi.addActionListener(new RerollKuuntelija(heittely, nappitaulukko));
+        valmisnappi.addActionListener(new HeittelynValmiusKuuntelija(heittely, raami));
     }
     
     public void paivitaNappiKomponentit(){
         rerollit.setText("Rerollit: " + heittely.getRerollit());
-        vaihe.setText(heittely.getVaihe());
-    }
-    
-    public void paivitaNoppaKomponentit(){
-        luoNoppaKomponentit();
     }
 
     public void paivitaVaihe() {
         heittely.setRerollit(2);
-        paivitaNoppaKomponentit();
-        paivitaNappiKomponentit();
+        raami.getContentPane().removeAll();
+        luoKomponentit();
     }
 
 }

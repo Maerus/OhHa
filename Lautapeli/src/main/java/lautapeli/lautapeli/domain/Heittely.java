@@ -27,9 +27,9 @@ public class Heittely {
         aarrenopat = luola.getAarrenopat() + pelaaja.getAarrekorttimuutokset();
         
         rerollit = 2;
-        vaihe = 1;
+        vaihe = 0;
         random = new Random();
-        nopat = new ArrayList<>();
+        
         this.peli = peli;
     }
 
@@ -38,7 +38,7 @@ public class Heittely {
     }
     
     
-    private final Object lock = new Object();
+    
     /**
      * Metodi aloittaa heittelytoiminnan, johon kuuluu uuden heittelyraamin luominen
      * ja noppien visualisointi, sekä noppien valinta ja rerollaus.
@@ -48,16 +48,39 @@ public class Heittely {
         heittele(vihollisnopat);
         heittelyraami = peli.getUi().luoHeittelyraami(this);
         odota();
+        tallennaViholliset();
         
         heittele(taistelunopat);
         heittelyraami.paivitaVaihe();
         odota();
+//        tallennaTaistelu();
         
         heittele(aarrenopat);
         heittelyraami.paivitaVaihe();
         odota();
+//        palkitse();
     }
     
+    private int vihA;
+    private int vihB;
+    private int vihC;
+    private void tallennaViholliset(){
+        vihA=0;
+        vihB=0;
+        vihC=0;
+        for (Integer noppa : nopat) {
+            if (noppa > 1 && noppa < 3){
+                vihA++;
+            } else if (noppa > 3 && noppa < 6){
+                vihB++;
+            } else if (noppa == 6){
+                vihC++;
+            }
+        }
+    }
+    
+    
+    private final Object lock = new Object();
     private boolean ready;
     private void odota(){
         ready = false;
@@ -79,16 +102,19 @@ public class Heittely {
     
     /**
      * Metodi suorittaa yhden heittelytilanteen ja 
-     * @param nopat 
+     * @param noppamaara 
      */
-    void heittele(int nopat) {
+    void heittele(int noppamaara) {
+        nopat = new ArrayList<>();
+        vaihe++;
+        
         if(pelaaja.getClass().equals(Npc.class)){
-            heitaNopat(nopat);
+            heitaNopat(noppamaara);
             System.out.println("heittely metodi saavutettu");
             return;
         }
         
-        heitaNopat(nopat);
+        heitaNopat(noppamaara);
     }
     
     /**

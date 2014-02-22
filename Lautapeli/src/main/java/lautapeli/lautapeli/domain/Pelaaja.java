@@ -10,14 +10,12 @@ public class Pelaaja {
     private int pisteet;
     private int raha;
     private ArrayList<Kortti> kortit;
-    private boolean ready;
     private Peli peli;
     
     public Pelaaja(Peli peli){
         pisteet = 0;
         raha = 0;
         kortit = new ArrayList<>();
-        ready = false;
         this.peli = peli;
     }
 
@@ -56,7 +54,7 @@ public class Pelaaja {
         this.valittuLuolasto = valittuLuolasto;
     }
     
-    private final Object lock = new Object();
+    
     /**
      * Metodi jää odottamaan pelaajan toimintaa.
      * Toimintakomennon saatua metodi suorittaa halutun toiminnon.
@@ -68,21 +66,27 @@ public class Pelaaja {
         valittuKortti = null;
         valittuLuolasto = null;
         
-        synchronized(lock){
-            while(!ready){
-                try{
-                    lock.wait();
-                } catch (InterruptedException e) {}
-            }
-        }
-        //actionlistener syöttää uuden valinnan ja valitun kohteen samalla, kun avaa lukon
-        ready = false;
+        odota();
+        //actionlistener syöttää uuden valinnan ja valitun kohteen samalla, kun lopettaa odottamisen.
         if (valinta == Valinta.LUOLASTO){
             Heittely heittely = new Heittely(valittuLuolasto, this, peli);
             heittely.suoritaHeittely();
         } else if (valinta == Valinta.KORTTI) {
             if(!osta(valittuKortti)){
                 valitseVuoroToimepide();
+            }
+        }
+    }
+    
+    private final Object lock = new Object();
+    private boolean ready;
+    private void odota(){
+        ready = false;
+        synchronized(lock){
+            while(!ready){
+                try{
+                    lock.wait();
+                } catch (InterruptedException e) {}
             }
         }
     }
