@@ -3,4 +3,4 @@ OhHa
 
 javalabra: nopanheitto(lauta)peli
 
-jotain
+rerollit ei toimi ekan vaiheen jälkeen ლ(ಠ益ಠლ)
