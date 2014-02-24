@@ -66,7 +66,6 @@ public class HeittelyFrame {
     
     private NoppaButton kasiteltavaNappi;
     
-    
     /**
      * Metodi luo noppanapit raamiin.
      * Napeille jaetaan indeksi ja nopan luku.
@@ -94,7 +93,7 @@ public class HeittelyFrame {
         }
         
         for (int i = 0; i < heittely.getNopat().size(); i++) {
-            kasiteltavaNappi = new NoppaButton(i, heittely.getNopat().get(i));
+            kasiteltavaNappi = new NoppaButton(i, heittely.getNopat().get(i), heittely.getVaihe());
             noppanapit.add(kasiteltavaNappi);
             noppapanel.add(kasiteltavaNappi);
             kasiteltavaNappi.addActionListener(new NoppaToggleKuuntelija(kasiteltavaNappi, nappitaulukko));

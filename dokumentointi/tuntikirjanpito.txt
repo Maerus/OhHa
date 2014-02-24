@@ -71,3 +71,8 @@
 - 22.2.2014
 	n. 12 - 14		-noppien rerollaus valmis
 	n. 17:30 - 18:30	-heittelyn vaiheen edistäminen valmis, rerollaus ei toimi ensimmäisen vaiheen jälkeen :<
+
+
+- 24.2.2014
+	n. 1:00 - 5:40		-noppaikonien piirtelyä (such programming), heittelysäännöstön laatiminen ja lähes valmis implementaatio heittelyyn,
+				 ikonien liittäminen noppanappeihin

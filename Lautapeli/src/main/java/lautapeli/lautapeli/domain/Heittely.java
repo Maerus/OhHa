@@ -53,30 +53,118 @@ public class Heittely {
         heittele(taistelunopat);
         heittelyraami.paivitaVaihe();
         odota();
-//        tallennaTaistelu();
+        taistele();
         
-        heittele(aarrenopat);
+        if (voitto){
+            heittele(aarrenopat);
+        } else {
+            heittele(0);
+        }
         heittelyraami.paivitaVaihe();
         odota();
-//        palkitse();
+        palkitse();
     }
     
-    private int vihA;
-    private int vihB;
-    private int vihC;
+    private int luuranko;
+    private int orkki;
+    private int lohari;
     private void tallennaViholliset(){
-        vihA=0;
-        vihB=0;
-        vihC=0;
+        luuranko=0;
+        orkki=0;
+        lohari=0;
         for (Integer noppa : nopat) {
-            if (noppa > 1 && noppa < 3){
-                vihA++;
+            if (noppa > 1 && noppa < 4){
+                luuranko++;
             } else if (noppa > 3 && noppa < 6){
-                vihB++;
+                orkki++;
             } else if (noppa == 6){
-                vihC++;
+                lohari++;
             }
         }
+        
+        luuranko = luuranko/2;
+        if(orkki > 0){
+            orkki--;
+        }
+        if(lohari < 2){
+            lohari = 0;
+        }
+    }
+    
+    private boolean voitto;
+    private void taistele() {
+        voitto = false;
+        int nyrkit = 0;
+        int jousi = 0;
+        int miekka = 0;
+        int tulipallo = 0;
+        for (Integer noppa : nopat) {
+            if (noppa > 1 && noppa < 4){
+                nyrkit++;
+            } else if (noppa == 4){
+                jousi++;
+            } else if (noppa == 5){
+                miekka++;
+            } else if (noppa == 6){
+                tulipallo++;
+            }
+        }
+        nyrkit = nyrkit/2;
+        if(jousi > 0){
+            jousi--;
+        }
+        if(miekka > 0){
+            miekka--;
+        }
+        if(tulipallo < 2){
+            tulipallo = 0;
+        }
+        int voima = nyrkit+jousi+miekka+tulipallo;
+        int vastus = luuranko+orkki+lohari;
+        if (voima >= vastus){
+            voitto = true;
+        }
+    }
+    
+    private void palkitse() {
+        int raha1 = 0;
+        int raha2 = 0;
+        int voittopiste = 0;
+        int kortti = 0;
+        for (Integer noppa : nopat) {
+            if (noppa > 1 && noppa < 4){
+                raha1++;
+            } else if (noppa == 4){
+                raha2++;
+            } else if (noppa == 5){
+                voittopiste++;
+            } else if (noppa == 6){
+                kortti++;
+            }
+        }
+        if (raha1 < 2){
+            raha1 = 0;
+        } else {
+            int i = raha1 - 2;
+            raha1 = 3 + i*2;
+        }
+        if (raha2 < 2){
+            raha2 = 0;
+        } else {
+            int j = raha2 - 2;
+            raha2 = 5 + j*3;
+        }
+        if(voittopiste > 0){
+            voittopiste--;
+        }
+        kortti = kortti / 3;
+        // määrittää montako korttia saadaan pakasta
+        
+        for (int i = 0; i < voittopiste; i++) {
+            pelaaja.lisaaPiste();
+        }
+        pelaaja.lisaaRahaa(raha1+raha2);
+//        pelaaja.lisaaKortti(null);                                                AAAAAAAAAAAAAAAAAAAAAAAAAA
     }
     
     
@@ -140,7 +228,7 @@ public class Heittely {
             if ( heittelyraami.getTaulukko()[i] == true ){
                 int uusinoppa = random.nextInt(6)+1;
                 nopat.set(i, uusinoppa);
-                heittelyraami.getNoppanapit().get(i).setText("" + uusinoppa);
+                heittelyraami.getNoppanapit().get(i).paivitaKuva(getVaihe(), uusinoppa);
             }
         }
         peli.getUi().getHeittelyraami().paivitaNappiKomponentit();

@@ -62,6 +62,6 @@ public class LuolastoTest {
     @Test
     public void geneerisenLuolastonNimiOikein(){
         Luolasto g = new Luolasto();
-        assertEquals("generic luolasto", g.getNimi());
+        assertEquals("testiluolasto", g.getNimi());
     }
 }

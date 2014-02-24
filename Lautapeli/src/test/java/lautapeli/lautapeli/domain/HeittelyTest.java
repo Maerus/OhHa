@@ -46,7 +46,7 @@ public class HeittelyTest {
     
     @Test
     public void heittelyssaHeitetaanKuusisivuisiaNoppia(){
-        heittely.heitaNopat(20);
+        heittely.heittele(20);
         boolean a = true;
         for (int i = 0; i < heittely.getNopat().size(); i++) {
             if(heittely.getNopat().get(i) < 1 || heittely.getNopat().get(i) > 6){

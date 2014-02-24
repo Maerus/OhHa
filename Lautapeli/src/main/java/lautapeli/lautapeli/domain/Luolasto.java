@@ -16,9 +16,9 @@ public class Luolasto {
     }
 
     public Luolasto() {
-        this.vihollisnopat = 6;
-        this.taistelunopat = 4;
-        this.aarrenopat = 5;
+        this.vihollisnopat = 10;
+        this.taistelunopat = 10;
+        this.aarrenopat = 10;
         this.nimi = "testiluolasto";
     }
 
