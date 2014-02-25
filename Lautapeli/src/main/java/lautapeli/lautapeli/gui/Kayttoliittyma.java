@@ -35,7 +35,7 @@ public class Kayttoliittyma implements Runnable {
     public void run() {
         raami = new JFrame("Lautapeli"); // vaihda nimi...
         raami.setResizable(false);
-        raami.setPreferredSize(new Dimension(800, 600));
+        raami.setPreferredSize(new Dimension(900, 600));
         
         raami.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
@@ -236,7 +236,6 @@ public class Kayttoliittyma implements Runnable {
         heittelyraami = new JInternalFrame("Heittely");
         heittelyraami.setVisible(true);
         heittelyraami.setBounds(100, 50, 600, 400);
-        heittelyraami.setClosable(true); //                                         poista
         raami.add(heittelyraami,0);
         
         heittoraami = new HeittelyFrame(heittelyraami, heittely);

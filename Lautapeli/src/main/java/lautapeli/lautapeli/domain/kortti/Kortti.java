@@ -15,7 +15,7 @@ public interface Kortti{
      * @return muutos
      */
     public int suorita(String tyyppi);
-    
+    public void tiedotaViholliset(int luuranko, int orkki, int lohikaarme);
     public String getNimi();
     public String getKuvaus();
     public String getTyyppi();

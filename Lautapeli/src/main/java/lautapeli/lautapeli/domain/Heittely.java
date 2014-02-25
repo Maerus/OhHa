@@ -3,6 +3,7 @@ package lautapeli.lautapeli.domain;
 
 import java.util.ArrayList;
 import java.util.Random;
+import lautapeli.lautapeli.domain.kortti.Kortti;
 import lautapeli.lautapeli.gui.HeittelyFrame;
 import lautapeli.lautapeli.logiikka.Peli;
 
@@ -18,19 +19,20 @@ public class Heittely {
     private ArrayList<Integer> nopat;
     private Peli peli;
     private HeittelyFrame heittelyraami;
+    private Luolasto luola;
+    private Korttipakka korttipakka;
 
     public Heittely(Luolasto luola , Pelaaja p, Peli peli) {
         pelaaja = p;
-        
-        vihollisnopat = luola.getVihollisnopat() + pelaaja.getViholliskorttimuutokset();
-        taistelunopat = luola.getTaistelunopat() + pelaaja.getTaistelukorttimuutokset();
-        aarrenopat = luola.getAarrenopat() + pelaaja.getAarrekorttimuutokset();
-        
+        this.luola = luola; 
         rerollit = 2;
         vaihe = 0;
         random = new Random();
-        
         this.peli = peli;
+        try{
+            korttipakka = peli.getKorttipakka(); //testiä varten try-catchin sisällä
+        } catch (Exception e){}
+        
     }
 
     public ArrayList<Integer> getNopat() {
@@ -45,17 +47,23 @@ public class Heittely {
      * Heittely on kolmiosainen ja siihen kuuluu kullekin noppatyypille omat rollit.
      */
     void suoritaHeittely() {
+        vihollisnopat = luola.getVihollisnopat() + pelaaja.getViholliskorttimuutokset();
         heittele(vihollisnopat);
         heittelyraami = peli.getUi().luoHeittelyraami(this);
         odota();
         tallennaViholliset();
+        for (Kortti kortti : pelaaja.getKortit()) {
+            kortti.tiedotaViholliset(luuranko, orkki, lohari);
+        }
         
+        taistelunopat = luola.getTaistelunopat() + pelaaja.getTaistelukorttimuutokset();
         heittele(taistelunopat);
         heittelyraami.paivitaVaihe();
         odota();
         taistele();
         
         if (voitto){
+            aarrenopat = luola.getAarrenopat() + pelaaja.getAarrekorttimuutokset();
             heittele(aarrenopat);
         } else {
             heittele(0);
@@ -164,7 +172,7 @@ public class Heittely {
             pelaaja.lisaaPiste();
         }
         pelaaja.lisaaRahaa(raha1+raha2);
-//        pelaaja.lisaaKortti(null);                                                AAAAAAAAAAAAAAAAAAAAAAAAAA
+        pelaaja.lisaaKortti(korttipakka.otaKortti());                                                
     }
     
     
@@ -198,7 +206,7 @@ public class Heittely {
         
         if(pelaaja.getClass().equals(Npc.class)){
             heitaNopat(noppamaara);
-            System.out.println("heittely metodi saavutettu");
+            System.out.println("heittely metodi saavutettu"); //                                placeholder
             return;
         }
         

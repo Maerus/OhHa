@@ -2,37 +2,34 @@
 package lautapeli.lautapeli.domain.kortti;
 
 
-public class TestiKortti implements Kortti{
+public class Orkkibane implements Kortti{
     private String nimi;
     private String tyyppi;
     private String kuvaus;
     private int hinta;
+    private boolean orkki;
 
-    public TestiKortti() {
-        nimi = "testikortti";
-        tyyppi = "vta";
-        kuvaus = "Pelaajan omistamat kortit vaikuttavat noppien määriin heittelyssä\nluolaston lisäksi";
+    public Orkkibane() {
+        nimi = "Örkkibane";
+        tyyppi = "t";
+        kuvaus = "Myyttinen kirves.\n"
+                + "Jos taistelussa on 2+ örkkinoppaa,\n"
+                + "lisää yksi taistelunoppa";
         hinta = 123;
+        orkki = false;
     }
-    
     
     @Override
     public int suorita(String tyyppi) {
-        if (tyyppi.equals("v")){
+        if(orkki){
+            orkki = false;
             return 1;
+        } else {
+            return 0;
         }
         
-        if (tyyppi.equals("t")){
-            return 2;
-        }
-        
-        if (tyyppi.equals("a")){
-            return 3;
-        }
-        
-        return 0;
     }
-
+    
     @Override
     public String getNimi() {
         return nimi;
@@ -55,6 +52,8 @@ public class TestiKortti implements Kortti{
 
     @Override
     public void tiedotaViholliset(int luuranko, int orkki, int lohikaarme) {
+        if (orkki > 0){
+            this.orkki = true;
+        }
     }
-
 }

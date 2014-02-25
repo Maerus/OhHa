@@ -2,7 +2,9 @@
 package lautapeli.lautapeli.logiikka;
 
 import java.util.ArrayList;
+import lautapeli.lautapeli.domain.Korttipakka;
 import lautapeli.lautapeli.domain.Luolasto;
+import lautapeli.lautapeli.domain.Luolastopakka;
 import lautapeli.lautapeli.domain.Npc;
 import lautapeli.lautapeli.domain.Pelaaja;
 import lautapeli.lautapeli.domain.kortti.Kortti;
@@ -17,6 +19,8 @@ public class Peli {
     private ArrayList<Luolasto> luolastot;
     private ArrayList<Kortti> kauppa;
     private Kayttoliittyma ui;
+    private Luolastopakka luolastopakka;
+    private Korttipakka korttipakka;
     
     public Peli(Kayttoliittyma ui){
         kierros = 0;
@@ -28,6 +32,8 @@ public class Peli {
         
         kauppa = new ArrayList<>();
         this.ui = ui;
+        luolastopakka = new Luolastopakka();
+        korttipakka = new Korttipakka();
     }
 
     public boolean getJatkuu() {
@@ -105,9 +111,9 @@ public class Peli {
         */
         
         //placeholder
-        luolastot.add(new Luolasto());
-        luolastot.add(new Luolasto());
-        luolastot.add(new Luolasto());
+        luolastot.add(luolastopakka.otaLuolasto());
+        luolastot.add(luolastopakka.otaLuolasto());
+        luolastot.add(luolastopakka.otaLuolasto());
     }
     
     
@@ -208,7 +214,9 @@ public class Peli {
         return ui;
     }
     
-    
+    public Korttipakka getKorttipakka(){
+        return korttipakka;
+    }
 
     
     

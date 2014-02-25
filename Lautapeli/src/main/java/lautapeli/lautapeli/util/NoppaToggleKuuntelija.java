@@ -8,7 +8,7 @@ import lautapeli.lautapeli.gui.NoppaButton;
 
 public class NoppaToggleKuuntelija implements ActionListener{
     private NoppaButton nappi;
-    private Boolean[] nappitaulukko; //napit alkaa nollasta
+    private Boolean[] nappitaulukko; 
 
     public NoppaToggleKuuntelija(NoppaButton nappi, Boolean[] nappitaulukko) {
         this.nappi = nappi;
@@ -21,10 +21,10 @@ public class NoppaToggleKuuntelija implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         if ( nappi.isSelected() ){
             nappitaulukko[nappi.getI()] = true;
-            System.out.println(nappi.getI() + " on nyt " + nappitaulukko[nappi.getI()]);
+//            System.out.println(nappi.getI() + " on nyt " + nappitaulukko[nappi.getI()]);
         } else if ( !nappi.isSelected() ){
             nappitaulukko[nappi.getI()] = false;
-            System.out.println(nappi.getI() + " on nyt " + nappitaulukko[nappi.getI()]);
+//            System.out.println(nappi.getI() + " on nyt " + nappitaulukko[nappi.getI()]);
         }
     }
 

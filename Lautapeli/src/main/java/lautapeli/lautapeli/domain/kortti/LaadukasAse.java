@@ -1,38 +1,37 @@
 
 package lautapeli.lautapeli.domain.kortti;
 
+import java.util.Random;
 
-public class TestiKortti implements Kortti{
+
+public class LaadukasAse implements Kortti{
     private String nimi;
     private String tyyppi;
     private String kuvaus;
     private int hinta;
+    private Random r;
 
-    public TestiKortti() {
-        nimi = "testikortti";
-        tyyppi = "vta";
-        kuvaus = "Pelaajan omistamat kortit vaikuttavat noppien määriin heittelyssä\nluolaston lisäksi";
+    public LaadukasAse() {
+        nimi = "Laadukas Ase";
+        tyyppi = "t";
+        kuvaus = "(75%) Lisää nopan taisteluvaiheeseen\n"
+                + "jos onnistuu, (25%) lisää toinen noppa";
         hinta = 123;
+        r = new Random();
     }
-    
     
     @Override
     public int suorita(String tyyppi) {
-        if (tyyppi.equals("v")){
-            return 1;
+        int a = 0;
+        if (r.nextInt(4) > 0){
+            a++;
+            if(r.nextInt(4) == 0) {
+                a++;
+            }
         }
-        
-        if (tyyppi.equals("t")){
-            return 2;
-        }
-        
-        if (tyyppi.equals("a")){
-            return 3;
-        }
-        
-        return 0;
+        return a;
     }
-
+    
     @Override
     public String getNimi() {
         return nimi;

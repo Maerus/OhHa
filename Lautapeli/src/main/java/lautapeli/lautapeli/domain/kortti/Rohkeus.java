@@ -1,20 +1,24 @@
 
 package lautapeli.lautapeli.domain.kortti;
 
+import java.util.Random;
 
-public class TestiKortti implements Kortti{
+
+public class Rohkeus implements Kortti{
     private String nimi;
     private String tyyppi;
     private String kuvaus;
     private int hinta;
+    private Random r;
 
-    public TestiKortti() {
-        nimi = "testikortti";
-        tyyppi = "vta";
-        kuvaus = "Pelaajan omistamat kortit vaikuttavat noppien määriin heittelyssä\nluolaston lisäksi";
+    public Rohkeus() {
+        nimi = "Rohkeus";
+        tyyppi = "va";
+        kuvaus = "Lisää yhden vihollisnopan, sekä\n"
+                + "lisää 1-2 aarrenoppaa";
         hinta = 123;
+        r = new Random();
     }
-    
     
     @Override
     public int suorita(String tyyppi) {
@@ -22,17 +26,13 @@ public class TestiKortti implements Kortti{
             return 1;
         }
         
-        if (tyyppi.equals("t")){
-            return 2;
-        }
-        
         if (tyyppi.equals("a")){
-            return 3;
+            return r.nextInt(2)+1;
         }
         
         return 0;
     }
-
+    
     @Override
     public String getNimi() {
         return nimi;
@@ -56,5 +56,4 @@ public class TestiKortti implements Kortti{
     @Override
     public void tiedotaViholliset(int luuranko, int orkki, int lohikaarme) {
     }
-
 }

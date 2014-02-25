@@ -2,37 +2,24 @@
 package lautapeli.lautapeli.domain.kortti;
 
 
-public class TestiKortti implements Kortti{
+public class MekaaninenAugmentaatio implements Kortti{
     private String nimi;
     private String tyyppi;
     private String kuvaus;
     private int hinta;
 
-    public TestiKortti() {
-        nimi = "testikortti";
+    public MekaaninenAugmentaatio() {
+        nimi = "Mekaaninen Augmentaatio";
         tyyppi = "vta";
-        kuvaus = "Pelaajan omistamat kortit vaikuttavat noppien määriin heittelyssä\nluolaston lisäksi";
+        kuvaus = "Lisää yhden nopan kaikkiin heittelyihin";
         hinta = 123;
     }
     
-    
     @Override
     public int suorita(String tyyppi) {
-        if (tyyppi.equals("v")){
-            return 1;
-        }
-        
-        if (tyyppi.equals("t")){
-            return 2;
-        }
-        
-        if (tyyppi.equals("a")){
-            return 3;
-        }
-        
-        return 0;
+        return 1;
     }
-
+    
     @Override
     public String getNimi() {
         return nimi;

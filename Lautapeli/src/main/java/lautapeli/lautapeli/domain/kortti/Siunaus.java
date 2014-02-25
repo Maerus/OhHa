@@ -2,37 +2,33 @@
 package lautapeli.lautapeli.domain.kortti;
 
 
-public class TestiKortti implements Kortti{
+public class Siunaus implements Kortti{
     private String nimi;
     private String tyyppi;
     private String kuvaus;
     private int hinta;
+    private boolean luuranko;
 
-    public TestiKortti() {
-        nimi = "testikortti";
-        tyyppi = "vta";
-        kuvaus = "Pelaajan omistamat kortit vaikuttavat noppien määriin heittelyssä\nluolaston lisäksi";
+    public Siunaus() {
+        nimi = "Siunaus";
+        tyyppi = "t";
+        kuvaus = "Jos taistelussa on 2+ luurankonoppaa,\n"
+                + "lisää yksi taistelunoppa";
         hinta = 123;
+        luuranko = false;
     }
-    
     
     @Override
     public int suorita(String tyyppi) {
-        if (tyyppi.equals("v")){
+        if(luuranko){
+            luuranko = false;
             return 1;
+        } else {
+            return 0;
         }
         
-        if (tyyppi.equals("t")){
-            return 2;
-        }
-        
-        if (tyyppi.equals("a")){
-            return 3;
-        }
-        
-        return 0;
     }
-
+    
     @Override
     public String getNimi() {
         return nimi;
@@ -55,6 +51,9 @@ public class TestiKortti implements Kortti{
 
     @Override
     public void tiedotaViholliset(int luuranko, int orkki, int lohikaarme) {
+        if (luuranko > 0){
+            this.luuranko = true;
+        }
     }
-
+    
 }

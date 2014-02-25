@@ -62,13 +62,13 @@ public class KauppaPanel {
         c.gridx = 2;
         panel.add(kortti3, c);
         
-        k1panel = new KorttiPanel(kortti1, this);
+        k1panel = new KorttiPanel(kortti1, ui.getPeli().getKorttipakka().otaKortti(), this);
         k1panel.luoKomponentit();
         
-        k2panel = new KorttiPanel(kortti2, this);
+        k2panel = new KorttiPanel(kortti2, ui.getPeli().getKorttipakka().otaKortti(), this);
         k2panel.luoKomponentit();
         
-        k3panel = new KorttiPanel(kortti3, this);
+        k3panel = new KorttiPanel(kortti3, ui.getPeli().getKorttipakka().otaKortti(), this);
         k3panel.luoKomponentit();
     }
     

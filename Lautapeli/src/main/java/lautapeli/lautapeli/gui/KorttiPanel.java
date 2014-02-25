@@ -79,7 +79,7 @@ public class KorttiPanel {
         
         panel.add(scroll3, c); //NIMI
         
-        c.weightx = 0.2;
+        c.weightx = 0.1;
         c.gridx = 1;
         panel.add(scroll2, c); //HINTA
         
