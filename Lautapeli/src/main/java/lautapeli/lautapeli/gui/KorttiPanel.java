@@ -12,29 +12,38 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import lautapeli.lautapeli.domain.kortti.Kortti;
 import lautapeli.lautapeli.domain.kortti.TestiKortti;
-import lautapeli.lautapeli.util.KorttiNappikuuntelija;
+import lautapeli.lautapeli.domain.kortti.TyhjaKortti;
+import lautapeli.lautapeli.util.KaupanKorttiNappikuuntelija;
 
 
 public class KorttiPanel {
     private JPanel panel;
     private Kortti kortti;
     private KauppaPanel kauppapanel;
+    private int i;
 
-    public KorttiPanel(JPanel panel, KauppaPanel kauppa) {
-        this(panel, new TestiKortti(), kauppa);
+    public KorttiPanel(JPanel panel, KauppaPanel kauppa, int i) {
+        this(panel, new TestiKortti(), kauppa, i);
     }
     
-    public KorttiPanel(JPanel panel, Kortti kortti, KauppaPanel kauppa){
+    public KorttiPanel(JPanel panel, Kortti kortti, KauppaPanel kauppa, int i){
         this.panel = panel;
         this.kortti = kortti;
         this.kauppapanel = kauppa;
+        this.i = i;
         
         this.panel.setBorder(new LineBorder(Color.orange, 2));
     }
+
+    public int getI() {
+        return i;
+    }
     
-    JTextField nimi;
-    JTextField hinta;
-    JTextArea kuvaus;
+    private JTextField nimi;
+    private JTextField hinta;
+    private JTextArea kuvaus;
+    private JButton nappi;
+    private KaupanKorttiNappikuuntelija kuuntelija;
     
     void luoKomponentit(){
         GridBagLayout gbl = new GridBagLayout();
@@ -73,8 +82,8 @@ public class KorttiPanel {
         JScrollPane scrollPane = new JScrollPane(kuvaus);
         kuvaus.setLineWrap(true);
         kuvaus.setEditable(false);
-        JButton nappi = new JButton("Osta");
-        KorttiNappikuuntelija kuuntelija = new KorttiNappikuuntelija(kauppapanel.getUi().getPeli().getPelaajat().get(0), kortti);
+        nappi = new JButton("Osta");
+        kuuntelija = new KaupanKorttiNappikuuntelija(kauppapanel.getUi().getPeli().getPelaajat().get(0), kortti, i);
         nappi.addActionListener(kuuntelija);
         
         panel.add(scroll3, c); //NIMI
@@ -102,5 +111,15 @@ public class KorttiPanel {
         nimi.setText(kortti.getNimi());
         hinta.setText("" + kortti.getHinta());
         kuvaus.setText(kortti.getKuvaus());
+        if (this.kortti.equals(TyhjaKortti.class)){
+            nappi.setEnabled(false);
+        }
+        nappi.removeActionListener(kuuntelija);
+        kuuntelija = new KaupanKorttiNappikuuntelija(kauppapanel.getUi().getPeli().getPelaajat().get(0), kortti, i);
+        nappi.addActionListener(kuuntelija);
+    }
+
+    public Kortti getKortti() {
+        return kortti;
     }
 }

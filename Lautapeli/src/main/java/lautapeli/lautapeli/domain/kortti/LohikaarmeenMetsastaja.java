@@ -14,7 +14,7 @@ public class LohikaarmeenMetsastaja implements Kortti{
         tyyppi = "t";
         kuvaus = "Jos taistelussa on 2+ lohikäärmenoppaa,\n"
                 + "lisää yksi taistelunoppa";
-        hinta = 123;
+        hinta = 15;
         lohikaarme = false;
     }
     

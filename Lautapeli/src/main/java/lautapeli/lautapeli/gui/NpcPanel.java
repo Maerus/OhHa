@@ -4,27 +4,33 @@ package lautapeli.lautapeli.gui;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import lautapeli.lautapeli.domain.Pelaaja;
+import lautapeli.lautapeli.util.KorttiNappiKuuntelija;
 
 
 public class NpcPanel {
     private String nimi;
     private JPanel panel;
     private Pelaaja pelaaja;
+    private int i;
+    private Kayttoliittyma ui;
 
-    NpcPanel(String nimi, JPanel panel, Pelaaja pelaaja) {
+    NpcPanel(String nimi, JPanel panel, Pelaaja pelaaja, int i, Kayttoliittyma ui) {
         this.nimi = nimi;
         this.panel = panel;
         this.panel.setBorder(new LineBorder(Color.DARK_GRAY, 2));
         this.pelaaja = pelaaja;
+        this.i = i;
+        this.ui = ui;
     }
     
     private JTextField pistekentta;
     private JTextField rahakentta;
+    private KorttiFrameButton korttinappi;
+    private JTextField nimikentta;
     
     void luoKomponentit() {
         GridBagLayout gbl = new GridBagLayout();
@@ -33,7 +39,7 @@ public class NpcPanel {
         
         c.ipadx = 0;
         c.ipady = 0;
-        JTextField nimikentta = new JTextField(nimi);
+        nimikentta = new JTextField(nimi);
         nimikentta.setHorizontalAlignment(JTextField.CENTER);
         nimikentta.setEditable(false);
         nimikentta.setBackground(Color.white);
@@ -75,7 +81,8 @@ public class NpcPanel {
         c.gridy = 1;
         panel.add(rahakentta, c);
         
-        JButton korttinappi = new JButton("Kortit");
+        korttinappi = new KorttiFrameButton(i, "Kortit");
+        korttinappi.addActionListener(new KorttiNappiKuuntelija(korttinappi, ui.getPeli()));
         c.ipadx = 10;
         c.ipady = 0;
         c.gridwidth = 2;

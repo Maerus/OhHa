@@ -21,9 +21,9 @@ public class KauppaPanel {
         this.panel.setBorder(new LineBorder(Color.GRAY, 2));
     }
     
-    KorttiPanel k1panel;
-    KorttiPanel k2panel;
-    KorttiPanel k3panel;
+    private KorttiPanel k1panel;
+    private KorttiPanel k2panel;
+    private KorttiPanel k3panel;
     
     void luoKomponentit(){
         GridBagLayout gbl = new GridBagLayout();
@@ -62,13 +62,13 @@ public class KauppaPanel {
         c.gridx = 2;
         panel.add(kortti3, c);
         
-        k1panel = new KorttiPanel(kortti1, ui.getPeli().getKorttipakka().otaKortti(), this);
+        k1panel = new KorttiPanel(kortti1, ui.getPeli().getKorttipakka().otaKortti(), this, 1);
         k1panel.luoKomponentit();
         
-        k2panel = new KorttiPanel(kortti2, ui.getPeli().getKorttipakka().otaKortti(), this);
+        k2panel = new KorttiPanel(kortti2, ui.getPeli().getKorttipakka().otaKortti(), this, 2);
         k2panel.luoKomponentit();
         
-        k3panel = new KorttiPanel(kortti3, ui.getPeli().getKorttipakka().otaKortti(), this);
+        k3panel = new KorttiPanel(kortti3, ui.getPeli().getKorttipakka().otaKortti(), this, 3);
         k3panel.luoKomponentit();
     }
     

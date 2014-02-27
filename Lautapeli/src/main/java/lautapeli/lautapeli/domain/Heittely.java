@@ -49,8 +49,10 @@ public class Heittely {
     void suoritaHeittely() {
         vihollisnopat = luola.getVihollisnopat() + pelaaja.getViholliskorttimuutokset();
         heittele(vihollisnopat);
-        heittelyraami = peli.getUi().luoHeittelyraami(this);
-        odota();
+        if (!pelaaja.getClass().equals(Npc.class)){
+            heittelyraami = peli.getUi().luoHeittelyraami(this);
+            odota();
+        }
         tallennaViholliset();
         for (Kortti kortti : pelaaja.getKortit()) {
             kortti.tiedotaViholliset(luuranko, orkki, lohari);
@@ -58,8 +60,10 @@ public class Heittely {
         
         taistelunopat = luola.getTaistelunopat() + pelaaja.getTaistelukorttimuutokset();
         heittele(taistelunopat);
-        heittelyraami.paivitaVaihe();
-        odota();
+        if (!pelaaja.getClass().equals(Npc.class)){
+            heittelyraami.paivitaVaihe();
+            odota();
+        }
         taistele();
         
         if (voitto){
@@ -68,8 +72,10 @@ public class Heittely {
         } else {
             heittele(0);
         }
-        heittelyraami.paivitaVaihe();
-        odota();
+        if (!pelaaja.getClass().equals(Npc.class)){
+            heittelyraami.paivitaVaihe();
+            odota();
+        }
         palkitse();
     }
     
@@ -172,7 +178,9 @@ public class Heittely {
             pelaaja.lisaaPiste();
         }
         pelaaja.lisaaRahaa(raha1+raha2);
-        pelaaja.lisaaKortti(korttipakka.otaKortti());                                                
+        for (int i = 0; i < kortti; i++) {
+            pelaaja.lisaaKortti(korttipakka.otaKortti());                    
+        }                       
     }
     
     
@@ -203,13 +211,6 @@ public class Heittely {
     void heittele(int noppamaara) {
         nopat = new ArrayList<>();
         vaihe++;
-        
-        if(pelaaja.getClass().equals(Npc.class)){
-            heitaNopat(noppamaara);
-            System.out.println("heittely metodi saavutettu"); //                                placeholder
-            return;
-        }
-        
         heitaNopat(noppamaara);
     }
     

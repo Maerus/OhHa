@@ -16,7 +16,7 @@ public class Rohkeus implements Kortti{
         tyyppi = "va";
         kuvaus = "Lisää yhden vihollisnopan, sekä\n"
                 + "lisää 1-2 aarrenoppaa";
-        hinta = 123;
+        hinta = 20;
         r = new Random();
     }
     

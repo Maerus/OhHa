@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Point;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -17,6 +18,7 @@ import javax.swing.border.LineBorder;
 import lautapeli.lautapeli.logiikka.Peli;
 import lautapeli.lautapeli.util.NimiGen;
 import lautapeli.lautapeli.domain.Heittely;
+import lautapeli.lautapeli.domain.Pelaaja;
 
 
 public class Kayttoliittyma implements Runnable {
@@ -83,7 +85,7 @@ public class Kayttoliittyma implements Runnable {
         luoPelaajaKomponentit(pelaajatPanel);
     }
     
-
+    private KauppaPanel kauppaPanel;
 
     /**
      * Metodi luo vasemmalle sijoittuvat luolasto- ja kauppakomponentit.
@@ -129,17 +131,16 @@ public class Kayttoliittyma implements Runnable {
         LuolastoPanel luolasto3 = new LuolastoPanel(this, luola3, peli.getLuolastot().get(2));
         luolasto3.luoKomponentit();
         
-        KauppaPanel kauppaPanel = new KauppaPanel(kauppa, this);
+        kauppaPanel = new KauppaPanel(kauppa, this);
         kauppaPanel.luoKomponentit();
     }
     
-//    public void luoLopetusruutu(){
-//        
-//    }
+    public KauppaPanel getKauppaPanel() {
+        return kauppaPanel;
+    }
 
     
-    
-    public JLabel kierros;
+    public JLabel kierros; //public ?
     private PelaajaPanel ppanel;
     private NpcPanel n1panel;
     private NpcPanel n2panel;
@@ -188,16 +189,16 @@ public class Kayttoliittyma implements Runnable {
         c.gridy = 4;
         panel.add(npc3Panel,c);
         
-        ppanel = new PelaajaPanel(nimigen.haeNimi(), pelaajaPanel, peli.getPelaajat().get(0));
+        ppanel = new PelaajaPanel(nimigen.haeNimi(), pelaajaPanel, peli.getPelaajat().get(0), 0, this);
         ppanel.luoKomponentit();
         
-        n1panel = new NpcPanel(nimigen.haeNimi(), npc1Panel, peli.getPelaajat().get(1));
+        n1panel = new NpcPanel(nimigen.haeNimi(), npc1Panel, peli.getPelaajat().get(1), 1, this);
         n1panel.luoKomponentit();
         
-        n2panel = new NpcPanel(nimigen.haeNimi(), npc2Panel, peli.getPelaajat().get(2));
+        n2panel = new NpcPanel(nimigen.haeNimi(), npc2Panel, peli.getPelaajat().get(2), 2, this);
         n2panel.luoKomponentit();
         
-        n3panel = new NpcPanel(nimigen.haeNimi(), npc3Panel, peli.getPelaajat().get(3));
+        n3panel = new NpcPanel(nimigen.haeNimi(), npc3Panel, peli.getPelaajat().get(3), 3, this);
         n3panel.luoKomponentit();
     }
     
@@ -224,27 +225,57 @@ public class Kayttoliittyma implements Runnable {
     }
     
     
-    JInternalFrame heittelyraami;
-    HeittelyFrame heittoraami;
+    private JInternalFrame heittelyFrame;
+    private HeittelyFrame heittelyraami;
     /**
      * Luo heittelytilanteelle oman raamin
      * @param heittely
-     * @return heittoraami
+     * @return heittelyraami
      */
     public HeittelyFrame luoHeittelyraami(Heittely heittely) {
         raami.setLayout(null);
-        heittelyraami = new JInternalFrame("Heittely");
-        heittelyraami.setVisible(true);
-        heittelyraami.setBounds(100, 50, 600, 400);
-        raami.add(heittelyraami,0);
+        heittelyFrame = new JInternalFrame("Heittely");
+        heittelyFrame.setVisible(true);
+        heittelyFrame.setBounds(100, 50, 600, 400);
+        raami.add(heittelyFrame,0);
         
-        heittoraami = new HeittelyFrame(heittelyraami, heittely);
-        heittoraami.luoKomponentit();
-        return heittoraami;
+        heittelyraami = new HeittelyFrame(heittelyFrame, heittely);
+        heittelyraami.luoKomponentit();
+        return heittelyraami;
     }
 
     public HeittelyFrame getHeittelyraami() {
-        return heittoraami;
+        return heittelyraami;
     }
     
+    private JInternalFrame korttiFrame;
+    private KorttiFrame korttiraami;
+    
+    /**
+     * Metodi luo raamin yhden pelaajan korttien tarkastelua varten.
+     * @param pelaaja 
+     */
+    public void luoKorttiraami(Pelaaja pelaaja){
+        raami.setLayout(null);
+        korttiFrame = new JInternalFrame("Kortit");
+        raami.add(korttiFrame,0);
+        
+        korttiraami = new KorttiFrame(korttiFrame, pelaaja);
+        korttiraami.luoKomponentit();
+    }
+    
+    private JInternalFrame loppuFrame;
+    private LoppuFrame loppuraami;
+    
+    /**
+     * Metodi luo pelin päättymisen ilmoittavan raamin
+     */
+    public void luoLoppuraami(){
+        raami.setLayout(null);
+        loppuFrame = new JInternalFrame();
+        raami.add(loppuFrame,0);
+        
+        loppuraami = new LoppuFrame(loppuFrame);
+        loppuraami.luoKomponentit();
+    }
 }

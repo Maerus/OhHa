@@ -14,7 +14,7 @@ public class Alkemisti implements Kortti{
         tyyppi = "a";
         kuvaus = "Jos taistelussa on 2+ luurankonoppaa,\n"
                 + "lisää yksi aarrenoppa";
-        hinta = 123;
+        hinta = 20;
         luuranko = false;
     }
     

@@ -27,7 +27,7 @@ public class Peli {
         jatkuu = true;
         pelaajat = new ArrayList<>();
         
-        ylaraja = 20;
+        ylaraja = 50;
         luolastot = new ArrayList<>();
         
         kauppa = new ArrayList<>();
@@ -89,7 +89,6 @@ public class Peli {
     public void alusta(){
         lisaaPelaajat();
         lisaaLuolastot();
-        lisaaKortitKauppaan();
     }
     
     
@@ -105,30 +104,10 @@ public class Peli {
      * Metodi valitsee kolme luolastoa luolastopakasta ja asettaa ne peliin.
      */
     void lisaaLuolastot(){
-        
-        /*
-        Luolastot laitetaan pakkaan, josta ne otetaan tässä metodissa peliin
-        */
-        
-        //placeholder
         luolastot.add(luolastopakka.otaLuolasto());
         luolastot.add(luolastopakka.otaLuolasto());
         luolastot.add(luolastopakka.otaLuolasto());
     }
-    
-    
-    /**
-     * Metodi lisää korttipakasta kortin kauppaan tyhjälle paikalle.
-     */
-    void lisaaKortitKauppaan(){
-        
-        /*
-        korttipakasta nostetaan kolme korttia kauppaan
-        */
-        
-        //placeholder                                                               aaaaaaaaaa
-    }
-    
     
     /**
      * Metodi käynnistää pelikierroksen.
@@ -153,7 +132,23 @@ public class Peli {
         }
         
         if (!jatkuu){
-            //lopetus ui jonka teen joskus
+            ui.luoLoppuraami();
+            pysayta();
+        }
+    }
+    
+    /**
+     * Metodi pysäyttää peliloopin.
+     */
+    private void pysayta(){
+        final Object lukko = new Object();
+        boolean ready = false;
+        synchronized(lukko){
+            while(!ready){
+                try{
+                    lukko.wait();
+                } catch (InterruptedException e) {}
+            }
         }
     }
     

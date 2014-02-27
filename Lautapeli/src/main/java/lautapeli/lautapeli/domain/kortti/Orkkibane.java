@@ -15,7 +15,7 @@ public class Orkkibane implements Kortti{
         kuvaus = "Myyttinen kirves.\n"
                 + "Jos taistelussa on 2+ örkkinoppaa,\n"
                 + "lisää yksi taistelunoppa";
-        hinta = 123;
+        hinta = 15;
         orkki = false;
     }
     

@@ -21,7 +21,7 @@ public class Luolastopakka {
         
         pakka.add(new Luolasto(9, 3, 8, "Mahtivuoret"));
         pakka.add(new Luolasto(6, 4, 4, "Jäätynyt Tyrmä"));
-        pakka.add(new Luolasto(5, 2, 4, "Umpiräme"));
+        pakka.add(new Luolasto(5, 2, 6, "Umpiräme"));
         pakka.add(new Luolasto(a, b, a-2, "Mystinen Luola"));
         pakka.add(new Luolasto(8, 6, 5, "Örkkikylä"));
     }

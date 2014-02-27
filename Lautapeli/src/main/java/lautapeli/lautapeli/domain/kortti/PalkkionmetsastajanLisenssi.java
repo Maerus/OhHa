@@ -14,7 +14,7 @@ public class PalkkionmetsastajanLisenssi implements Kortti{
         tyyppi = "a";
         kuvaus = "Jos taistelussa on 2+ örkkinoppaa,\n"
                 + "lisää yksi aarrenoppa";
-        hinta = 123;
+        hinta = 20;
         orkki = false;
     }
     

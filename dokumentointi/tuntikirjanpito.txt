@@ -25,11 +25,12 @@
 - 4.2.2014
 	~0:00 - ~4:00	
 	sekä pitkin päivää	-layoutin suunnittelua ja sen alustavaa kasaamista
+	arvio 4 tuntia
 
 
 - 5.2.2014
 	illalla sekä 6.2.2014 yöllä 
-				-javadocia ja sekvenssikaavioita ja lisäyksiä koodiin
+	arvio 4 tuntia		-javadocia ja sekvenssikaavioita ja lisäyksiä koodiin
 
 
 - 11.2.2014
@@ -43,36 +44,49 @@
 - 12.2.2014
 	~2:00 - 4:30		-perus UI:n finalisointia
 
-	n. 8 - 10	 	-elementtien sitominen komponentteihin alkaa, lähinnä stackoverflow.com
+	n. 8:00 - 10:00	 	-elementtien sitominen komponentteihin alkaa, lähinnä stackoverflow.com
 				 lankojen ja docs.oracle.com dokumenttien lukemista aiheesta.
 				-myös pelaajaluokan metodien remontointia
 
-	n. 10 - 11		-kaikenlaista sähläystä
+	n. 10:00 - 11:00	-kaikenlaista sähläystä
 
 
 - 13.2.2014
-	n. 3 - 4 		-testien kirjoittelua
+	n. 3:00 - 4:00 		-testien kirjoittelua
 	14:00 - 14:15		-lisää javadoc ja luokkakaavion päivitys
 
 
 - 14.2.2014
-	n. 6 - 8		-komponenttien sitomista ui elementteihin, sekä ui päivitysmetodien luomista
+	n. 6:00 - 8:00		-komponenttien sitomista ui elementteihin, sekä ui päivitysmetodien luomista
 
 
 - 16.2.2014
-	n. 8-11:40		-kortin ostonappien ja luolaston heittelynappien toiminnallisuuksien
+	n. 8:00-11:40		-kortin ostonappien ja luolaston heittelynappien toiminnallisuuksien
 				 sitominen odottavaan metodiin pelaajaluokassa onnistuneesti
 
 
 - 17.2.2014
-	n. 6 - 8		-heittelyraamin tekeminen ja sijoittaminen käyttöliittymän päälle
+	n. 6:00 - 8:00		-heittelyraamin tekeminen ja sijoittaminen käyttöliittymän päälle
 
 
 - 22.2.2014
-	n. 12 - 14		-noppien rerollaus valmis
+	n. 12:00 - 14:00		-noppien rerollaus valmis
 	n. 17:30 - 18:30	-heittelyn vaiheen edistäminen valmis, rerollaus ei toimi ensimmäisen vaiheen jälkeen :<
 
 
 - 24.2.2014
 	n. 1:00 - 5:40		-noppaikonien piirtelyä (such programming), heittelysäännöstön laatiminen ja lähes valmis implementaatio heittelyyn,
 				 ikonien liittäminen noppanappeihin
+
+
+- 25.2.2014
+	n. 15:00 - 20:00	-pääasiassa luolastojen ja korttien kehittelyä ja niiden implementaatio peliin
+
+
+- 26.2.2014
+	n. 3:00 - 5:00		-korttiframen kehittämistä ja asianmukaista refaktorointia
+	n. 15:00 - 17:00 		-hintojen jakaminen korteille, lopetusframen luominen, korttiframen valmistaminen
+				 kaupan päivitys kortin ostaessa, oleellista refaktorointia
+
+- 27.2.2014
+	n.0:00-1:00 ja 3:00-4:00	-pelin viimeistely paitsi TÄYSIN JÄRJENVASTAINEN NULL POINTER EXCEPTION PILAA KAIKEN AUGH

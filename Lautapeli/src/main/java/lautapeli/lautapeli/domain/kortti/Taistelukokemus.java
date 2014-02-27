@@ -12,7 +12,7 @@ public class Taistelukokemus implements Kortti{
         nimi = "Taistelukokemus";
         tyyppi = "t";
         kuvaus = "Lisää yhden nopan taisteluvaiheeseen";
-        hinta = 123;
+        hinta = 25;
     }
 
     @Override

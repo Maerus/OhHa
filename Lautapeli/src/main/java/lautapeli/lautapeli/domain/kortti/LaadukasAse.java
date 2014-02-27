@@ -16,7 +16,7 @@ public class LaadukasAse implements Kortti{
         tyyppi = "t";
         kuvaus = "(75%) Lisää nopan taisteluvaiheeseen\n"
                 + "jos onnistuu, (25%) lisää toinen noppa";
-        hinta = 123;
+        hinta = 18;
         r = new Random();
     }
     

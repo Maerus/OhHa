@@ -4,6 +4,5 @@ OhHa
 javalabra: nopanheitto(lauta)peli
 
 
--- Pelilogiikka valmis, kortteja ja luolastoja tehty.
-
--- puutteita: NPC toiminnot, korttien katseluraami, javadoc, muu dokumentaatio
+Exception in thread "main" java.lang.NullPointerException
+	at lautapeli.lautapeli.domain.Npc.valitseVuoroToimepide(Npc.java:43)

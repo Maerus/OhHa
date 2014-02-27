@@ -14,7 +14,7 @@ public class Haaste implements Kortti{
         tyyppi = "a";
         kuvaus = "Jos taistelussa on 2+ lohikäärmenoppaa,\n"
                 + "lisää kaksi aarrenoppaa";
-        hinta = 123;
+        hinta = 20;
         lohikaarme = false;
     }
     

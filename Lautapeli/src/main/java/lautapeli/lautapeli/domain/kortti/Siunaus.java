@@ -14,7 +14,7 @@ public class Siunaus implements Kortti{
         tyyppi = "t";
         kuvaus = "Jos taistelussa on 2+ luurankonoppaa,\n"
                 + "lisää yksi taistelunoppa";
-        hinta = 123;
+        hinta = 15;
         luuranko = false;
     }
     

@@ -101,8 +101,6 @@ public class Pelaaja {
         }
     }
     
-
-
     /**
      * Metodi ostaa pelaajalle kortin kaupasta, jos siihen on varaa.
      * 
@@ -115,11 +113,32 @@ public class Pelaaja {
         if (raha >= kortti.getHinta()){
             raha = raha - kortti.getHinta();
             kortit.add(kortti);
+            
+            //laittaa kauppaan uuden kortin ostetun tilalle
+            if (korttiruutu == 1){
+                peli.getUi().getKauppaPanel().getK1panel().paivitaKortti(peli.getKorttipakka().otaKortti());
+            } else if (korttiruutu == 2){
+                peli.getUi().getKauppaPanel().getK2panel().paivitaKortti(peli.getKorttipakka().otaKortti());
+            } else if (korttiruutu == 3){
+                peli.getUi().getKauppaPanel().getK3panel().paivitaKortti(peli.getKorttipakka().otaKortti());
+            }
+            
             return true;
         }
         //tänne actionEvent poistamaan kaupasta kyseinen kortti                     aaaaaaaaaa
         //tai sitten ihan vaan tehdään metodi, joka päivittää sen kortin :|
         return false;
+    }
+    
+    private int korttiruutu;
+    
+    /**
+     * Asettaa valitun korttiruudun ostotapahtumaa varten.
+     * Tätä käytetään korttipanelin päivittämiseen, kun kortti ostetaan pois.
+     * @param i 
+     */
+    public void setValittuKorttiruutu(int i){
+        korttiruutu = i;
     }
     
     /**

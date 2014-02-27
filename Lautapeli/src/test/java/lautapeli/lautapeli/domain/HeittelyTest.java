@@ -38,11 +38,6 @@ public class HeittelyTest {
     // @Test
     // public void hello() {}
     
-//    @Test                   korjaan kun tulee oikeasti vastaan
-//    public void geneerisenLuolastonHeittelyssaKolmeNoppaa(){
-//        heittely.heittele();
-//        assertEquals(3, heittely.getNopat().size());
-//    }
     
     @Test
     public void heittelyssaHeitetaanKuusisivuisiaNoppia(){

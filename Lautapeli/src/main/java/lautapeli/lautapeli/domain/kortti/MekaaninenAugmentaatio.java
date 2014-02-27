@@ -12,7 +12,7 @@ public class MekaaninenAugmentaatio implements Kortti{
         nimi = "Mekaaninen Augmentaatio";
         tyyppi = "vta";
         kuvaus = "Lisää yhden nopan kaikkiin heittelyihin";
-        hinta = 123;
+        hinta = 15;
     }
     
     @Override
