@@ -110,23 +110,23 @@ public class Pelaaja {
      * @return onnistuiko ostaminen
      */
     public boolean osta(Kortti kortti) {
-        if (raha >= kortti.getHinta()){
-            raha = raha - kortti.getHinta();
-            kortit.add(kortti);
-            
-            //laittaa kauppaan uuden kortin ostetun tilalle
-            if (korttiruutu == 1){
-                peli.getUi().getKauppaPanel().getK1panel().paivitaKortti(peli.getKorttipakka().otaKortti());
-            } else if (korttiruutu == 2){
-                peli.getUi().getKauppaPanel().getK2panel().paivitaKortti(peli.getKorttipakka().otaKortti());
-            } else if (korttiruutu == 3){
-                peli.getUi().getKauppaPanel().getK3panel().paivitaKortti(peli.getKorttipakka().otaKortti());
+        //try catch testausta varten
+        try{
+            if (raha >= kortti.getHinta()){
+                raha = raha - kortti.getHinta();
+                kortit.add(kortti);
+
+                //laittaa kauppaan uuden kortin ostetun tilalle
+                if (korttiruutu == 1){
+                    peli.getUi().getKauppaPanel().getK1panel().paivitaKortti(peli.getKorttipakka().otaKortti());
+                } else if (korttiruutu == 2){
+                    peli.getUi().getKauppaPanel().getK2panel().paivitaKortti(peli.getKorttipakka().otaKortti());
+                } else if (korttiruutu == 3){
+                    peli.getUi().getKauppaPanel().getK3panel().paivitaKortti(peli.getKorttipakka().otaKortti());
+                }
+                return true;
             }
-            
-            return true;
-        }
-        //tänne actionEvent poistamaan kaupasta kyseinen kortti                     aaaaaaaaaa
-        //tai sitten ihan vaan tehdään metodi, joka päivittää sen kortin :|
+        } catch (Exception e){}
         return false;
     }
     

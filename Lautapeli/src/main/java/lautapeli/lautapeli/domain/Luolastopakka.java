@@ -32,6 +32,11 @@ public class Luolastopakka {
         pakka.remove(i);
         return l;
     }
+
+    public ArrayList<Luolasto> getPakka() {
+        return pakka;
+    }
+    
     
     
 }

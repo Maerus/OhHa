@@ -65,7 +65,7 @@ public class PeliTest {
     @Test
     public void yhdenLoopinKestavanPelinKierroslukuOnYksi() throws InterruptedException{
         peli.setYlaraja(1);
-        
+        peli.lisaaLuolastot();
         peli.lisaaPelaaja(new Npc(peli));
         peli.lisaaPelaaja(new Npc(peli));
         peli.lisaaPelaaja(new Npc(peli));
@@ -79,6 +79,7 @@ public class PeliTest {
     
     @Test
     public void pelinLoputtuaVahintaanYhdellaPelaajallaOnYlarajanVerranPisteita() throws InterruptedException{
+        peli.lisaaLuolastot();
         peli.lisaaPelaaja(new Npc(peli));
         peli.lisaaPelaaja(new Npc(peli));
         peli.lisaaPelaaja(new Npc(peli));
@@ -86,7 +87,6 @@ public class PeliTest {
         
         peli.getPelaajat().get(0).setPisteet(peli.getYlaraja());
         
-        peli.lisaaLuolastot();
         peli.pelaa();
         boolean test = false;
         for (Pelaaja p : peli.getPelaajat()) {

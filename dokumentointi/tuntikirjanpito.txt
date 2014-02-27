@@ -90,3 +90,4 @@
 
 - 27.2.2014
 	n.0:00-1:00 ja 3:00-4:00	-pelin viimeistely paitsi TÄYSIN JÄRJENVASTAINEN NULL POINTER EXCEPTION PILAA KAIKEN AUGH
+	n. 15:00 - 16:15	-viimeinen bugi korjattu -> ohjelma käytännössä valmis. Testien kirjoittelua sinne, mihin voi, sekä testausdokumentin kirjoittamista

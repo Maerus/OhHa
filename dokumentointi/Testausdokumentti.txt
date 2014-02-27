@@ -1,0 +1,15 @@
+Koska useat pelikomponentit ovat vahvasti UI sidonnaisia, on niille hankalaa kirjoittaa testej‰.
+T‰m‰n vuoksi PIT raportin line coverage, sek‰ mutation coverage k‰rsiv‰t.
+Eritysesti Line coverage k‰rsii, kun se joutuu joissain luokissa ohittamaan kaikki UI:hin liittyv‰t rivit.
+Jotkut osa-alueet ovat tosin t‰ysin UI:n ulkopuolisia, ja ovat siten paremmin JUnitilla testattuja.
+
+Peli‰ on kuitenkin helppo testata k‰sin, koska t‰rke‰t ominaisuudet ovat helposti n‰kyvill‰.
+
+UI on designattu ja korjailtu k‰sin. Komponentteja on korjaitu ja s‰‰detty useiden havaittujen omituisuuksien aiheuttamana; scrollpaneja on luotu tekstibokseille sen lis‰ksi, ett‰ niille on asetettu haluttuja ominaisuuksia, kuten setColumns(1); ja setEditable(false) jne.
+Kaikki pelaajan manuaaliset toiminnot, kuten heittely, noppien rerollaaminen, korttien ostaminen sek‰ kunkin pelaajan korttien tarkastelu on testattu k‰sin, ja t‰m‰n ansiosta on saatu ohelmoitua toimivaksi.
+
+Erityisesti korttien ostaminen ja palkitseminen heittelyst‰ on testattu KorttiFramen avulla.
+KorttiFrame itsess‰‰n tuli testattua palkitsemistilanteessa olevan BUGIN avulla, jossa se antoi kortin jokaisessa heittelyss‰ (korjattu).
+
+NPC pelaajan satunnaisuudesta johtuen testit voivat olla kattamatta jotain tiettyj‰ osa-alueita, koska se valitsee vain joko heittelyn tai ostamisen (joka on testatessa rikki, koska UI sidonnaisuus).
+NPC ei rerollaa noppia: t‰m‰ on tarkoituksellista, koska tavoitteena ei ole ohjelmoida teko‰ly‰

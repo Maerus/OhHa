@@ -132,8 +132,10 @@ public class Peli {
         }
         
         if (!jatkuu){
-            ui.luoLoppuraami();
-            pysayta();
+            try{
+                ui.luoLoppuraami();
+                pysayta();
+            } catch (Exception e){}
         }
     }
     

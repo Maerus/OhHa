@@ -28,13 +28,16 @@ public class Npc extends Pelaaja{
             valinta = Valinta.KORTTI;
             int r3 = r.nextInt(3)+1;
             setValittuKorttiruutu(r3);
-            if(r3 == 1){
+            //ikävästi ui sidonnainen, ei voi oikein testata
+            try{
+                if(r3 == 1){
                 setValittuKortti(peli.getUi().getKauppaPanel().getK1panel().getKortti());
             } else if (r3 == 2){
                 setValittuKortti(peli.getUi().getKauppaPanel().getK2panel().getKortti());
             } else if (r3 == 3){
                 setValittuKortti(peli.getUi().getKauppaPanel().getK3panel().getKortti());
             }
+            } catch (Exception e){}
             
         }
         

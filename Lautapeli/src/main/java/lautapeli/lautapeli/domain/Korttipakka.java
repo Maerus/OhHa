@@ -59,6 +59,10 @@ public class Korttipakka {
         pakka.remove(i);
         return k;
     }
+
+    public ArrayList<Kortti> getPakka() {
+        return pakka;
+    }
     
     
 }
