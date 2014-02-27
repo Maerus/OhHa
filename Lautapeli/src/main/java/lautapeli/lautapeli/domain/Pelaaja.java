@@ -7,10 +7,10 @@ import lautapeli.lautapeli.logiikka.Peli;
 
 
 public class Pelaaja {
-    private int pisteet;
-    private int raha;
-    private ArrayList<Kortti> kortit;
-    private Peli peli;
+     int pisteet;
+     int raha;
+     ArrayList<Kortti> kortit;
+     Peli peli;
     
     public Pelaaja(Peli peli){
         pisteet = 0;
@@ -39,17 +39,17 @@ public class Pelaaja {
         return kortit;
     }
     
-    private Valinta valinta;
+     Valinta valinta;
     public void setValinta(Valinta valinta) {
         this.valinta = valinta;
     }
     
-    private Kortti valittuKortti;
+     Kortti valittuKortti;
     public void setValittuKortti(Kortti valittuKortti) {
         this.valittuKortti = valittuKortti;
     }
     
-    private Luolasto valittuLuolasto;
+     Luolasto valittuLuolasto;
     public void setValittuLuolasto(Luolasto valittuLuolasto) {
         this.valittuLuolasto = valittuLuolasto;
     }
@@ -130,7 +130,7 @@ public class Pelaaja {
         return false;
     }
     
-    private int korttiruutu;
+     int korttiruutu;
     
     /**
      * Asettaa valitun korttiruudun ostotapahtumaa varten.
