@@ -3,13 +3,18 @@ Tämän vuoksi PIT raportin line coverage, sekä mutation coverage kärsivät.
 Eritysesti Line coverage kärsii, kun se joutuu joissain luokissa ohittamaan kaikki UI:hin liittyvät rivit.
 Jotkut osa-alueet ovat tosin täysin UI:n ulkopuolisia, ja ovat siten paremmin JUnitilla testattuja.
 
-Peliä on kuitenkin helppo testata käsin, koska tärkeät ominaisuudet ovat helposti näkyvillä.
+Peliä on kuitenkin helppo testata käsin, koska tärkeät ominaisuudet ovat helposti näkyvillä. Peliä on käynnistetty lukuisia kertoja tarkastamaan, että UI elementit, tietokentät jne, sekä pelaajan käytössä olevat napit toimivat oikein.
+Erityisesti noppien testaus edellytti netbeans konsolin hyödyntämistä printatun tiedon muodossa (nappi n on nyt true/false).
 
-UI on designattu ja korjailtu käsin. Komponentteja on korjaitu ja säädetty useiden havaittujen omituisuuksien aiheuttamana; scrollpaneja on luotu tekstibokseille sen lisäksi, että niille on asetettu haluttuja ominaisuuksia, kuten setColumns(1); ja setEditable(false) jne.
-Kaikki pelaajan manuaaliset toiminnot, kuten heittely, noppien rerollaaminen, korttien ostaminen sekä kunkin pelaajan korttien tarkastelu on testattu käsin, ja tämän ansiosta on saatu ohelmoitua toimivaksi.
+Pelaajan oma nimikenttä on editoitavissa; tämä on tarkoitettu FEATURE. Kaikki pelaajanimikentät ovat olemassa puhtaasti flavorin takia.
+
+UI on designattu ja korjailtu käsin puhtaasti käsin testaamalla. Komponentteja on korjaitu ja säädetty useiden havaittujen omituisuuksien aiheuttamana; scrollpaneja on luotu tekstibokseille sen lisäksi, että niille on asetettu haluttuja ominaisuuksia, kuten setColumns(1); ja setEditable(false) jne.
+Kaikki pelaajan manuaaliset toiminnot, kuten heittely, noppien valitseminen rollattavaksi, noppien rerollaaminen, korttien ostaminen, tietoruutujen päivityksen tarkistaminen sekä kunkin pelaajan korttien tarkastelu on testattu käsin, ja tämän ansiosta on saatu ohelmoitua toimivaksi.
 
 Erityisesti korttien ostaminen ja palkitseminen heittelystä on testattu KorttiFramen avulla.
 KorttiFrame itsessään tuli testattua palkitsemistilanteessa olevan BUGIN avulla, jossa se antoi kortin jokaisessa heittelyssä (korjattu).
 
 NPC pelaajan satunnaisuudesta johtuen testit voivat olla kattamatta jotain tiettyjä osa-alueita, koska se valitsee vain joko heittelyn tai ostamisen (joka on testatessa rikki, koska UI sidonnaisuus).
-NPC ei rerollaa noppia: tämä on tarkoituksellista, koska tavoitteena ei ole ohjelmoida tekoälyä
+NPC ei rerollaa noppia: tämä on tarkoituksellista, koska tavoitteena ei ole ohjelmoida tekoälyä. Sen sijaan niille annetaan helpotukseksi ylimääräinen taistelunoppa.
+
+Koulun koneiden LINUXilla ohjelmassa tapahtuu pieniä jänniä korttien kuvausten kanssa, sillä linuxissa oleva fontti on leveä. Kuvauksissa, joissa on pitkä yksittäinen rivi, teksti pilkkoontuu kesken sanan kaupan korttipanessa. KorttiFramessa sanojen mankeloinnin sijaan syntyy leveyssuuntainen scrollauspalkki, joka syö hieman estetiikkaa.
