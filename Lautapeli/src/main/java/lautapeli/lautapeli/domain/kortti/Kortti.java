@@ -1,12 +1,10 @@
 
 package lautapeli.lautapeli.domain.kortti;
 
-
+/**
+ * Kortti on pelimekaanisesti tärkeä komponentti, joka vaikuttaa pelaajan kykyyn onnistua heittelyissä ja saada enemmän pisteitä ja loottia.
+ */
 public interface Kortti{
-//    private final String nimi;
-//    private final String tyyppi;
-//    private final int hinta;
-//    private final String kuvaus;
 
     /**
      * Metodi palauttaa kortin tekemän muutoksen noppiin tyypin perusteella.
@@ -15,7 +13,16 @@ public interface Kortti{
      * @return muutos
      */
     public int suorita(String tyyppi);
+    
+    /**
+     * Metodi tiedottaa, mitä vihollisia on tullut vastaan vihollisnopista,
+     * jotta spesifiset kortit voivat suorittaa erikoistuneen toimintansa.
+     * @param luuranko
+     * @param orkki
+     * @param lohikaarme 
+     */
     public void tiedotaViholliset(int luuranko, int orkki, int lohikaarme);
+    
     public String getNimi();
     public String getKuvaus();
     public String getTyyppi();

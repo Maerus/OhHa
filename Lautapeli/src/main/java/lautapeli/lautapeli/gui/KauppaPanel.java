@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
-
+/**
+ * Luokka on vastuussa kauppapanelin komponenteista.
+ */
 public class KauppaPanel {
     private JPanel panel;
     private Kayttoliittyma ui;
@@ -25,6 +27,9 @@ public class KauppaPanel {
     private KorttiPanel k2panel;
     private KorttiPanel k3panel;
     
+    /**
+     * Luo kauppapanelin komponentit.
+     */
     void luoKomponentit(){
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();

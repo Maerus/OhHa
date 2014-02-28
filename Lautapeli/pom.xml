@@ -57,6 +57,31 @@
             </targetTests>
         </configuration>
         </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>2.2</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <transformers>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>lautapeli.lautapeli.LautaMain</mainClass>
+                            </transformer>
+                        </transformers>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+        <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-javadoc-plugin</artifactId>
+             <version>2.9.1</version>
+        </plugin> 
     </plugins>
 </build>
 </project>

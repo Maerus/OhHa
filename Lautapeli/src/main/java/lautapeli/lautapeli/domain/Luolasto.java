@@ -1,7 +1,9 @@
 
 package lautapeli.lautapeli.domain;
 
-
+/**
+ * Luolasto on pelimekaanisesti tärkeä komponentti, johon kuuluu eri määriä noppia eri heittelyvaiheisiin.
+ */
 public class Luolasto {
     private int vihollisnopat;
     private int taistelunopat;

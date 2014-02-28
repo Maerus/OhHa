@@ -7,7 +7,9 @@ import lautapeli.lautapeli.domain.kortti.Kortti;
 import lautapeli.lautapeli.gui.HeittelyFrame;
 import lautapeli.lautapeli.logiikka.Peli;
 
-
+/**
+ * Pelilogiikan vaihe, jossa pelaaja suorittaa heittelytoiminnon.
+ */
 public class Heittely {
     private int vihollisnopat;
     private int taistelunopat;
@@ -82,6 +84,10 @@ public class Heittely {
     private int luuranko;
     private int orkki;
     private int lohari;
+    
+    /**
+     * Metodi tallentaa vihollisnopista saadut vihollisarvot korttien toiminnallisuuksia varten.
+     */
     private void tallennaViholliset(){
         luuranko=0;
         orkki=0;
@@ -106,6 +112,10 @@ public class Heittely {
     }
     
     private boolean voitto;
+    
+    /**
+     * Metodi kerää taistelunoppien onnistumiset ja vertaa niitä vihollisnoppiin.
+     */
     private void taistele() {
         voitto = false;
         int nyrkit = 0;
@@ -140,6 +150,9 @@ public class Heittely {
         }
     }
     
+    /**
+     * Metodi palkitsee pelaajan nopista saamilla palkinnoilla.
+     */
     private void palkitse() {
         int raha1 = 0;
         int raha2 = 0;
@@ -186,6 +199,10 @@ public class Heittely {
     
     private final Object lock = new Object();
     private boolean ready;
+    
+    /**
+     * Pysäyttää logiikan, kunnes ulkoinen toiminto (napin painallus) päästää sen jatkamaan.
+     */
     private void odota(){
         ready = false;
         synchronized(lock){
@@ -197,6 +214,9 @@ public class Heittely {
         }
     }
     
+    /**
+     * Metodia käytetään jatkamaan pysäytettyä pelilogiikkaa.
+     */
     public void notifioiLukko(){
         synchronized(lock){
             ready = true;

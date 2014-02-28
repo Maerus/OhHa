@@ -2,9 +2,12 @@
 package lautapeli.lautapeli.domain;
 
 import java.util.Random;
+import lautapeli.lautapeli.domain.kortti.Kortti;
 import lautapeli.lautapeli.logiikka.Peli;
 
-
+/**
+ * Tietokonepelaajan luokka, joka perii Pelaajaluokan ja vaihtaa pelaajan toiminnallisuudet satunnaisuudella.
+ */
 public class Npc extends Pelaaja{
     private Random r;
 
@@ -16,7 +19,6 @@ public class Npc extends Pelaaja{
     
     /**
      * Metodi arpoo mitä tietokonepelaaja tekee vuorollaan.
-     * 
      */
     @Override
     public void valitseVuoroToimepide(){
@@ -52,4 +54,16 @@ public class Npc extends Pelaaja{
         }
     }
     
+    
+    @Override
+    int getTaistelukorttimuutokset() {
+        //helpotetaan tietokonepelaajan elämää, kun se ei osaa rerollata
+        int a = 1;
+        for (Kortti kortti : kortit) {
+            if(kortti.getTyyppi().contains("t")){
+                a += kortti.suorita("t");
+            }
+        }
+        return a;
+    }
 }

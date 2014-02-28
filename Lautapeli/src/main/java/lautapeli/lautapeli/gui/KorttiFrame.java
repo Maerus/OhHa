@@ -12,6 +12,10 @@ import javax.swing.ListSelectionModel;
 import lautapeli.lautapeli.domain.Pelaaja;
 import lautapeli.lautapeli.util.KorttiListSelectionListener;
 
+
+/**
+ * Luokka luo pelaajakohtaisen kortintarkasteluraamin.
+ */
 public class KorttiFrame {
     private JInternalFrame raami;
     private Pelaaja pelaaja;
@@ -57,7 +61,7 @@ public class KorttiFrame {
         korttilista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         korttilista.setVisibleRowCount(-1);
     }
-
+    
     private void rakennaKuvausruutu() {
         kuvausruutu = new JTextArea();
         kuvausruutu.setEditable(false);

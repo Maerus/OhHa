@@ -13,7 +13,9 @@ import javax.swing.border.LineBorder;
 import lautapeli.lautapeli.util.LuolaNappikuuntelija;
 import lautapeli.lautapeli.domain.Luolasto;
 
-
+/**
+ * Luokka on vastuussa yhden luolastopanelin komponenttien luomisesta.
+ */
 public class LuolastoPanel {
     private JPanel panel;
     private Luolasto luolasto;
@@ -27,6 +29,9 @@ public class LuolastoPanel {
         this.panel.setBorder(new LineBorder(new Color(40,100,40), 2));
     }
     
+    /**
+     * luo komponentit panelin sisälle
+     */
     void luoKomponentit (){
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();

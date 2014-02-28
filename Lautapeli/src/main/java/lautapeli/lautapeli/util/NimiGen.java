@@ -4,7 +4,9 @@ package lautapeli.lautapeli.util;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+/**
+ * Luokka on lista nimiä, joista irroitetaan yksittäinen nimi kullekin pelaajalle
+ */
 public class NimiGen {
     private ArrayList<String> lista;
     private Random r;

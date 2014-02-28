@@ -5,7 +5,9 @@ import lautapeli.lautapeli.domain.kortti.Kortti;
 import java.util.ArrayList;
 import lautapeli.lautapeli.logiikka.Peli;
 
-
+/**
+ * Ihmispelaajaa vastaava luokka. Pelaajan toiminnot kuuluvat tänne.
+ */
 public class Pelaaja {
      int pisteet;
      int raha;
@@ -162,6 +164,10 @@ public class Pelaaja {
         }
     }
     
+    /**
+     * metodi lisää pelaajalle rahaa.
+     * @param i 
+     */
     public void lisaaRahaa(int i){
         if (raha + i < 0){
             raha = 0;

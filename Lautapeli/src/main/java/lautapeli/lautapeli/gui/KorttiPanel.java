@@ -15,7 +15,9 @@ import lautapeli.lautapeli.domain.kortti.TestiKortti;
 import lautapeli.lautapeli.domain.kortti.TyhjaKortti;
 import lautapeli.lautapeli.util.KaupanKorttiNappikuuntelija;
 
-
+/**
+ * Luokka on vastuussa kaupassa olevan korttipanelin komponenttien luomisesta.
+ */
 public class KorttiPanel {
     private JPanel panel;
     private Kortti kortti;
@@ -45,6 +47,9 @@ public class KorttiPanel {
     private JButton nappi;
     private KaupanKorttiNappikuuntelija kuuntelija;
     
+    /**
+     * Luo komponentit panelin sisälle.
+     */
     void luoKomponentit(){
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
@@ -106,6 +111,10 @@ public class KorttiPanel {
         
     }
     
+    /**
+     * Asettaa paneliin uuden kortin, kun vanha ostetaan pois.
+     * @param kortti 
+     */
     public void paivitaKortti(Kortti kortti){
         this.kortti = kortti;
         nimi.setText(kortti.getNimi());

@@ -10,7 +10,9 @@ import lautapeli.lautapeli.domain.Pelaaja;
 import lautapeli.lautapeli.domain.kortti.Kortti;
 import lautapeli.lautapeli.gui.Kayttoliittyma;
 
-
+/**
+ * Pelilogiikka, joka suorittaa pelin kierrosloopin.
+ */
 public class Peli {
     private int kierros;
     private boolean jatkuu;

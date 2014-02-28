@@ -1,12 +1,14 @@
 
 package lautapeli.lautapeli.gui;
 
-import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JToggleButton;
 import javax.swing.border.BevelBorder;
 
-
+/**
+ * JToggleButton, joka sisältää indeksin noppataulukon rerollien käsittelyä varten.
+ * On myös vastuussa noppakuvien piirtämisestä napin päälle.
+ */
 public class NoppaButton extends JToggleButton{
     private int i;
     private int noppa;
@@ -26,7 +28,11 @@ public class NoppaButton extends JToggleButton{
     public int getNoppa() {
         return noppa;
     }
-
+    
+    /**
+     * Asettaa vaihekohtaisen ikonin napin päälle noppalukeman perusteella.
+     * @param vaihe 
+     */
     public void asetaKuva(String vaihe) {
         if (noppa == 1){
             ImageIcon tyhjaikoni = new ImageIcon(new ImageIcon(getClass().getResource("/tyhja.jpg")).getImage());
@@ -84,7 +90,12 @@ public class NoppaButton extends JToggleButton{
             setIcon(kortti);
         }
     }
-
+    
+    /**
+     * Päivittää kuvan uuden nopan perusteella, kun rerollaus muuttaa nopan arvon.
+     * @param vaihe
+     * @param uusinoppa 
+     */
     public void paivitaKuva(String vaihe, int uusinoppa) {
         noppa = uusinoppa;
         asetaKuva(vaihe);

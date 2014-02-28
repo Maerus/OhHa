@@ -1,0 +1,79 @@
+			K‰yttˆohjeet:
+
+Pelin kulku:
+
+Peli etenee kierroksittain. Jokaisella kierroksella pelaajalla on valittavana joko kortin ostaminen, tai luolaston seikkaileminen. Vuoro siirtyy seuraavalle, kun ostotapahtuma onnistuu, tai luolaston heittely p‰‰ttyy. Oman vuoron p‰‰tteeksi pelaaja saa yhden voittopisteen ja kolme rahaa.
+
+Pelaaja voi koska tahansa tarkastella kunkin pelaajan omistamia kortteja. Pelaaja voi myˆs nimet‰ itsens‰ uudelleen.
+
+T‰ss‰ versiossa ihmispelaajia on yksi, loput ovat tietokonepelaajia.
+
+Luolastoilla on jokaisella oma nappi: "Heittelyyn"
+T‰st‰ napista p‰‰st‰‰n kunkin luolaston omaan heittelytilanteeseen.
+
+
+Heittely jakautuu kolmeen vaiheeseen. Heittelytilanne saa noppam‰‰r‰t luolastosta ja pelaajan omistamista korteista.
+
+Jokainen heitetty noppa on kuusisivuinen, ja jotkut kuviot ilmestyv‰t useammilla sivuilla.
+
+Jokainen onnistuminen eri nopilla vaatii v‰hint‰‰n 2 noppaa. Yksitt‰iset nopat ovat huteja.
+
+
+---
+
+Vihollisnoppavaiheessa heitell‰‰n luolastossa vastaan tulevat viholliset. 
+
+Nopassa on 2 sivua luurankoja, 2 sivua ˆrkkej‰, 1 sivu lohik‰‰rmeit‰, sek‰ yksi tyhj‰ sivu.
+
+- Jokainen pari luurankoja vastaa yht‰ luurankovastusta.
+2 luurankoa = 1 vastus
+
+- ÷rkkipari vastaa yht‰ ˆrkkivastusta ja jokainen ˆrkki sen lis‰ksi vastaa ylim‰‰r‰ist‰ ˆrkkivastusta.
+2 + x ˆrkki‰ = 1 + x vastusta
+
+- Yksi Lohik‰‰rme vastaa yht‰ lohik‰‰rmevastusta, mutta vain, jos lohik‰‰rmenoppia on v‰hint‰‰n kaksi.
+2 + x lohik‰‰rmett‰ = 2 + x vastusta
+
+---
+
+Taistelunoppavaiheessa heitell‰‰n taisteluvoimakkuus, ja jos se on v‰hint‰‰n yht‰ suuri, kuin vastusten m‰‰r‰, p‰‰st‰‰n aarrenoppien heittelyyn.
+
+Nopassa on 2 sivua nyrkkej‰, 1 sivu miekkoja, 1 sivu jousia, 1 sivu tulipalloja, sek‰ 1 sivu tyhj‰‰.
+
+- Jokainen nyrkkipari vastaa yht‰ voimakkuutta.
+2 nyrkki‰ = 1 voima
+
+- Miekka tai jousinopat toimivat samalla tavalla kuin ˆrkit.
+2 + x miekkaa = 1 + x voimaa
+2 + x jousta = 1 + x voimaa
+
+- Tulipallot toimivat samalla tavalla, kuin lohik‰‰rmeet.
+2 + x tulipalloa = 2 + x voimaa
+
+---
+
+Aarrenoppavaiheessa heitell‰‰n luolastosta ker‰tyt aarteet.
+Jos taistelu ei onnistu, niin t‰m‰ vaihe on tyhj‰.
+
+Nopassa on 2 sivua kolikoita, 1 sivu kolikkopinoja, 1 sivu voittopisteit‰ ja 1 sivu Korttia, sek‰ yksi tyhj‰ sivu.
+
+- Kolikot antavat rahaa seuraavalla kaavalla:
+2 + x kolikkoa = 3 + x*2 rahaa
+
+- Kolikkopinot antavat rahaa seuraavalla kaavalla:
+2 + x kolikkopinoa = 5 + x*3 rahaa
+
+- Voittopisteet antavat pisteit‰ kaavalla:
+2 + x VP+ sivua = 1 + x pistett‰
+
+- Kolme korttisivua antaa yhden kortin pelaajalle
+3 korttisivua = yksi kortti
+
+---
+
+
+Kortteja voi ostaa kaupasta. Kortteja on kaupassa esill‰ aina kolme kappaletta, paitsi jos korttipakka loppuu ja esill‰ olevat kortit ostetaan pois. Onnistunut ostotapahtuma kuluttaa vuoron.
+
+
+Peli p‰‰ttyy, kun joku pelaajista saa 50 pistett‰ vuorollansa. Kierros pelataan loppuun ja voittaja on eniten pisteit‰ ker‰nnyt pelaaja.
+

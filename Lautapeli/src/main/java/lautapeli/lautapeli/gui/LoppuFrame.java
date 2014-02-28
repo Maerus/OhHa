@@ -4,7 +4,9 @@ package lautapeli.lautapeli.gui;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 
-
+/**
+ * yksinkertainen raami, joka ilmoittaa pelaajalle pelin päättyneen.
+ */
 public class LoppuFrame {
     private JInternalFrame raami;
 
@@ -15,8 +17,10 @@ public class LoppuFrame {
         raami.setResizable(false);
     }
     
+    /**
+     * luo raamiin JLabelin, joka ilmoittaa pelin päättyneen.
+     */
     public void luoKomponentit(){
-        
         JLabel teksti = new JLabel("Peli päättyi.");
         teksti.setHorizontalAlignment(JLabel.CENTER);
         raami.add(teksti);

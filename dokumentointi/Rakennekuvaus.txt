@@ -1,0 +1,26 @@
+(word pad)
+rakennekuvaus:
+
+Main käynnistää Käyttöliittymän, joka luo Pelin. Peli luo Luolastopakan, Korttipakan ja Pelaajat. Käyttöliittymä käyttää näitä hyväksi käyttöliittymäkomponenttien rakentamisessa.
+Käyttis käynnistää Pelin peliloopin.
+
+Yksi pelilooppi koostuu pelikierroksesta, joka koostuu kunkin pelaajan vuorosta. Vuorollaan pelaaja voi valita käyttöliittymän napeista joko jonkun kortin tai luolaston, tai voi tarkastella kunkin pelaajan omistamia kortteja.
+
+Pelaajan vuoro kuluu, kun se joko ostaa kortin, tai suorittaa valitsemalleen luolastolle heittelyn. Kun luolasto valitaan napista, luodaan Heittely ja sille oma HeittelyFrame.
+Heittely on kolmivaiheinen, ja se saa noppamäärät luolastosta ja pelaajan omistamista korteista.
+
+Kunkin vaiheen alussa koko heittelyraamin sisältö rakennetaan uudestaan, koska se on selvästi helpoin tapa päivittää vaihekohtaiset nopat. Raamissa on vaiheeseen kuuluva määrä togglettavia nappeja, jotka vastaavat kukin omaa noppaansa, sekä napit edellämainittujen noppien rerollaamiseen ja vaiheen edistämiseen, sekä tekstilaatikot, jotka kertovat rerollien määrän ja heittelyn vaiheen.
+
+Vihollisnopat ilmoitetaan korteille, jotta niistä saadaan erikoisuuksia, kuten ehdolliset toiminnot suoritettua. Kortit tiedostavat tämän luvun palautukseen, ja resetoivat tiedotetut lukemat.
+
+Jos aarrenoppien vaiheessa saadaan oikeita kombinaatioita, palkitaan pelaaja lootilla, kuten voittopisteillä, rahalla ja/tai korteilla.
+
+Tietokonepelaajat eivät osaa rerollata, mutta tätä on yritetty kompensoida antamalla niille ylimääräinen taistelunoppa pelin alussa.
+
+Kaupasta ostettaessa korttia nappi ei tee mitään* jos ei ole varaa ostaa korttia. Ostettaessa kortin sen tilalle laitetaan korttipakasta uusi kortti. Jos korttipakka on tyhjä kauppaa päivittäessä, ilmestyy Tyhjä Kortti, joka ilmoittaa korttipakan tyhjentyneen ja disabloi ostonapin.
+
+(* menee ostometodiin, mutta heittää pihalle tekemättä muutoksia [tämän takia metodissa on boolean palautusarvo])
+
+Jos tyhjä kortti ilmestyy palkitsemisesta pelaajan kortteihin, ei kyseinen kortti vaikuta peliin mitenkään. Se kylläkin jää näkyviin ja niitä voi tulla lisää, jos saadaan lisää kortteja palkinnoksi (tässä pitäisi tajuta olla yrittämättä hakea korttipalkintoja heittelystä)
+
+Kun yksikin pelaaja saa kierroksen aikana 50 tai yli pistettä, kierros pelataan loppuun ja peli päätetään. Tällöin ilmestyy uusi raami, joka kertoo pelin päättyneen. Tässä myöskin pistetään main thread odottamaan loputtomiin, jotta kyseistä raamia ei synny järjettömiä määriä. Pelin ollessa päättynyt, voidaan vielä tarkatella kunkin pelaajan pisteet, rahat ja kortit.

@@ -18,7 +18,9 @@ import lautapeli.lautapeli.util.HeittelynValmiusKuuntelija;
 import lautapeli.lautapeli.util.NoppaToggleKuuntelija;
 import lautapeli.lautapeli.util.RerollKuuntelija;
 
-
+/**
+ * Luokka luo raamin heittelytilannetta varten.
+ */
 public class HeittelyFrame {
     private JInternalFrame raami;
     private Heittely heittely;
@@ -32,7 +34,10 @@ public class HeittelyFrame {
     
     private JPanel noppapanel;
     private JPanel nappipanel;
-
+    
+    /**
+     * Luo komponentit heittelyraamiin.
+     */
     void luoKomponentit() {
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
@@ -118,6 +123,9 @@ public class HeittelyFrame {
     private JButton rerollnappi;
     private JButton valmisnappi;
     
+    /**
+     * Luo oikealla olevat tiedotustekstiruudut, sekä rerollaus- ja valmiusnapit.
+     */
     private void luoNappiKomponentit() {
         nappipanel = new JPanel();
         nappipanel.setBorder(new BevelBorder(0));
@@ -166,10 +174,16 @@ public class HeittelyFrame {
         valmisnappi.addActionListener(new HeittelynValmiusKuuntelija(heittely, raami));
     }
     
+    /**
+     * Päivittää rerollien määrän, kun rerollaus käytetään.
+     */
     public void paivitaNappiKomponentit(){
         rerollit.setText("Rerollit: " + heittely.getRerollit());
     }
-
+    
+    /**
+     * Tyhjentää raamin, ja luo sen uudestaan uuden vaiheen perusteella, sekä resetoi rerollit kahteen.
+     */
     public void paivitaVaihe() {
         heittely.setRerollit(2);
         raami.getContentPane().removeAll();

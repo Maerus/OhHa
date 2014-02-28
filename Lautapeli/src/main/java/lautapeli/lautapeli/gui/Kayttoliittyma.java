@@ -6,7 +6,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Point;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -20,7 +19,9 @@ import lautapeli.lautapeli.util.NimiGen;
 import lautapeli.lautapeli.domain.Heittely;
 import lautapeli.lautapeli.domain.Pelaaja;
 
-
+/**
+ * Luokka luo graafisen käyttöliittymän ja kaikki sen komponentit, ja aloittaa pelin.
+ */
 public class Kayttoliittyma implements Runnable {
     
     private JFrame raami;

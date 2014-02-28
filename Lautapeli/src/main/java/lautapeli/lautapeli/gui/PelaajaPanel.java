@@ -11,7 +11,9 @@ import javax.swing.border.LineBorder;
 import lautapeli.lautapeli.domain.Pelaaja;
 import lautapeli.lautapeli.util.KorttiNappiKuuntelija;
 
-
+/**
+ * Luokka on vastuussa pelaajan komponenttien (nimen, pisteiden, korttinapin) luomisesta.
+ */
 public class PelaajaPanel {
     private String nimi;
     private JPanel panel;
@@ -33,6 +35,9 @@ public class PelaajaPanel {
      private KorttiFrameButton korttinappi;
      private JTextField nimikentta;
     
+     /**
+      * luo komponentit pelaajapanelin sisälle
+      */
     void luoKomponentit() {
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
@@ -107,6 +112,9 @@ public class PelaajaPanel {
         panel.add(korttinappi, c);
     }
     
+    /**
+     * päivittää komponentit uusilla tiedoilla
+     */
     public void paivitaKomponentit(){
         pistekentta.setText("" + pelaaja.getPisteet());
         rahakentta.setText("" + pelaaja.getRaha());

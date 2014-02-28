@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import lautapeli.lautapeli.domain.kortti.*;
 
-
+/**
+ * Korttipakka sisältää 30 korttia, joista poimitaan arvalla yksittäisiä kortteja joko kauppaan tai palkkioksi pelaajalle heittelyssä.
+ */
 public class Korttipakka {
     private ArrayList<Kortti> pakka;
     private Random random;
@@ -15,7 +17,10 @@ public class Korttipakka {
         pakka = new ArrayList<>();
         lisaaKortit();
     }
-
+    
+    /**
+     * Lisää 30 käsin valittua korttia pakkaan.
+     */
     private void lisaaKortit() {
 //        30 korttia
         pakka.add(new Alkemisti());
@@ -50,6 +55,10 @@ public class Korttipakka {
         pakka.add(new Taistelukokemus());
     }
     
+    /**
+     * Valitsee arvalla pakasta kortin, ja antaa sen kutsuvalle luokalle. Kortti poistetaan pakasta.
+     * @return kortti
+     */
     public Kortti otaKortti(){
         if (pakka.isEmpty()){
             return new TyhjaKortti();
